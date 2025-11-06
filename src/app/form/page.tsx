@@ -1,202 +1,347 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 
-const applicationFormSchema = z.object({
-  name: z.string().min(1, "Informe seu nome completo."),
-  email: z
-    .string()
-    .min(1, "Informe um e-mail corporativo.")
-    .email("Digite um e-mail válido."),
-  phone: z.string().min(1, "Informe um telefone ou WhatsApp."),
-  company: z.string().min(1, "Informe o nome da empresa."),
-  employees: z.string().min(1, "Informe o número aproximado de colaboradores."),
-  role: z.string().optional(),
-  message: z.string().optional(),
+const formSchema = z.object({
+  name: z.string().min(1, "Queremos saber quem lidera a transformação."),
+  role: z.string().min(1, "Assim entendemos seu papel na decisão e operação."),
+  company: z.string().min(1, "Para conectar ao mapeamento setorial."),
+  employees: z.enum(["até 30", "30 a 100", "100 a 500", "acima de 500"], {
+    errorMap: () => ({ message: "Selecione uma opção." }),
+  }),
+  challenge: z.enum(
+    [
+      "Processos lentos / retrabalho",
+      "Falta de integração entre sistemas",
+      "Equipe sobrecarregada",
+      "Falta de clareza estratégica",
+    ],
+    { errorMap: () => ({ message: "Selecione uma opção." }) }
+  ),
+  whatsapp: z.string().min(10, "Enviaremos o link direto do diagnóstico via WhatsApp."),
+  email: z.string().email("Por favor, insira um e-mail corporativo válido."),
+  lgpd: z.boolean().refine((val) => val === true, {
+    message: "Você precisa autorizar o contato para enviar.",
+  }),
 });
 
-type ApplicationFormValues = z.infer<typeof applicationFormSchema>;
+type FormValues = z.infer<typeof formSchema>;
+
+const step1Fields: (keyof FormValues)[] = [
+  "name",
+  "role",
+  "company",
+  "employees",
+  "challenge",
+  "whatsapp",
+  "email",
+];
 
 export default function FormPage() {
-  const form = useForm<ApplicationFormValues>({
-    resolver: zodResolver(applicationFormSchema),
+  const [step, setStep] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
-      phone: "",
-      company: "",
-      employees: "",
       role: "",
-      message: "",
+      company: "",
+      whatsapp: "",
+      email: "",
+      lgpd: false,
     },
   });
 
-  const onSubmit = (values: ApplicationFormValues) => {
-    console.table(values);
-    toast.success("Aplicação recebida! Nossa equipe entrará em contato em breve.");
-    form.reset();
+  const { formState } = form;
+
+  const handleNextStep = async () => {
+    const isValid = await form.trigger(step1Fields);
+    if (isValid) {
+      setStep(2);
+    }
   };
 
-  return (
-    <div className="bg-slate-950 min-h-screen text-slate-100 flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
-        <div className="w-full max-w-4xl mx-auto">
-            <div className="mb-8 text-center">
-                <Link href="/" className="inline-block mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-xl font-semibold text-white">
-                        V
-                    </div>
-                </Link>
-                <div className="max-w-3xl mx-auto space-y-4">
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
-                        Programa ICIA
-                    </p>
-                    <h1 className="text-2xl font-semibold text-slate-50 sm:text-3xl">
-                        Pronto para iniciar o diagnóstico de eficiência com IA?
-                    </h1>
-                    <p className="text-base text-slate-300 sm:text-lg">
-                        Preencha o formulário e nossa equipe entrará em contato para entender seus desafios e traçar o plano sob medida para a sua operação.
-                    </p>
-                </div>
-            </div>
+  const onSubmit = async (values: FormValues) => {
+    console.table(values);
+    // Simulating API call
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    toast.success("Diagnóstico solicitado com sucesso!");
+    setIsSubmitted(true);
+  };
 
-            <Form {...form}>
-            <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="grid gap-8 rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-lg shadow-blue-500/10 sm:p-8"
-            >
-                <div className="grid gap-4 sm:grid-cols-2">
-                <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel className="text-slate-200">Nome completo</FormLabel>
-                        <FormControl>
-                        <Input placeholder="Informe seu nome" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel className="text-slate-200">E-mail corporativo</FormLabel>
-                        <FormControl>
-                        <Input type="email" placeholder="seuemail@empresa.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel className="text-slate-200">Telefone ou WhatsApp</FormLabel>
-                        <FormControl>
-                        <Input placeholder="(00) 00000-0000" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel className="text-slate-200">Empresa</FormLabel>
-                        <FormControl>
-                        <Input placeholder="Nome da empresa" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                <FormField
-                    control={form.control}
-                    name="employees"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel className="text-slate-200">
-                        Número aproximado de colaboradores
-                        </FormLabel>
-                        <FormControl>
-                        <Input placeholder="Ex.: 150" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="role"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel className="text-slate-200">Cargo (opcional)</FormLabel>
-                        <FormControl>
-                        <Input placeholder="Qual é o seu papel na empresa?" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                </div>
-
-                <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel className="text-slate-200">
-                        Conte-nos sobre o principal desafio (opcional)
-                    </FormLabel>
-                    <FormControl>
-                        <Textarea
-                        placeholder="Descreva brevemente os objetivos e gargalos que deseja resolver."
-                        className="min-h-[120px]"
-                        {...field}
-                        />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-
-                <Button
-                type="submit"
-                className="w-full rounded-md bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 sm:w-auto"
-                >
-                Enviar aplicação
-                </Button>
-            </form>
-            </Form>
+  if (isSubmitted) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-slate-950 p-4 text-center text-slate-100">
+        <div className="w-full max-w-lg space-y-6">
+          <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
+          <h1 className="text-3xl font-bold text-slate-50">Aplicação recebida!</h1>
+          <p className="text-lg text-slate-300">
+            Sua análise personalizada está sendo preparada. Você a receberá em seu e-mail e WhatsApp em até 48h.
+          </p>
+          <Button asChild>
+            <Link href="/">Voltar para a página inicial</Link>
+          </Button>
         </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        {/* Header */}
+        <div className="mb-10 text-center">
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
+            Diagnóstico de Eficiência e IA Integrada
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-300">
+            Quer descobrir quanto <strong>tempo</strong> e <strong>margem</strong> sua empresa pode recuperar com <strong>IA</strong>? Preencha o diagnóstico inicial e receba uma <strong>análise personalizada</strong> em até <strong>48h</strong>.
+          </p>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="mb-8 space-y-3">
+          <div className="flex justify-between text-sm font-medium text-slate-300">
+            <span className={step >= 1 ? "text-blue-400" : ""}>1. Diagnóstico inicial</span>
+            <span className={step >= 2 ? "text-blue-400" : ""}>2. Revisão & Envio</span>
+          </div>
+          <Progress value={step === 1 ? 50 : 100} className="h-2" />
+        </div>
+
+        {/* Form Card */}
+        <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 shadow-lg shadow-blue-500/5 sm:p-8">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div aria-live="polite">
+                {step === 1 && (
+                  <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem className="sm:col-span-2">
+                          <FormLabel>Nome completo</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Seu nome" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            📋 Queremos saber quem lidera a transformação.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="role"
+                      render={({ field }) => (
+                        <FormItem className="sm:col-span-2">
+                          <FormLabel>Cargo ou função na empresa</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Ex: Diretor de Operações" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            📋 Assim entendemos seu papel na decisão e operação.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem className="sm:col-span-2">
+                          <FormLabel>Nome da empresa</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Nome da sua empresa" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            📋 Para conectar ao mapeamento setorial.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="employees"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel><strong>Número aproximado de colaboradores</strong></FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Selecione o tamanho" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="até 30">até 30</SelectItem>
+                              <SelectItem value="30 a 100">30 a 100</SelectItem>
+                              <SelectItem value="100 a 500">100 a 500</SelectItem>
+                              <SelectItem value="acima de 500">acima de 500</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="challenge"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel><strong>Principal desafio atual</strong></FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Selecione o desafio" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="Processos lentos / retrabalho">Processos lentos / retrabalho</SelectItem>
+                              <SelectItem value="Falta de integração entre sistemas">Falta de integração entre sistemas</SelectItem>
+                              <SelectItem value="Equipe sobrecarregada">Equipe sobrecarregada</SelectItem>
+                              <SelectItem value="Falta de clareza estratégica">Falta de clareza estratégica</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="whatsapp"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel><strong>WhatsApp corporativo</strong></FormLabel>
+                          <FormControl>
+                            <Input type="tel" placeholder="(00) 00000-0000" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            📋 Enviaremos o link direto do diagnóstico.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel><strong>E-mail corporativo</strong></FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="seuemail@empresa.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
+
+                {step === 2 && (
+                  <div className="space-y-8">
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-100">Revise suas informações</h3>
+                      <p className="text-sm text-slate-400">Confira se todos os dados estão corretos antes de enviar.</p>
+                    </div>
+                    <div className="space-y-4 rounded-lg border border-slate-800 bg-slate-950/50 p-4">
+                      {[
+                        { label: "Nome completo", value: form.getValues("name") },
+                        { label: "Cargo", value: form.getValues("role") },
+                        { label: "Empresa", value: form.getValues("company") },
+                        { label: "Nº de colaboradores", value: form.getValues("employees") },
+                        { label: "Principal desafio", value: form.getValues("challenge") },
+                        { label: "WhatsApp", value: form.getValues("whatsapp") },
+                        { label: "E-mail", value: form.getValues("email") },
+                      ].map(item => (
+                        <div key={item.label} className="flex justify-between text-sm">
+                          <span className="text-slate-400">{item.label}:</span>
+                          <span className="font-medium text-slate-100 text-right">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <FormField
+                      control={form.control}
+                      name="lgpd"
+                      render={({ field }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-slate-800 p-4">
+                          <FormControl>
+                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                          </FormControl>
+                          <div className="space-y-1 leading-none">
+                            <FormLabel>
+                              Li e autorizo o contato para o Diagnóstico ICIA conforme a LGPD.
+                            </FormLabel>
+                            <FormMessage />
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Navigation Buttons */}
+              <div className="flex flex-col-reverse gap-4 sm:flex-row sm:justify-between">
+                {step === 1 ? (
+                  <div></div> // Placeholder for alignment
+                ) : (
+                  <Button type="button" variant="outline" onClick={() => setStep(1)}>
+                    Voltar
+                  </Button>
+                )}
+
+                {step === 1 ? (
+                  <Button type="button" onClick={handleNextStep} className="w-full sm:w-auto">
+                    Continuar <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                ) : (
+                  <div className="flex w-full flex-col items-center gap-3 sm:w-auto">
+                    <Button type="submit" disabled={formState.isSubmitting} className="w-full sm:w-auto">
+                      {formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      Receber meu Diagnóstico de Eficiência
+                    </Button>
+                    <p className="text-xs text-slate-400">
+                      💬 Tempo médio de resposta: 24h úteis. Sua eficiência começa com clareza.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </form>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 }
