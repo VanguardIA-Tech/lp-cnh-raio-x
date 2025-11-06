@@ -11,6 +11,7 @@ import { TailoredSolutionSection } from "@/components/home/tailored-solution-sec
 import { SuccessStoriesSection } from "@/components/home/success-stories-section";
 import { LeaderSection } from "@/components/home/leader-section";
 import { SiteFooter } from "@/components/home/site-footer";
+import { DiagnosisSection } from "@/components/home/diagnosis-section";
 
 const floatingCTAClasses =
   "fixed bottom-6 right-6 z-50 shadow-xl shadow-orange-500/20 transition hover:scale-[1.02]";
@@ -27,6 +28,7 @@ export default function Home() {
         <TailoredSolutionSection />
         <SuccessStoriesSection />
         <LeaderSection />
+        <DiagnosisSection />
       </main>
 
       <SiteFooter />
