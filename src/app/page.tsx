@@ -85,103 +85,74 @@ export default function Home() {
 
   return (
     <div className="bg-white text-slate-900">
-      <header className="bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white sm:text-base">
-        <span role="img" aria-label="alvo" className="mr-2">
-          🎯
-        </span>
-        Exclusivo para empresas com 30 a 1000 colaboradores que buscam eficiência real com Inteligência Artificial e Automação.
+      {/* Top blue band (faixa de abertura) */}
+      <header className="bg-blue-600">
+        <div className="mx-auto max-w-6xl px-4 py-2 text-center text-sm font-medium text-white sm:text-base">
+          <span role="img" aria-label="alvo" className="mr-2 inline-block">
+            🎯
+          </span>
+          Exclusivo para empresas com 30 a 1000 colaboradores que buscam eficiência real com Inteligência Artificial e Automação.
+        </div>
       </header>
 
       <main className="flex flex-col">
-        <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white">
-          <div className={`${sectionContainer} py-16 sm:py-24`}>
-            <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
-              <div className="flex-1 space-y-8">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-white/10 text-xl font-semibold">
-                    V
-                  </div>
-                  <div className="text-2xl font-semibold tracking-wide">
-                    VanguardIA
-                  </div>
+        {/* HERO section redesigned to follow the mock */}
+        <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
+          <div className={`${sectionContainer} py-24 sm:py-32 lg:grid lg:grid-cols-12 lg:items-center`}>
+            {/* Left column: logo + headline + subheadline + CTA */}
+            <div className="lg:col-span-6 flex flex-col gap-8">
+              <div>
+                {/* small logo box like in the design */}
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded bg-white/10 p-2">
+                  {/* use existing svg as placeholder; replace later with designer image if provided */}
+                  <img src="/next.svg" alt="VanguardIA" className="h-10 w-10 object-contain" />
                 </div>
 
-                <div className="space-y-6">
-                  <h1 className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-                    Transforme sua operação com sistemas personalizados de IA e automação integrados à sua realidade. Tudo feito para atender o SEU negócio.
-                  </h1>
-                  <p className="text-base text-slate-200 sm:text-lg">
-                    O Programa ICIA (Inteligência Corporativa Integrada com Automação) é a aceleração que redesenha processos, integra pessoas e instala cultura de eficiência com IA. Sem precisar trocar seus sistemas atuais nem contratar um monte de gente com altos salários.
-                  </p>
-                </div>
+                {/* Heading - very large and left aligned with highlighted blue chunk */}
+                <h1 className="text-[46px] sm:text-[56px] md:text-[64px] lg:text-[72px] leading-[0.95] font-extrabold tracking-tight text-left max-w-[760px]">
+                  Transforme sua operação com sistemas personalizados de IA e automação integrados à sua realidade.{" "}
+                  <span className="block text-blue-400">Tudo feito para atender o SEU negócio.</span>
+                </h1>
 
-                <div className="space-y-3">
-                  <Button
-                    type="button"
-                    onClick={handleCTA}
-                    className="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
-                  >
-                    Quero meu Diagnóstico de Eficiência com IA
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                  <p className="text-sm text-slate-200 sm:text-base">
-                    O futuro das empresas eficientes é sob medida. A sua também pode ser.
-                  </p>
-                </div>
+                {/* Subheadline */}
+                <p className="mt-6 max-w-[680px] text-base text-slate-200 sm:text-lg">
+                  O Programa ICIA (Inteligência Corporativa Integrada com Automação) é a aceleração que redesenha processos, integra pessoas e instala cultura de eficiência com IA. Sem precisar trocar seus sistemas atuais nem contratar um monte de gente com altos salários.
+                </p>
               </div>
 
-              <div className="flex-1">
-                <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl shadow-blue-500/10">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/50 via-transparent to-blue-300/40" />
-                  <div className="relative flex h-full flex-col justify-between space-y-6">
-                    <div>
-                      <p className="text-sm uppercase tracking-[0.25em] text-slate-200">
-                        Programa ICIA
-                      </p>
-                      <h2 className="mt-4 text-3xl font-semibold leading-tight">
-                        Jorge Auad
-                      </h2>
-                      <p className="text-sm text-slate-200">
-                        Fundador do Grupo VanguardIA
-                      </p>
-                    </div>
-                    <div className="space-y-3 text-sm text-slate-100">
-                      <p>
-                        “Criamos sistemas vivos que libertam o potencial da sua equipe enquanto elevam a margem do negócio.”
-                      </p>
-                      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-slate-200">
-                        <span className="h-px w-8 bg-slate-300/40" />
-                        Eficiência Inteligente
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 text-center text-xs font-semibold uppercase tracking-widest text-slate-200">
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                        +100
-                        <span className="mt-1 block text-[0.6rem] font-normal tracking-normal text-slate-200/80">
-                          Projetos
-                        </span>
-                      </div>
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                        +30%
-                        <span className="mt-1 block text-[0.6rem] font-normal tracking-normal text-slate-200/80">
-                          Margem média
-                        </span>
-                      </div>
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                        200h
-                        <span className="mt-1 block text-[0.6rem] font-normal tracking-normal text-slate-200/80">
-                          Liberadas
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-500/40 blur-3xl" />
+              {/* CTA and microcopy */}
+              <div className="mt-4 flex flex-col items-start gap-3">
+                <Button
+                  type="button"
+                  onClick={handleCTA}
+                  className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
+                >
+                  Quero meu Diagnóstico de Eficiência com IA
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+                <p className="mt-2 text-sm italic text-slate-300">
+                  O futuro das empresas eficientes é sob medida. A sua também pode ser.
+                </p>
+              </div>
+            </div>
+
+            {/* Right column: portrait / card */}
+            <div className="mt-12 lg:mt-0 lg:col-span-6 flex justify-center lg:justify-end">
+              <div className="w-full max-w-[520px]">
+                <div className="relative overflow-hidden rounded-2xl bg-white/5 p-0 shadow-2xl shadow-blue-900/30">
+                  {/* image placeholder; replace /window.svg with designer photo when available */}
+                  <img
+                    src="/window.svg"
+                    alt="Jorge Auad"
+                    className="w-full h-[380px] object-cover object-center rounded-2xl"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Rest of page sections remain unchanged */}
         <section className="bg-white py-16 sm:py-24">
           <div className={`${sectionContainer} gap-10`}>
             <div className="max-w-3xl space-y-6">
