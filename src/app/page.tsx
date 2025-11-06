@@ -96,85 +96,62 @@ export default function Home() {
       </header>
 
       <main className="flex flex-col">
-        {/* HERO section — estilo atualizado para ficar mais próximo ao design enviado */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
-          {/* subtle grain / vignette overlays */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent mix-blend-overlay" />
-            <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-slate-900/50 via-transparent to-transparent mix-blend-overlay" />
-            <div className="absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-orange-600/10 blur-3xl" />
-            <div className="absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-blue-600/10 blur-3xl" />
-          </div>
+        {/* HERO section — menos espaço superior, logo maior e sem fundo no wrapper */}
+        <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
+          <div className="mx-auto w-full max-w-7xl px-6 py-6 sm:py-8 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
+            {/* Left column: logo + headline + subheadline + CTA */}
+            <div className="lg:col-span-7 flex flex-col gap-5">
+              <div>
+                {/* show logo directly (no colored background wrapper) and increase size */}
+                <div className="mb-2 inline-flex items-center justify-start">
+                  <img
+                    src="/vanguardia-logo.png"
+                    alt="VanguardIA"
+                    className="h-16 w-auto sm:h-18 md:h-20 object-contain"
+                  />
+                </div>
 
-          <div className="mx-auto w-full max-w-7xl px-6 py-6 sm:py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 relative">
-            {/* Left: Heading + content */}
-            <div className="lg:col-span-7 z-10">
-              <div className="mb-3 inline-flex items-center justify-start">
-                <img
-                  src="/vanguardia-logo.png"
-                  alt="VanguardIA"
-                  className="h-16 w-auto sm:h-18 md:h-20 object-contain"
-                />
+                {/* Heading — adjusted sizes and max width */}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] leading-tight font-extrabold tracking-tight text-left max-w-[560px]">
+                  Transforme sua operação com sistemas personalizados de IA e automação integrados à sua realidade.
+                  <span className={`${highlightedTextClass} block mt-2`}>Tudo feito para atender o SEU negócio.</span>
+                </h1>
+
+                {/* Subheadline */}
+                <p className="mt-4 max-w-[600px] text-base text-slate-200 sm:text-lg">
+                  O Programa ICIA (Inteligência Corporativa Integrada com Automação) é a aceleração que redesenha processos, integra pessoas e instala cultura de eficiência com IA. Sem precisar trocar seus sistemas atuais nem contratar um monte de gente com altos salários.
+                </p>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-[64px] leading-tight font-extrabold tracking-tight max-w-[640px]">
-                Como empresas
-                <br />
-                estão construindo
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-200">
-                  lucro líquido com
-                </span>
-                <span className="inline-block ml-2 text-blue-400/90">IA</span>
-              </h1>
-
-              <p className="mt-6 w-full max-w-[640px] rounded-full border border-slate-700/30 bg-slate-900/10 px-5 py-3 text-sm text-slate-200">
-                Sem modismos, com integração real de dados, automações e pessoas.
-              </p>
-
-              <div className="mt-6 space-y-6 max-w-[640px]">
-                <p className="text-base text-slate-200/90">
-                  No Grupo VanguardIA, desenhamos o ICIA (apenas 8 vagas por mês). Integração Corporativa de Inteligência Artificial: um programa sob medida que conecta tecnologia, dados e cultura para transformar eficiência em margem real.
+              {/* CTA and microcopy - button less rounded (rounded-md) */}
+              <div className="mt-3 flex flex-col items-start gap-3">
+                <Button
+                  type="button"
+                  onClick={handleCTA}
+                  className="inline-flex items-center gap-3 rounded-md bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
+                >
+                  Quero meu Diagnóstico de Eficiência com IA
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+                <p className="mt-1 text-sm italic text-slate-300">
+                  O futuro das empresas eficientes é sob medida. A sua também pode ser.
                 </p>
-
-                <div className="flex flex-wrap items-center gap-4">
-                  <Button
-                    onClick={handleCTA}
-                    className="inline-flex items-center gap-3 rounded-lg bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600"
-                  >
-                    Gerar meu Raio-X agora
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    onClick={handleCTA}
-                    className="inline-flex items-center gap-3 rounded-lg border-blue-400/40 bg-transparent px-6 py-3 text-base font-semibold text-blue-100 hover:bg-blue-900/30"
-                  >
-                    Solicitar Diagnóstico ICIA
-                  </Button>
-                </div>
               </div>
             </div>
 
-            {/* Right: Hero image */}
-            <div className="mt-8 lg:mt-0 lg:col-span-5 z-10 flex justify-end items-end">
-              <div className="w-full max-w-[520px] flex items-end justify-end">
-                {/* the image is shown at full height without cropping */}
-                <div className="relative">
+            {/* Right column: portrait / card */}
+            <div className="mt-6 lg:mt-0 lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="w-full max-w-[520px] flex items-center justify-center">
+                {/* No overflow-hidden or cropping wrapper; image uses object-contain so it's shown entirely */}
+                <div className="relative bg-transparent p-0">
                   <img
                     src="/jorge-hero.png"
                     alt="Retrato de Jorge Auad"
-                    className="mx-auto h-[520px] w-auto object-contain"
+                    className="mx-auto w-auto max-h-[520px] object-contain"
                   />
-                  {/* glow behind the portrait */}
-                  <div className="absolute -right-10 -bottom-8 h-64 w-64 rounded-full bg-blue-600/20 blur-3xl" />
-                  <div className="absolute -right-20 top-6 h-40 w-40 rounded-full bg-orange-500/10 blur-3xl" />
                 </div>
               </div>
             </div>
-
-            {/* subtle dark gradient at bottom to match original feel */}
-            <div className="absolute left-0 right-0 bottom-0 h-36 bg-gradient-to-t from-slate-950 to-transparent" />
           </div>
         </section>
 
