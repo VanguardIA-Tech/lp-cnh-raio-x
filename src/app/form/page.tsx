@@ -55,7 +55,6 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const step1Fields: (keyof FormValues)[] = ["name", "role", "company"];
-const step2Fields: (keyof FormValues)[] = ["employees", "challenge", "whatsapp", "email"];
 
 export default function FormPage() {
   const [step, setStep] = useState(1);
@@ -76,15 +75,14 @@ export default function FormPage() {
   const { formState } = form;
 
   const handleNextStep = async () => {
-    const fieldsToValidate = step === 1 ? step1Fields : step2Fields;
-    const isValid = await form.trigger(fieldsToValidate);
+    const isValid = await form.trigger(step1Fields);
     if (isValid) {
-      setStep((prev) => prev + 1);
+      setStep(2);
     }
   };
 
   const handlePrevStep = () => {
-    setStep((prev) => prev - 1);
+    setStep(1);
   };
 
   const onSubmit = async (values: FormValues) => {
@@ -112,7 +110,7 @@ export default function FormPage() {
     );
   }
 
-  const progressValue = step === 1 ? 33 : step === 2 ? 66 : 100;
+  const progressValue = step === 1 ? 50 : 100;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -131,8 +129,7 @@ export default function FormPage() {
         <div className="mb-8 space-y-3">
           <div className="flex justify-between text-sm font-medium text-slate-300">
             <span className={step >= 1 ? "text-blue-400" : ""}>1. Contato</span>
-            <span className={step >= 2 ? "text-blue-400" : ""}>2. Detalhes</span>
-            <span className={step >= 3 ? "text-blue-400" : ""}>3. Revisão & Envio</span>
+            <span className={step >= 2 ? "text-blue-400" : ""}>2. Detalhes & Envio</span>
           </div>
           <Progress value={progressValue} className="h-2" />
         </div>
@@ -196,106 +193,83 @@ export default function FormPage() {
                 )}
 
                 {step === 2 && (
-                  <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
-                    <FormField
-                      control={form.control}
-                      name="employees"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel><strong>Número aproximado de colaboradores</strong></FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Selecione o tamanho" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="até 30">até 30</SelectItem>
-                              <SelectItem value="30 a 100">30 a 100</SelectItem>
-                              <SelectItem value="100 a 500">100 a 500</SelectItem>
-                              <SelectItem value="acima de 500">acima de 500</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="challenge"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel><strong>Principal desafio atual</strong></FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Selecione o desafio" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="Processos lentos / retrabalho">Processos lentos / retrabalho</SelectItem>
-                              <SelectItem value="Falta de integração entre sistemas">Falta de integração entre sistemas</SelectItem>
-                              <SelectItem value="Equipe sobrecarregada">Equipe sobrecarregada</SelectItem>
-                              <SelectItem value="Falta de clareza estratégica">Falta de clareza estratégica</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="whatsapp"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel><strong>WhatsApp corporativo</strong></FormLabel>
-                          <FormControl>
-                            <Input type="tel" placeholder="(00) 00000-0000" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            📋 Enviaremos o link direto do diagnóstico.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel><strong>E-mail corporativo</strong></FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="seuemail@empresa.com" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                )}
-
-                {step === 3 && (
                   <div className="space-y-8">
-                    <div>
-                      <h3 className="text-lg font-semibold text-slate-100">Revise suas informações</h3>
-                      <p className="text-sm text-slate-400">Confira se todos os dados estão corretos antes de enviar.</p>
-                    </div>
-                    <div className="space-y-4 rounded-lg border border-slate-800 bg-slate-950/50 p-4">
-                      {[
-                        { label: "Nome completo", value: form.getValues("name") },
-                        { label: "Cargo", value: form.getValues("role") },
-                        { label: "Empresa", value: form.getValues("company") },
-                        { label: "Nº de colaboradores", value: form.getValues("employees") },
-                        { label: "Principal desafio", value: form.getValues("challenge") },
-                        { label: "WhatsApp", value: form.getValues("whatsapp") },
-                        { label: "E-mail", value: form.getValues("email") },
-                      ].map(item => (
-                        <div key={item.label} className="flex justify-between text-sm">
-                          <span className="text-slate-400">{item.label}:</span>
-                          <span className="font-medium text-slate-100 text-right">{item.value}</span>
-                        </div>
-                      ))}
+                    <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+                      <FormField
+                        control={form.control}
+                        name="employees"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel><strong>Número aproximado de colaboradores</strong></FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Selecione o tamanho" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="até 30">até 30</SelectItem>
+                                <SelectItem value="30 a 100">30 a 100</SelectItem>
+                                <SelectItem value="100 a 500">100 a 500</SelectItem>
+                                <SelectItem value="acima de 500">acima de 500</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="challenge"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel><strong>Principal desafio atual</strong></FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Selecione o desafio" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="Processos lentos / retrabalho">Processos lentos / retrabalho</SelectItem>
+                                <SelectItem value="Falta de integração entre sistemas">Falta de integração entre sistemas</SelectItem>
+                                <SelectItem value="Equipe sobrecarregada">Equipe sobrecarregada</SelectItem>
+                                <SelectItem value="Falta de clareza estratégica">Falta de clareza estratégica</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="whatsapp"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel><strong>WhatsApp corporativo</strong></FormLabel>
+                            <FormControl>
+                              <Input type="tel" placeholder="(00) 00000-0000" {...field} />
+                            </FormControl>
+                            <FormDescription>
+                              📋 Enviaremos o link direto do diagnóstico.
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel><strong>E-mail corporativo</strong></FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="seuemail@empresa.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
                     <FormField
                       control={form.control}
@@ -320,15 +294,15 @@ export default function FormPage() {
 
               {/* Navigation Buttons */}
               <div className="flex flex-col-reverse gap-4 sm:flex-row sm:justify-between">
-                {step === 1 ? (
-                  <div></div> // Placeholder for alignment
-                ) : (
+                {step === 2 ? (
                   <Button type="button" variant="outline" onClick={handlePrevStep}>
                     Voltar
                   </Button>
+                ) : (
+                  <div></div> // Placeholder for alignment
                 )}
 
-                {step < 3 ? (
+                {step === 1 ? (
                   <Button type="button" onClick={handleNextStep} className="w-full sm:w-auto">
                     Continuar <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
