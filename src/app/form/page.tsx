@@ -54,15 +54,8 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const step1Fields: (keyof FormValues)[] = [
-  "name",
-  "role",
-  "company",
-  "employees",
-  "challenge",
-  "whatsapp",
-  "email",
-];
+const step1Fields: (keyof FormValues)[] = ["name", "role", "company"];
+const step2Fields: (keyof FormValues)[] = ["employees", "challenge", "whatsapp", "email"];
 
 export default function FormPage() {
   const [step, setStep] = useState(1);
@@ -83,10 +76,15 @@ export default function FormPage() {
   const { formState } = form;
 
   const handleNextStep = async () => {
-    const isValid = await form.trigger(step1Fields);
+    const fieldsToValidate = step === 1 ? step1Fields : step2Fields;
+    const isValid = await form.trigger(fieldsToValidate);
     if (isValid) {
-      setStep(2);
+      setStep((prev) => prev + 1);
     }
+  };
+
+  const handlePrevStep = () => {
+    setStep((prev) => prev - 1);
   };
 
   const onSubmit = async (values: FormValues) => {
@@ -114,6 +112,8 @@ export default function FormPage() {
     );
   }
 
+  const progressValue = step === 1 ? 33 : step === 2 ? 66 : 100;
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -130,10 +130,11 @@ export default function FormPage() {
         {/* Progress Indicator */}
         <div className="mb-8 space-y-3">
           <div className="flex justify-between text-sm font-medium text-slate-300">
-            <span className={step >= 1 ? "text-blue-400" : ""}>1. Diagnóstico inicial</span>
-            <span className={step >= 2 ? "text-blue-400" : ""}>2. Revisão & Envio</span>
+            <span className={step >= 1 ? "text-blue-400" : ""}>1. Contato</span>
+            <span className={step >= 2 ? "text-blue-400" : ""}>2. Detalhes</span>
+            <span className={step >= 3 ? "text-blue-400" : ""}>3. Revisão & Envio</span>
           </div>
-          <Progress value={step === 1 ? 50 : 100} className="h-2" />
+          <Progress value={progressValue} className="h-2" />
         </div>
 
         {/* Form Card */}
@@ -191,6 +192,11 @@ export default function FormPage() {
                         </FormItem>
                       )}
                     />
+                  </div>
+                )}
+
+                {step === 2 && (
+                  <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
                     <FormField
                       control={form.control}
                       name="employees"
@@ -269,7 +275,7 @@ export default function FormPage() {
                   </div>
                 )}
 
-                {step === 2 && (
+                {step === 3 && (
                   <div className="space-y-8">
                     <div>
                       <h3 className="text-lg font-semibold text-slate-100">Revise suas informações</h3>
@@ -317,12 +323,12 @@ export default function FormPage() {
                 {step === 1 ? (
                   <div></div> // Placeholder for alignment
                 ) : (
-                  <Button type="button" variant="outline" onClick={() => setStep(1)}>
+                  <Button type="button" variant="outline" onClick={handlePrevStep}>
                     Voltar
                   </Button>
                 )}
 
-                {step === 1 ? (
+                {step < 3 ? (
                   <Button type="button" onClick={handleNextStep} className="w-full sm:w-auto">
                     Continuar <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
