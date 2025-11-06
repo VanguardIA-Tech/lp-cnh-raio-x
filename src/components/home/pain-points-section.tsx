@@ -19,15 +19,15 @@ export function PainPointsSection({ onPrimaryClick }: PainPointsSectionProps) {
     <section className="bg-slate-950 py-16 sm:py-24">
       <div className={`${sectionContainerClass} gap-10 items-center`}>
         <div className="max-w-3xl space-y-6">
-          <h2 className="text-2xl font-semibold leading-snug text-slate-50 sm:text-3xl">
-            “Você sente que sua empresa trabalha demais para entregar bem menos do que poderia?”
+          <h2 className="text-center text-2xl font-bold leading-snug text-slate-50 sm:text-3xl">
+            Você sente que sua empresa trabalha demais para entregar bem menos do que poderia?
           </h2>
 
           <div className="grid gap-3 sm:grid-cols-2">
             {painPoints.map((point, index) => (
               <div
                 key={point}
-                className={`flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-900/60 p-4 transition hover:shadow-lg hover:shadow-blue-500/10 ${
+                className={`flex flex-col items-center justify-center gap-3 rounded-lg border border-slate-800 bg-slate-900/60 p-6 text-center transition hover:shadow-lg hover:shadow-blue-500/10 ${
                   index === painPoints.length - 1 ? "sm:col-span-2" : ""
                 }`}
               >
