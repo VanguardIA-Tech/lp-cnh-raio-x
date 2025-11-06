@@ -1,29 +1,55 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Hourglass, Unplug, Users, Repeat, Lightbulb } from "lucide-react";
 import { sectionContainerClass } from "./section-container";
 import Link from "next/link";
 import React from "react";
 
 const painPoints = [
-  <>
-    <strong>Processos lentos</strong>, <strong>manuais e repetitivos</strong> que consomem tempo
-    precioso.
-  </>,
-  <>
-    <strong>Softwares caros</strong> que <strong>não conversam</strong> entre si, gerando ilhas de
-    informação.
-  </>,
-  <>
-    <strong>Equipes sobrecarregadas</strong> e <strong>desalinhadas</strong>, presas em tarefas de
-    baixo valor.
-  </>,
-  <>
-    <strong>Retrabalho</strong> e <strong>gargalos</strong> constantes entre áreas que minam a
-    produtividade.
-  </>,
-  <>
-    <strong>Falta de tempo</strong> para o estratégico: <strong>pensar e inovar</strong> no negócio.
-  </>,
+  {
+    icon: Hourglass,
+    text: (
+      <>
+        <strong>Processos lentos</strong>, <strong>manuais e repetitivos</strong> que consomem tempo
+        precioso.
+      </>
+    ),
+  },
+  {
+    icon: Unplug,
+    text: (
+      <>
+        <strong>Softwares caros</strong> que <strong>não conversam</strong> entre si, gerando ilhas
+        de informação.
+      </>
+    ),
+  },
+  {
+    icon: Users,
+    text: (
+      <>
+        <strong>Equipes sobrecarregadas</strong> e <strong>desalinhadas</strong>, presas em tarefas
+        de baixo valor.
+      </>
+    ),
+  },
+  {
+    icon: Repeat,
+    text: (
+      <>
+        <strong>Retrabalho</strong> e <strong>gargalos</strong> constantes entre áreas que minam a
+        produtividade.
+      </>
+    ),
+  },
+  {
+    icon: Lightbulb,
+    text: (
+      <>
+        <strong>Falta de tempo</strong> para o estratégico: <strong>pensar e inovar</strong> no
+        negócio.
+      </>
+    ),
+  },
 ];
 
 export function PainPointsSection() {
@@ -44,14 +70,14 @@ export function PainPointsSection() {
             {/* Coluna da Espinha (Desktop) */}
             <div className="relative hidden md:block">
               <div
-                className="absolute left-1/2 top-16 bottom-16 w-0.5 -translate-x-1/2 bg-slate-800"
+                className="absolute left-1/2 top-14 bottom-14 w-0.5 -translate-x-1/2 bg-slate-800"
                 aria-hidden="true"
               />
               <div className="relative flex h-full flex-col gap-4">
                 {painPoints.map((_, index) => (
                   <div
                     key={`bullet-container-${index}`}
-                    className="flex h-32 items-center justify-center"
+                    className="flex h-28 items-center justify-center"
                   >
                     <div className="h-3 w-3 rounded-full bg-blue-500 ring-4 ring-blue-500/10" />
                   </div>
@@ -61,18 +87,19 @@ export function PainPointsSection() {
 
             {/* Coluna dos Blocos */}
             <div className="flex flex-col gap-4">
-              {painPoints.map((point, index) => (
+              {painPoints.map(({ icon: Icon, text }, index) => (
                 <div
                   key={`step-${index}`}
                   className="
-                    group relative flex items-center rounded-2xl border border-slate-800 bg-slate-900/70
+                    group relative flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70
                     p-6 transition-all duration-200 ease-out
                     hover:-translate-y-0.5 hover:border-slate-700 hover:shadow-lg hover:shadow-blue-500/10
-                    md:h-32
+                    md:h-28
                   "
                 >
+                  <Icon className="h-6 w-6 flex-shrink-0 text-blue-400" />
                   <p className="text-base text-slate-300 sm:text-lg">
-                    <span className="font-semibold text-slate-100">{point}</span>
+                    <span className="font-semibold text-slate-100">{text}</span>
                   </p>
                 </div>
               ))}
