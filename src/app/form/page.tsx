@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -141,23 +142,28 @@ export default function FormPage() {
         <div className="rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-blue-500/5">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="sticky top-0 z-10 flex flex-col-reverse gap-4 border-b border-slate-800 bg-slate-900/80 p-4 backdrop-blur-sm sm:flex-row sm:justify-between sm:p-6">
+              <div className="flex items-center justify-between border-b border-slate-800 p-4">
                 {step === 1 ? (
                   <div></div>
                 ) : (
-                  <Button type="button" variant="outline" onClick={handlePrevStep} className="h-14 border-slate-700 px-6 text-base">
+                  <Button type="button" variant="outline" onClick={handlePrevStep} className="h-11 border-slate-600 px-5 text-slate-200 hover:bg-slate-800">
                     Voltar
                   </Button>
                 )}
 
-                {step === 1 ? (
-                  <Button type="button" onClick={handleNextStep} disabled={!isStep1Valid} className="h-14 px-6 text-base">
+                {step === 1 && (
+                  <Button
+                    type="button"
+                    onClick={handleNextStep}
+                    disabled={!isStep1Valid}
+                    className={cn(
+                      "h-11 px-5 text-base text-white transition-colors",
+                      isStep1Valid
+                        ? "bg-orange-500 hover:bg-orange-600"
+                        : "bg-orange-500/20 text-orange-400/70 cursor-not-allowed"
+                    )}
+                  >
                     Continuar <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                ) : (
-                  <Button type="submit" disabled={!formState.isValid || formState.isSubmitting} className="h-14 px-6 text-base">
-                    {formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    Receber meu Diagnóstico de Eficiência
                   </Button>
                 )}
               </div>
@@ -244,13 +250,22 @@ export default function FormPage() {
                       </div>
                       <FormField control={form.control} name="lgpd" render={({ field }) => (
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-slate-800 p-4">
-                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl>
+                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-slate-500 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" /></FormControl>
                           <div className="space-y-1 leading-none">
                             <FormLabel>Li e autorizo o contato para o Diagnóstico ICIA conforme a LGPD.</FormLabel>
                             <FormMessage />
                           </div>
                         </FormItem>
                       )} />
+                      <div className="flex flex-col items-center gap-3 pt-4">
+                        <Button type="submit" disabled={!formState.isValid || formState.isSubmitting} className="h-14 w-full max-w-xs px-6 text-base">
+                          {formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                          Receber meu Diagnóstico de Eficiência
+                        </Button>
+                        <p className="text-center text-xs text-slate-400">
+                          Tempo médio de resposta: 24h úteis. Sua eficiência começa com clareza.
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -258,11 +273,6 @@ export default function FormPage() {
             </form>
           </Form>
         </div>
-        {step === 2 && (
-          <p className="mt-8 text-center text-xs text-slate-400">
-            Tempo médio de resposta: 24h úteis. Sua eficiência começa com clareza.
-          </p>
-        )}
       </div>
     </div>
   );
