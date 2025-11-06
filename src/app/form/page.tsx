@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -59,7 +60,7 @@ const step1Fields: (keyof FormValues)[] = ["name", "role", "company"];
 
 export default function FormPage() {
   const [step, setStep] = useState(1);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const router = useRouter();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -82,8 +83,8 @@ export default function FormPage() {
   const onSubmit = async (values: FormValues) => {
     console.table(values);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    toast.success("Diagnóstico solicitado com sucesso!");
-    setIsSubmitted(true);
+    toast.success("Formulário enviado com sucesso!");
+    router.push("/obrigado");
   };
 
   const watchedStep1Values = form.watch(step1Fields);
@@ -101,23 +102,6 @@ export default function FormPage() {
     };
     validateStep1();
   }, [watchedStep1Values]);
-
-  if (isSubmitted) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-slate-950 p-4 text-center text-slate-100">
-        <div className="w-full max-w-lg space-y-6">
-          <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
-          <h1 className="text-3xl font-bold text-slate-50">Aplicação recebida!</h1>
-          <p className="text-lg text-slate-300">
-            Sua análise personalizada está sendo preparada. Você a receberá em seu e-mail e WhatsApp em até 48h.
-          </p>
-          <Button asChild>
-            <Link href="/">Voltar para a página inicial</Link>
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -139,14 +123,14 @@ export default function FormPage() {
           <Progress value={step === 1 ? 50 : 100} className="h-2 w-full bg-slate-800 [&>div]:bg-blue-600" />
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-blue-500/5">
+        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-blue-500/5">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-              <div className="flex items-center justify-between border-b border-slate-800 p-4">
+              <div className="flex h-20 items-center justify-between border-b border-slate-800 p-4">
                 {step === 1 ? (
                   <div></div>
                 ) : (
-                  <Button type="button" variant="outline" onClick={handlePrevStep} className="h-11 border-slate-600 px-5 text-slate-200 hover:bg-slate-800">
+                  <Button type="button" variant="outline" onClick={handlePrevStep} className="h-10 border-slate-600 bg-transparent px-4 text-slate-200 hover:bg-slate-800 hover:text-white">
                     Voltar
                   </Button>
                 )}
@@ -157,7 +141,7 @@ export default function FormPage() {
                     onClick={handleNextStep}
                     disabled={!isStep1Valid}
                     className={cn(
-                      "h-11 px-5 text-base text-white transition-colors",
+                      "h-10 px-4 text-base font-semibold text-white transition-colors",
                       isStep1Valid
                         ? "bg-orange-500 hover:bg-orange-600"
                         : "bg-orange-500/20 text-orange-400/70 cursor-not-allowed"
@@ -249,8 +233,8 @@ export default function FormPage() {
                         )} />
                       </div>
                       <FormField control={form.control} name="lgpd" render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-slate-800 p-4">
-                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-slate-500 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" /></FormControl>
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-slate-700 p-4">
+                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-slate-400 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" /></FormControl>
                           <div className="space-y-1 leading-none">
                             <FormLabel>Li e autorizo o contato para o Diagnóstico ICIA conforme a LGPD.</FormLabel>
                             <FormMessage />
@@ -258,7 +242,16 @@ export default function FormPage() {
                         </FormItem>
                       )} />
                       <div className="flex flex-col items-center gap-3 pt-4">
-                        <Button type="submit" disabled={!formState.isValid || formState.isSubmitting} className="h-14 w-full max-w-xs px-6 text-base">
+                        <Button
+                          type="submit"
+                          disabled={!formState.isValid || formState.isSubmitting}
+                          className={cn(
+                            "h-14 w-full max-w-xs px-6 text-base font-semibold text-white transition-colors",
+                            formState.isValid && !formState.isSubmitting
+                              ? "bg-green-600 hover:bg-green-700"
+                              : "bg-green-500/20 text-green-300/70 cursor-not-allowed"
+                          )}
+                        >
                           {formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                           Receber meu Diagnóstico de Eficiência
                         </Button>
