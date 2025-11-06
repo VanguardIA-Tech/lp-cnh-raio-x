@@ -10,13 +10,6 @@ export function HeroSection({ onPrimaryClick }: HeroSectionProps) {
       <div className="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-8 lg:grid lg:grid-cols-12 lg:items-end lg:gap-10">
         <div className="lg:col-span-7 flex flex-col gap-5 pb-10 lg:pb-16">
           <div>
-            <div className="mb-2 inline-flex items-center justify-start">
-              <img
-                src="/vanguardia-logo.png"
-                alt="VanguardIA"
-                className="h-16 w-auto object-contain sm:h-18 md:h-20"
-              />
-            </div>
             <h1 className="max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-[44px]">
               Transforme sua operação com sistemas personalizados de IA e automação integrados à sua realidade.
               <span className="mt-2 block font-semibold text-blue-700">
@@ -44,7 +37,7 @@ export function HeroSection({ onPrimaryClick }: HeroSectionProps) {
 
         <div className="mt-6 flex justify-center lg:col-span-5 lg:mt-0 lg:justify-end">
           <img
-            src="/jorge-hero.png"
+            src="/jorge.png"
             alt="Retrato de Jorge Auad"
             className="h-auto max-h-[90vh] w-auto max-w-full scale-[1.3] object-contain"
           />
