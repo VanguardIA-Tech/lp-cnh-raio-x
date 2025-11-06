@@ -13,6 +13,7 @@ import { LeaderSection } from "@/components/home/leader-section";
 import { SiteFooter } from "@/components/home/site-footer";
 import { DiagnosisSection } from "@/components/home/diagnosis-section";
 import { MethodSection } from "@/components/home/method-section";
+import { ApplicationFormSection } from "@/components/home/application-form-section";
 
 const floatingCTAClasses =
   "fixed bottom-6 right-6 z-50 shadow-xl shadow-orange-500/20 transition hover:scale-[1.02]";
@@ -31,6 +32,7 @@ export default function Home() {
         <LeaderSection />
         <DiagnosisSection />
         <MethodSection />
+        <ApplicationFormSection />
       </main>
 
       <SiteFooter />
