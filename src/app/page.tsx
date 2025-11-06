@@ -96,26 +96,25 @@ export default function Home() {
       </header>
 
       <main className="flex flex-col">
-        {/* HERO section redesigned to follow the mock */}
+        {/* HERO section — ajustado: menos espaço superior, fontes menores e menos margem lateral */}
         <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
-          <div className={`${sectionContainer} py-24 sm:py-32 lg:grid lg:grid-cols-12 lg:items-center`}>
+          <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
             {/* Left column: logo + headline + subheadline + CTA */}
-            <div className="lg:col-span-6 flex flex-col gap-8">
+            <div className="lg:col-span-7 flex flex-col gap-6">
               <div>
-                {/* small logo box like in the design */}
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded bg-white/10 p-2">
-                  {/* use existing svg as placeholder; replace later with designer image if provided */}
-                  <img src="/next.svg" alt="VanguardIA" className="h-10 w-10 object-contain" />
+                {/* small logo box */}
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded bg-white/10 p-2">
+                  <img src="/next.svg" alt="VanguardIA" className="h-8 w-8 object-contain" />
                 </div>
 
-                {/* Heading - very large and left aligned with highlighted blue chunk */}
-                <h1 className="text-[46px] sm:text-[56px] md:text-[64px] lg:text-[72px] leading-[0.95] font-extrabold tracking-tight text-left max-w-[760px]">
-                  Transforme sua operação com sistemas personalizados de IA e automação integrados à sua realidade.{" "}
-                  <span className="block text-blue-400">Tudo feito para atender o SEU negócio.</span>
+                {/* Heading — reduced sizes and max width */}
+                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-[48px] leading-tight font-extrabold tracking-tight text-left max-w-[540px]">
+                  Transforme sua operação com sistemas personalizados de IA e automação integrados à sua realidade.
+                  <span className="block text-blue-400 mt-2">Tudo feito para atender o SEU negócio.</span>
                 </h1>
 
                 {/* Subheadline */}
-                <p className="mt-6 max-w-[680px] text-base text-slate-200 sm:text-lg">
+                <p className="mt-5 max-w-[560px] text-base text-slate-200 sm:text-lg">
                   O Programa ICIA (Inteligência Corporativa Integrada com Automação) é a aceleração que redesenha processos, integra pessoas e instala cultura de eficiência com IA. Sem precisar trocar seus sistemas atuais nem contratar um monte de gente com altos salários.
                 </p>
               </div>
@@ -125,7 +124,7 @@ export default function Home() {
                 <Button
                   type="button"
                   onClick={handleCTA}
-                  className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
+                  className="inline-flex items-center gap-3 rounded-full bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
                 >
                   Quero meu Diagnóstico de Eficiência com IA
                   <ArrowRight className="h-4 w-4" />
@@ -137,14 +136,14 @@ export default function Home() {
             </div>
 
             {/* Right column: portrait / card */}
-            <div className="mt-12 lg:mt-0 lg:col-span-6 flex justify-center lg:justify-end">
-              <div className="w-full max-w-[520px]">
-                <div className="relative overflow-hidden rounded-2xl bg-white/5 p-0 shadow-2xl shadow-blue-900/30">
-                  {/* image placeholder; replace /window.svg with designer photo when available */}
+            <div className="mt-8 lg:mt-0 lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="w-full max-w-[460px]">
+                <div className="relative overflow-hidden rounded-2xl bg-white/5 p-0 shadow-2xl shadow-blue-900/20">
+                  {/* imagem placeholder; substitua por foto do designer para retrato real */}
                   <img
                     src="/window.svg"
                     alt="Jorge Auad"
-                    className="w-full h-[380px] object-cover object-center rounded-2xl"
+                    className="w-full h-[320px] object-cover object-center rounded-2xl"
                   />
                 </div>
               </div>
