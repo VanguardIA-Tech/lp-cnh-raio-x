@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
-      <div className="mx-auto w-full max-w-7xl px-6 pt-6 sm:pt-8 lg:grid lg:grid-cols-12 lg:items-end lg:gap-10">
+    <section className="relative flex-grow overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-800 text-white">
+      <div className="mx-auto h-full w-full max-w-7xl px-6 pt-6 sm:pt-8 lg:grid lg:grid-cols-12 lg:items-end lg:gap-10">
         <div className="lg:col-span-7 flex flex-col gap-5 pb-10 lg:pb-16">
           <div>
             <h1 className="max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-[44px]">
@@ -38,11 +38,11 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-6 flex justify-center lg:col-span-5 lg:mt-0 lg:justify-end">
+        <div className="mt-6 flex justify-center lg:col-span-5 lg:mt-0 lg:h-full lg:justify-end">
           <img
             src="/jorge3.webp"
             alt="Retrato de Jorge Auad"
-            className="h-auto max-h-[65vh] w-auto max-w-full scale-[1.3] object-contain"
+            className="h-auto max-h-[50vh] w-auto max-w-full object-contain object-bottom lg:h-full lg:max-h-none"
           />
         </div>
       </div>
