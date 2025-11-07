@@ -97,6 +97,7 @@ export default function FormPage() {
     const payload = {
       ...values,
       ...utms,
+      funil: "funil-icia-direto",
     };
 
     try {
