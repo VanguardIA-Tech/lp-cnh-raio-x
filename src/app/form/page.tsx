@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FieldErrors } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { useFormTelemetry } from "@/components/FormObserver";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -60,6 +61,7 @@ const step1Fields: (keyof FormValues)[] = ["name", "role", "company"];
 export default function FormPage() {
   const [step, setStep] = useState(1);
   const router = useRouter();
+  const { onSuccess, onValidationError } = useFormTelemetry();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -82,8 +84,14 @@ export default function FormPage() {
   const onSubmit = async (values: FormValues) => {
     console.table(values);
     await new Promise((resolve) => setTimeout(resolve, 1500));
+    await onSuccess(values.email);
     toast.success("Formulário enviado com sucesso!");
     router.push("/obrigado");
+  };
+
+  const onValidationErrors = (errors: FieldErrors<FormValues>) => {
+    const firstErrorField = Object.keys(errors)[0] as keyof FormValues | undefined;
+    onValidationError(firstErrorField);
   };
 
   const watchedStep1Values = form.watch(step1Fields);
@@ -124,7 +132,7 @@ export default function FormPage() {
 
         <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-blue-500/5">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form onSubmit={form.handleSubmit(onSubmit, onValidationErrors)} data-clarity-mask="true">
               <div className="flex h-20 items-center justify-between border-b border-slate-800 p-4">
                 {step === 1 ? (
                   <div></div>
