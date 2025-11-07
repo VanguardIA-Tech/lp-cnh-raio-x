@@ -1,6 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import { clarityEventSafe } from "@/lib/privacy";
 
 function bestLabel(el: HTMLElement): string {
   const cta = el.getAttribute("data-cta");
@@ -25,6 +24,9 @@ function isInteractive(el: Element | null): el is HTMLElement {
 export default function ClickTracker() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
+      const clarity = (window as any).clarity as undefined | ((...a: any[]) => void);
+      if (!clarity) return;
+
       // Ancorar no elemento interativo mais próximo
       const target = (e.target as HTMLElement | null)?.closest(
         'button,[role="button"],a,input[type="submit"]'
@@ -41,11 +43,14 @@ export default function ClickTracker() {
 
       const label = bestLabel(target);
       const eventName = `click:${location.pathname}:${label}`;
-      clarityEventSafe(eventName);
+      clarity("event", eventName);
     };
 
     // Teclado: cobre Enter/Espaço em elementos que se comportam como botão (acessibilidade)
     const onKeyDown = (e: KeyboardEvent) => {
+      const clarity = (window as any).clarity as undefined | ((...a: any[]) => void);
+      if (!clarity) return;
+
       const target = (e.target as HTMLElement | null)?.closest(
         'button,[role="button"],a,input[type="submit"]'
       ) as HTMLElement | null;
@@ -59,7 +64,7 @@ export default function ClickTracker() {
 
       const label = bestLabel(target);
       const eventName = `click:${location.pathname}:${label}`;
-      clarityEventSafe(eventName);
+      clarity("event", eventName);
     };
 
     document.addEventListener("click", onClick, { capture: true });
