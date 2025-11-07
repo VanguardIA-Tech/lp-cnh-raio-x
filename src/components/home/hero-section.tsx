@@ -40,7 +40,7 @@ export function HeroSection() {
 
         <div className="mt-6 flex justify-center lg:col-span-5 lg:mt-0 lg:justify-end">
           <img
-            src="/jorge.png"
+            src="/jorge3.webp"
             alt="Retrato de Jorge Auad"
             className="h-auto max-h-[65vh] w-auto max-w-full scale-[1.3] object-contain"
           />
