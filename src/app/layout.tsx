@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ClientProvider } from "@/components/ClientProvider";
+import ClarityRouteTags from "@/components/ClarityRouteTags";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <ClientProvider />
+        <ClarityRouteTags variant="A" />
         {children}
         <Toaster />
       </body>
