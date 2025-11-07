@@ -53,7 +53,7 @@ export function SelectionCriteriaSection() {
             style={{
               left: "14%",
               top: "42%",
-              background: "radial-gradient(closest-side, rgba(47, 118, 255, 0.18), transparent)",
+              background: "radial-gradient(closest-side, rgba(47, 118, 255, 0.25), transparent)",
             }}
           />
           <div
@@ -62,7 +62,7 @@ export function SelectionCriteriaSection() {
             style={{
               right: "-8%",
               bottom: "-12%",
-              background: "radial-gradient(closest-side, rgba(255, 122, 24, 0.10), transparent)",
+              background: "radial-gradient(closest-side, rgba(255, 122, 24, 0.15), transparent)",
             }}
           />
 
