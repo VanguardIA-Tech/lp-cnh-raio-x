@@ -9,21 +9,21 @@ const cases = [
   {
     text: (
       <>
-        “Rede Mais Saúde — <strong className="text-orange-400">25 dias → 3 dias</strong>.”
+        Rede Mais Saúde — <strong className="text-orange-400">25 dias → 3 dias</strong>
       </>
     ),
   },
   {
     text: (
       <>
-        “Silveira Athias — <strong className="text-orange-400">IA em 100 %</strong> dos fluxos.”
+        Silveira Athias — <strong className="text-orange-400">IA em 100 %</strong> dos fluxos
       </>
     ),
   },
   {
     text: (
       <>
-        “DO IT Hub — <strong className="text-orange-400">300 % + de eficiência</strong> operacional.”
+        DO IT Hub — <strong className="text-orange-400">300 % + de eficiência</strong> operacional
       </>
     ),
   },
@@ -70,10 +70,10 @@ export default function ObrigadoPage() {
 
           {/* 3. Bloco de Exclusividade */}
           <p className="max-w-prose text-base text-slate-300 sm:text-lg">
-            “Este programa é <strong className="text-orange-400">exclusivo</strong> e{" "}
+            Este programa é <strong className="text-orange-400">exclusivo</strong> e{" "}
             <strong className="text-orange-400">personalizado</strong>, faz parte da seleção das apenas{" "}
             <strong className="text-orange-400">100 empresas selecionadas</strong> em 2026 para{" "}
-            <strong className="text-orange-400">integração corporativa de IA</strong> no Brasil.”
+            <strong className="text-orange-400">integração corporativa de IA</strong> no Brasil
           </p>
 
           {/* Divisor */}
