@@ -38,7 +38,7 @@ export default function Home() {
 
       <Button
         asChild
-        className={`${floatingCTAClasses} rounded-md bg-orange-500 px-6 py-4 text-base font-semibold text-white hover:bg-orange-600`}
+        className={`${floatingCTAClasses} rounded-md bg-orange-500 px-6 py-6 text-base font-semibold text-white hover:bg-orange-600`}
       >
         <Link
           href="/form"

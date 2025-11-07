@@ -71,7 +71,7 @@ export function DiagnosisSection() {
 
           <Button
             asChild
-            className="mt-6 w-full rounded-md bg-orange-500 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 sm:w-auto"
+            className="mt-6 w-full rounded-md bg-orange-500 px-6 py-6 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 sm:w-auto"
             size="lg"
           >
             <Link
