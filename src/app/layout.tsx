@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
@@ -53,7 +54,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <ClientProvider />
-        <ClarityRouteTags variant="A" />
+        <Suspense fallback={null}>
+          <ClarityRouteTags variant="A" />
+        </Suspense>
         <ClickTracker />
         {children}
         <Toaster />
