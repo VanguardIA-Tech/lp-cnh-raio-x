@@ -8,15 +8,42 @@ export function LeaderSection() {
         {/* Grid com itens alinhados ao topo */}
         <div className="grid items-start gap-10 md:grid-cols-2 lg:gap-16">
           {/* Coluna esquerda: hierarquia e ritmo com texto maior */}
-          <div className="space-y-6 sm:space-y-8 max-w-prose">
-            <h2 className="text-3xl font-semibold text-slate-50 sm:text-4xl">
-              Quem lidera o movimento de Eficiência Inteligente no Brasil.
+          <div className="max-w-prose space-y-5 sm:space-y-6">
+            <h2 className="text-balance text-3xl font-semibold leading-tight text-slate-50 sm:text-4xl lg:text-5xl">
+              <span className="font-bold text-orange-400">Quem lidera</span> o movimento de{" "}
+              <span className="font-bold text-orange-400">Eficiência Inteligente no Brasil</span>.
             </h2>
-            <p className="text-lg text-slate-300 leading-relaxed sm:text-xl">
-              Empresário e estrategista, Jorge Antonio Auad Filho é fundador do Grupo VanguardIA — a primeira aceleradora empresarial de IA do Norte do Brasil. Reconhecido por sua abordagem prática e humana, já ajudou centenas de negócios a dobrarem sua eficiência e margem. Criador dos métodos CNH da IA, COPA e CTC, que hoje formam a base do movimento Eficiência que Liberta.
+            <p className="text-base leading-relaxed text-slate-300 sm:text-lg">
+              Empresário e estrategista,{" "}
+              <span className="font-semibold text-slate-100">Jorge Antonio Auad Filho</span> é
+              fundador do{" "}
+              <span className="font-semibold text-slate-100">Grupo VanguardIA</span> — a{" "}
+              <span className="font-semibold text-slate-100">
+                primeira aceleradora empresarial de IA do Norte do Brasil
+              </span>
+              . Reconhecido por sua{" "}
+              <span className="font-semibold text-slate-100">abordagem prática e humana</span>, já
+              ajudou centenas de negócios a{" "}
+              <span className="font-semibold text-slate-100">
+                dobrarem sua eficiência e margem
+              </span>
+              . Criador dos{" "}
+              <span className="font-semibold text-slate-100">
+                métodos CNH da IA, COPA e CTC
+              </span>
+              , que hoje formam a base do{" "}
+              <span className="font-semibold text-slate-100">
+                movimento Eficiência que Liberta
+              </span>
+              .
             </p>
-            <p className="text-lg italic text-slate-200 sm:text-xl">
-              “IA não substitui pessoas. Liberta o potencial delas.”
+            <p className="text-base italic text-slate-200 sm:text-lg">
+              “IA não substitui pessoas.{" "}
+              <span className="relative pb-1">
+                Liberta o potencial delas.
+                <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-blue-500/30 to-cyan-400/30" />
+              </span>
+              ”
             </p>
           </div>
 
