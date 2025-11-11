@@ -23,7 +23,7 @@ export function LeaderSection() {
           {/* Coluna direita: imagem dentro de um card */}
           <div className="relative flex justify-center md:justify-end">
             <div className="
-              mt-8 w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg
+              mt-8 w-[85%] max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg
               transition-all duration-300 hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/20
               md:mt-0 md:max-w-full
             ">
