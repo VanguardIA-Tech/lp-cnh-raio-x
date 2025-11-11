@@ -6,7 +6,7 @@ export function LeaderSection() {
     <section className="bg-slate-950 py-12 sm:py-16">
       <div className={`${sectionContainerClass} gap-8`}>
         {/* Grid com itens alinhados ao topo */}
-        <div className="grid items-start gap-10 md:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
           {/* Coluna esquerda: hierarquia e ritmo com texto maior */}
           <div className="space-y-5 sm:space-y-6">
             <h2 className="text-balance text-3xl font-semibold leading-tight text-slate-50 sm:text-4xl lg:text-5xl">
