@@ -8,47 +8,108 @@ const differentiators = [
     icon: Workflow,
     title: "Fluxos mapeados",
     description: "Diagnóstico detalhado e co-criação com quem executa os processos.",
+    highlight: "Diagnóstico detalhado",
   },
   {
     icon: Gauge,
     title: "Eficiência contínua",
     description: "Sistemas adaptativos que evoluem com a operação sem travar o time.",
+    highlight: "evoluem",
   },
   {
     icon: Sparkles,
     title: "IA integrada",
     description: "Automação inteligente conectada aos sistemas que você já usa.",
+    highlight: "conectada",
   },
   {
     icon: ShieldCheck,
     title: "Segurança e governança",
     description: "Implementações alinhadas à cultura, compliance e ritmo da empresa.",
+    highlight: "compliance",
   },
 ] as const;
 
+// Helper to highlight text
+const Highlight = ({ text, highlight }: { text: string; highlight: string }) => {
+  if (!highlight) return <>{text}</>;
+  const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === highlight.toLowerCase() ? (
+          <strong key={i} className="font-semibold text-slate-100">
+            {part}
+          </strong>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+};
+
 export function TailoredSolutionSection() {
   return (
-    <section className="bg-slate-950 py-16 sm:py-24">
+    <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-24">
+      {/* Blobs for the entire section */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -z-10 h-[56rem] w-[56rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,24,0.10)_0%,transparent_60%)] opacity-70 blur-[120px] lg:left-[-12%] lg:top-[22%]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -z-10 h-[44rem] w-[44rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.16)_0%,transparent_60%)] opacity-80 blur-[100px] lg:left-[30%] lg:top-[40%]"
+      />
+
       <div className={`${sectionContainerClass} gap-8`}>
         <div className="grid gap-10 lg:grid-cols-2">
-          <div className="space-y-6">
+          <div className="relative z-10 space-y-6">
+            {/* Contrast Veil */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-b from-black/20 to-black/10"
+            />
             <h2 className="text-2xl font-semibold text-slate-50 sm:text-3xl">
-              A Alfaiataria de IA que cria sistemas sob medida para o seu negócio.
+              A{" "}
+              <strong className="font-bold">
+                <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
+                  Alfaiataria de IA
+                </span>
+              </strong>{" "}
+              que cria sistemas{" "}
+              <strong className="font-bold">
+                <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
+                  sob medida
+                </span>
+              </strong>{" "}
+              para o seu negócio.
             </h2>
 
-            {/* Texto em dois parágrafos com largura de leitura confortável */}
-            <div className="max-w-prose space-y-4 text-base text-slate-300 sm:text-lg">
+            <div className="max-w-prose space-y-4 text-base text-slate-200 sm:text-lg">
               <p className="leading-relaxed">
-                Diferente de ERPs e plataformas genéricas, nós desenhamos sistemas personalizados e integrados com IA e automação, totalmente adaptados ao seu fluxo real. Cada empresa passa por um diagnóstico profundo, mapeamento de processos e prototipagem de soluções.
+                Diferente de ERPs e plataformas genéricas, nós desenhamos{" "}
+                <strong className="font-semibold text-slate-100">sistemas personalizados</strong> e
+                integrados com{" "}
+                <strong className="font-semibold text-slate-100">IA e automação</strong>,
+                totalmente adaptados ao seu fluxo real. Cada empresa passa por um{" "}
+                <strong className="font-semibold text-slate-100">diagnóstico profundo</strong>,{" "}
+                <strong className="font-semibold text-slate-100">mapeamento de processos</strong> e
+                prototipagem de soluções.
               </p>
               <p className="leading-relaxed">
-                Ao final, você ganha um “Sistema Vivo de Eficiência”: tecnologia que se adapta às pessoas e a sua empresa, e não o contrário. Exatamente o que você nunca tinha encontrado, mas sabe que é o que faltava.
+                Ao final, você ganha um “
+                <strong className="font-semibold text-slate-100">
+                  Sistema Vivo de Eficiência
+                </strong>
+                ”: tecnologia que se adapta às pessoas e a sua empresa, e não o contrário.
+                Exatamente o que você nunca tinha encontrado, mas sabe que é o que faltava.
               </p>
             </div>
 
             <Button
               asChild
-              className="mt-8 sm:mt-10 lg:mt-14 inline-flex w-fit items-center gap-2 rounded-md bg-blue-600 px-6 py-6 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-500"
+              className="mt-8 h-14 rounded-md bg-gradient-to-r from-[#2F76FF] to-[#FF7A18] px-6 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_24px_rgba(255,122,24,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] sm:mt-10 lg:mt-14"
             >
               <Link
                 href="/form"
@@ -61,9 +122,17 @@ export function TailoredSolutionSection() {
             </Button>
           </div>
 
-          {/* Grid 2×2 com alturas consistentes e gutters equilibrados */}
-          <div className="grid items-stretch gap-5 sm:grid-cols-2 sm:gap-6">
-            {differentiators.map(({ icon: Icon, title, description }, index) => {
+          <div className="relative grid items-stretch gap-5 sm:grid-cols-2 sm:gap-6">
+            {/* Blobs for the grid */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -z-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,24,0.08)_0%,transparent_70%)] blur-[100px] lg:right-[-10%] lg:top-[10%]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.12)_0%,transparent_70%)] blur-[90px] lg:bottom-[-8%] lg:right-[20%]"
+            />
+            {differentiators.map(({ icon: Icon, title, description, highlight }, index) => {
               const headingId = `diff-${index}`;
               return (
                 <Link
@@ -75,20 +144,23 @@ export function TailoredSolutionSection() {
                 >
                   <div
                     className="
-                      flex h-full flex-col gap-3 rounded-2xl border border-slate-800/80
-                      bg-slate-900/70 p-6 shadow-sm transition
+                      flex h-full flex-col gap-3 rounded-2xl border border-slate-800
+                      bg-slate-900 p-6 shadow-sm transition
                       duration-200 ease-out
-                      hover:border-slate-700 hover:bg-slate-900 hover:shadow-lg hover:shadow-blue-500/10
+                      hover:border-slate-700 hover:shadow-[0_12px_28px_rgba(255,122,24,0.10)]
                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
                       active:scale-[0.99]
                     "
                     role="group"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-md bg-blue-500/15 ring-1 ring-inset ring-blue-400/20">
-                      <Icon className="h-6 w-6 text-blue-300" aria-hidden="true" />
+                    <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-[radial-gradient(closest-side,rgba(47,118,255,0.25),rgba(47,118,255,0))] ring-2 ring-orange-500/35 ring-offset-1 ring-offset-slate-900">
+                      <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10" />
+                      <Icon className="h-6 w-6 text-white" aria-hidden="true" />
                     </div>
                     <h3 id={headingId} className="text-lg font-semibold text-slate-50">
-                      {title}
+                      <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5">
+                        {title}
+                      </span>
                     </h3>
                     <p
                       className="text-sm leading-relaxed text-slate-300"
@@ -99,7 +171,7 @@ export function TailoredSolutionSection() {
                         overflow: "hidden",
                       }}
                     >
-                      {description}
+                      <Highlight text={description} highlight={highlight} />
                     </p>
                   </div>
                 </Link>
