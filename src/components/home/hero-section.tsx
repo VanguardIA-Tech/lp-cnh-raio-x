@@ -18,7 +18,7 @@ export function HeroSection() {
         className="absolute bottom-[-8%] right-[-12%] h-[80vw] w-[80vw] rounded-full bg-[#FF7A18]/[0.20] blur-[140px] lg:h-[60rem] lg:w-[60rem]"
       />
 
-      <div className="relative z-10 mx-auto h-full w-full max-w-7xl px-6 py-5 sm:py-20 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
+      <div className="relative z-10 mx-auto h-full w-full max-w-7xl px-6 py-5 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
