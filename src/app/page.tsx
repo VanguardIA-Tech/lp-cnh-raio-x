@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TopBanner } from "@/components/home/top-banner";
 import { HeroSection } from "@/components/home/hero-section";
-import { PainPointsSection } from "@/components/home/pain-points-section";
+import { ContextSection } from "@/components/home/context-section";
 import { SelectionCriteriaSection } from "@/components/home/selection-section";
 import { TailoredSolutionSection } from "@/components/home/tailored-solution-section";
 import { SuccessStoriesSection } from "@/components/home/success-stories-section";
@@ -25,7 +25,7 @@ export default function Home() {
       </div>
 
       <main className="flex flex-col">
-        <PainPointsSection />
+        <ContextSection />
         <SelectionCriteriaSection />
         <TailoredSolutionSection />
         <SuccessStoriesSection />
