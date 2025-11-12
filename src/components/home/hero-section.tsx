@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative flex-grow lg:h-full overflow-hidden bg-[#020F00] text-white">
+    <section className="relative flex-grow overflow-hidden bg-[#020F00] text-white">
       {/* Aurora Mesh Blobs */}
       <div
         aria-hidden="true"
@@ -18,8 +18,8 @@ export function HeroSection() {
         className="absolute bottom-0 right-[-12%] h-[60vw] w-[60vw] rounded-full bg-[#FF7A18]/[0.20] blur-[140px] lg:h-[40rem] lg:w-[40rem]"
       />
 
-      <div className="relative z-10 mx-auto h-full w-full max-w-7xl px-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
-        <div className="flex flex-col gap-5 py-10 text-center sm:text-left lg:col-span-7">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
+        <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
             <span className="text-orange-400">nova era da IA?</span>
@@ -53,8 +53,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="flex h-full justify-center py-10 lg:col-span-5 lg:mt-0">
-          <div className="relative h-full w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg">
+        <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
+          <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg lg:h-[75vh]">
             <video
               src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
               autoPlay
