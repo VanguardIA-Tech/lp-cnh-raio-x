@@ -4,7 +4,7 @@ import * as React from "react";
 const stories = [
   {
     text: "Sindarpa — 80 profissionais habilitados",
-    logo: null, // No logo for Sindarpa in the project files
+    logo: "/logo-sindarpa.png", // Logo adicionado
   },
   {
     text: "Rede Mais Saúde — times médicos e administrativos certificados",
