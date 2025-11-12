@@ -12,7 +12,7 @@ export function DiagnosisSection() {
         {/* Coluna de Texto */}
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left">
           <h2 className="max-w-xl text-3xl font-bold leading-tight text-slate-50 sm:text-4xl">
-            Descubra onde a <span className="text-blue-400">IA</span> pode{" "}
+            Descubra onde a <span className="text-green-400">IA</span> pode{" "}
             <span className="text-orange-400">liberar horas</span> e{" "}
             <span className="text-orange-400">aumentar margem</span> na sua operação.
           </h2>
@@ -30,21 +30,21 @@ export function DiagnosisSection() {
 
           <ul className="mt-2 max-w-prose space-y-3 text-base text-slate-300 sm:text-lg">
             <li className="flex items-start gap-3">
-              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400" aria-hidden="true" />
+              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-green-400" aria-hidden="true" />
               <span>
                 Os <span className="font-semibold text-slate-100">gargalos</span> que travam sua
                 eficiência.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400" aria-hidden="true" />
+              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-green-400" aria-hidden="true" />
               <span>
                 As <span className="font-semibold text-slate-100">integrações</span> que podem gerar{" "}
                 <span className="font-semibold text-slate-100">automação imediata</span>.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400" aria-hidden="true" />
+              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-green-400" aria-hidden="true" />
               <span>
                 O potencial de <span className="font-semibold text-slate-100">economia</span> e{" "}
                 <span className="font-semibold text-slate-100">aceleração via IA</span>.

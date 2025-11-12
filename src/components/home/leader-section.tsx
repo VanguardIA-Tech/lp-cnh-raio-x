@@ -41,7 +41,7 @@ export function LeaderSection() {
               “IA não substitui pessoas.{" "}
               <span className="relative pb-1">
                 Liberta o potencial delas.
-                <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-blue-500/30 to-cyan-400/30" />
+                <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-green-500/30 to-cyan-400/30" />
               </span>
               ”
             </p>
@@ -51,7 +51,7 @@ export function LeaderSection() {
           <div className="relative flex justify-center md:justify-end">
             <div className="
               mt-8 w-[85%] max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg
-              transition-all duration-300 hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/20
+              transition-all duration-300 hover:border-green-500/40 hover:shadow-xl hover:shadow-green-500/20
               md:mt-0 md:max-w-full
             ">
               <Image

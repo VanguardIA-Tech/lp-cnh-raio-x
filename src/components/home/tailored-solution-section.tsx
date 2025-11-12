@@ -59,7 +59,7 @@ export function TailoredSolutionSection() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -z-10 h-[44rem] w-[44rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.16)_0%,transparent_60%)] opacity-80 blur-[100px] lg:left-[30%] lg:top-[40%]"
+        className="pointer-events-none absolute -z-10 h-[44rem] w-[44rem] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.16)_0%,transparent_60%)] opacity-80 blur-[100px] lg:left-[30%] lg:top-[40%]"
       />
 
       <div className={`${sectionContainerClass} gap-8`}>
@@ -73,13 +73,13 @@ export function TailoredSolutionSection() {
             <h2 className="text-2xl font-semibold text-slate-50 sm:text-3xl">
               A{" "}
               <strong className="font-bold">
-                <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
+                <span className="bg-gradient-to-r from-green-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
                   Alfaiataria de IA
                 </span>
               </strong>{" "}
               que cria sistemas{" "}
               <strong className="font-bold">
-                <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
+                <span className="bg-gradient-to-r from-green-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
                   sob medida
                 </span>
               </strong>{" "}
@@ -130,7 +130,7 @@ export function TailoredSolutionSection() {
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.12)_0%,transparent_70%)] blur-[90px] lg:bottom-[-8%] lg:right-[20%]"
+              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.12)_0%,transparent_70%)] blur-[90px] lg:bottom-[-8%] lg:right-[20%]"
             />
             {differentiators.map(({ icon: Icon, title, description, highlight }, index) => {
               const headingId = `diff-${index}`;
@@ -148,17 +148,17 @@ export function TailoredSolutionSection() {
                       bg-slate-900 p-6 shadow-sm transition
                       duration-200 ease-out text-center sm:text-left
                       hover:border-slate-700 hover:shadow-[0_12px_28px_rgba(255,122,24,0.10)]
-                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
+                      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500
                       active:scale-[0.99]
                     "
                     role="group"
                   >
-                    <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-[radial-gradient(closest-side,rgba(47,118,255,0.25),rgba(47,118,255,0))] ring-2 ring-orange-500/35 ring-offset-1 ring-offset-slate-900">
+                    <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-[radial-gradient(closest-side,rgba(34,197,94,0.25),rgba(34,197,94,0))] ring-2 ring-orange-500/35 ring-offset-1 ring-offset-slate-900">
                       <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10" />
                       <Icon className="h-6 w-6 text-white" aria-hidden="true" />
                     </div>
                     <h3 id={headingId} className="text-lg font-semibold text-slate-50">
-                      <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5">
+                      <span className="bg-gradient-to-r from-green-500/30 to-orange-500/30 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5">
                         {title}
                       </span>
                     </h3>

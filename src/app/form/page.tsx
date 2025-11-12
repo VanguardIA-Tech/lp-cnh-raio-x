@@ -154,19 +154,19 @@ export default function FormPage() {
             Diagnóstico de Eficiência e IA Integrada
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">
-            Quer descobrir quanto <strong className="text-orange-400">tempo</strong> e <strong className="text-orange-400">margem</strong> sua empresa pode recuperar com <strong className="text-blue-400">IA</strong>? Preencha o diagnóstico inicial e receba uma <strong className="text-blue-400">análise personalizada</strong> em até <strong className="text-blue-400">48h</strong>.
+            Quer descobrir quanto <strong className="text-orange-400">tempo</strong> e <strong className="text-orange-400">margem</strong> sua empresa pode recuperar com <strong className="text-green-400">IA</strong>? Preencha o diagnóstico inicial e receba uma <strong className="text-green-400">análise personalizada</strong> em até <strong className="text-green-400">48h</strong>.
           </p>
         </div>
 
         <div className="mb-8 space-y-3">
           <div className="flex justify-between text-sm font-medium text-slate-300" aria-label={`Etapa ${step} de 2`}>
-            <span className={step >= 1 ? "text-blue-400" : ""}>1. Contato</span>
-            <span className={step >= 2 ? "text-blue-400" : ""}>2. Detalhes & Envio</span>
+            <span className={step >= 1 ? "text-green-400" : ""}>1. Contato</span>
+            <span className={step >= 2 ? "text-green-400" : ""}>2. Detalhes & Envio</span>
           </div>
-          <Progress value={step === 1 ? 50 : 100} className="h-2 w-full bg-slate-800 [&>div]:bg-blue-600" />
+          <Progress value={step === 1 ? 50 : 100} className="h-2 w-full bg-slate-800 [&>div]:bg-green-600" />
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-blue-500/5">
+        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-green-500/5">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit, onValidationErrors)} data-clarity-mask="true">
               <div className="flex h-20 items-center justify-between border-b border-slate-800 p-4">
@@ -279,7 +279,7 @@ export default function FormPage() {
                       </div>
                       <FormField control={form.control} name="lgpd" render={({ field }) => (
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-slate-700 p-4">
-                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-slate-400 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" aria-required="true" /></FormControl>
+                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-slate-400 data-[state=checked]:bg-green-600 data-[state=checked]:text-white" aria-required="true" /></FormControl>
                           <div className="space-y-1 leading-none">
                             <FormLabel>Li e autorizo o contato para o Diagnóstico ICIA conforme a LGPD.</FormLabel>
                             <FormMessage />

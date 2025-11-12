@@ -7,7 +7,7 @@ export function HeroSection() {
       {/* Aurora Mesh Blobs */}
       <div
         aria-hidden="true"
-        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[#2F76FF]/[0.35] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
+        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[#22C55E]/[0.35] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
       />
       <div
         aria-hidden="true"
@@ -37,7 +37,7 @@ export function HeroSection() {
           <div className="flex flex-col items-center gap-3 sm:items-start">
             <Button
               asChild
-              className="inline-flex items-center rounded-md bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(47,118,255,.25)]"
+              className="inline-flex items-center rounded-md bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(34,197,94,.25)]"
             >
               <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
                 Quero meu Diagnóstico

@@ -30,7 +30,7 @@ export function PainPointsSection() {
           {painPoints.map((point) => (
             <div key={point} className="flex items-start gap-3 text-center sm:text-left">
               <CheckCircle
-                className="mt-1 h-5 w-5 flex-shrink-0 text-blue-500"
+                className="mt-1 h-5 w-5 flex-shrink-0 text-green-500"
                 aria-hidden="true"
               />
               <span className="text-base text-slate-200">{point}</span>
@@ -41,7 +41,7 @@ export function PainPointsSection() {
         <div className="mt-12 flex justify-center sm:mt-16">
           <Button
             asChild
-            className="h-auto rounded-md bg-blue-600 px-5 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] sm:h-18 sm:px-9 sm:py-0 sm:text-2xl"
+            className="h-auto rounded-md bg-green-600 px-5 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:bg-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98] sm:h-18 sm:px-9 sm:py-0 sm:text-2xl"
           >
             <Link
               href="/form"

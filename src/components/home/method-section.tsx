@@ -7,7 +7,7 @@ export function MethodSection() {
         <div className="max-w-3xl space-y-5">
           <h2 className="text-3xl font-bold leading-tight text-slate-50 sm:text-4xl">
             Habilitamos pessoas e empresas para pilotar a{" "}
-            <span className="text-blue-400">IA</span> com{" "}
+            <span className="text-green-400">IA</span> com{" "}
             <span className="text-orange-400">autonomia</span>.
           </h2>
           <div className="space-y-4 text-lg leading-relaxed text-slate-300">

@@ -46,14 +46,14 @@ export function SelectionCriteriaSection() {
         </div>
 
         {/* Container com borda/gradiente e conteúdo interno */}
-        <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-blue-500/10">
+        <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-green-500/10">
           <div
             aria-hidden="true"
             className="absolute -z-10 h-[38rem] w-[38rem] blur-[120px]"
             style={{
               left: "14%",
               top: "42%",
-              background: "radial-gradient(closest-side, rgba(47, 118, 255, 0.25), transparent)",
+              background: "radial-gradient(closest-side, rgba(34, 197, 94, 0.25), transparent)",
             }}
           />
           <div
@@ -72,7 +72,7 @@ export function SelectionCriteriaSection() {
                 O ICIA é um <span className="text-slate-50">programa de aceleração</span> com{" "}
                 <span className="relative text-slate-50">
                   vagas limitadas
-                  <span className="absolute -bottom-0.5 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-blue-500/30 to-cyan-400/30" />
+                  <span className="absolute -bottom-0.5 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-green-500/30 to-cyan-400/30" />
                 </span>
                 .
               </h3>
@@ -84,9 +84,9 @@ export function SelectionCriteriaSection() {
               </p>
               <p className="text-sm text-slate-300 sm:text-base">
                 Nosso foco é{" "}
-                <span className="relative font-semibold text-blue-400">
+                <span className="relative font-semibold text-green-400">
                   performance e margem líquida
-                  <span className="absolute -bottom-0.5 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-blue-500/30 to-cyan-400/30" />
+                  <span className="absolute -bottom-0.5 left-0 h-[2px] w-full rounded-full bg-gradient-to-r from-green-500/30 to-cyan-400/30" />
                 </span>
                 , não <span className="font-semibold text-slate-100">complexidade técnica</span>.
               </p>
@@ -98,7 +98,7 @@ export function SelectionCriteriaSection() {
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {benefits.map(({ icon: Icon, title, support }) => (
                 <div key={title} className="group flex flex-col items-center text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-b from-blue-500/20 to-cyan-500/20 ring-1 ring-inset ring-white/10 transition-transform duration-200 group-hover:-translate-y-1">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-b from-green-500/20 to-cyan-500/20 ring-1 ring-inset ring-white/10 transition-transform duration-200 group-hover:-translate-y-1">
                     <Icon className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <div className="mt-3 space-y-1">

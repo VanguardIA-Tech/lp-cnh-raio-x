@@ -41,7 +41,7 @@ export function SiteFooter() {
                   aria-label={social.name}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-md p-2 text-slate-400 transition-colors hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                  className="rounded-md p-2 text-slate-400 transition-colors hover:text-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
                   data-track="true"
                   role="listitem"
                 >

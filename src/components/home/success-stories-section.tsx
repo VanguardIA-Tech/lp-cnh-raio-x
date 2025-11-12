@@ -57,7 +57,7 @@ export function SuccessStoriesSection() {
                 rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6
                 shadow-sm transition duration-200 ease-out
                 hover:border-slate-700 hover:bg-slate-900 hover:shadow-lg
-                focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-blue-500
+                focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-green-500
                 active:scale-[0.99]
               "
             >
