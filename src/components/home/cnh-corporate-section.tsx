@@ -6,19 +6,19 @@ import Link from "next/link";
 const features = [
   {
     icon: Award,
-    text: "Formação oficial para líderes e equipes.",
+    text: "Formação oficial para líderes e equipes",
   },
   {
     icon: Briefcase,
-    text: "Aplicação prática em processos reais (vendas, marketing, financeiro, operações).",
+    text: "Aplicação prática em processos reais (vendas, marketing, financeiro, operações)",
   },
   {
     icon: MonitorPlay,
-    text: "Treinamentos presenciais, online ou híbridos.",
+    text: "Treinamentos presenciais, online ou híbridos",
   },
   {
     icon: Users,
-    text: "Certificação reconhecida + acesso à Comunidade VanguardIA Corporate.",
+    text: "Certificação reconhecida + acesso à Comunidade VanguardIA Corporate",
   },
 ];
 
@@ -75,7 +75,7 @@ export function CnhCorporateSection() {
                 data-cta="corporate-presentation"
                 data-track="true"
               >
-                Solicitar Apresentação Corporativa →
+                Solicitar Apresentação Corporativa
               </Link>
             </Button>
           </div>
