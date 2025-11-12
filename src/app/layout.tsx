@@ -23,6 +23,26 @@ export const metadata: Metadata = {
   title: "VanguardIA — Eficiência Inteligente para Empresas",
   description:
     "Programa ICIA da VanguardIA: IA e automação sob medida para empresas de 30 a 1000 colaboradores.",
+  icons: {
+    icon: [
+      // Ícones para tema claro (logo escuro)
+      { url: '/favicon-dark.ico', media: '(prefers-color-scheme: light)', sizes: 'any', type: 'image/x-icon' },
+      { url: '/favicon-16x16-dark.png', media: '(prefers-color-scheme: light)', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32-dark.png', media: '(prefers-color-scheme: light)', sizes: '32x32', type: 'image/png' },
+      { url: '/android-chrome-192x192-dark.png', media: '(prefers-color-scheme: light)', sizes: '192x192', type: 'image/png' },
+      { url: '/android-chrome-512x512-dark.png', media: '(prefers-color-scheme: light)', sizes: '512x512', type: 'image/png' },
+      // Ícones para tema escuro (logo claro)
+      { url: '/favicon-light.ico', media: '(prefers-color-scheme: dark)', sizes: 'any', type: 'image/x-icon' },
+      { url: '/favicon-16x16-light.png', media: '(prefers-color-scheme: dark)', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32-light.png', media: '(prefers-color-scheme: dark)', sizes: '32x32', type: 'image/png' },
+      { url: '/android-chrome-192x192-light.png', media: '(prefers-color-scheme: dark)', sizes: '192x192', type: 'image/png' },
+      { url: '/android-chrome-512x512-light.png', media: '(prefers-color-scheme: dark)', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon-dark.png', media: '(prefers-color-scheme: light)' },
+      { url: '/apple-touch-icon-light.png', media: '(prefers-color-scheme: dark)' },
+    ],
+  },
 };
 
 export default function RootLayout({
