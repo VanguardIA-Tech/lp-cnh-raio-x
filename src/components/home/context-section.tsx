@@ -14,7 +14,7 @@ export function ContextSection() {
               A IA já está em todo lugar
             </h2>
             <p className="text-balance text-xl font-medium text-orange-400 sm:text-2xl">
-              — mas quase ninguém sabe conduzir.
+              mas quase ninguém sabe conduzir.
             </p>
           </div>
           <div className="space-y-4 text-lg leading-relaxed text-slate-300">
