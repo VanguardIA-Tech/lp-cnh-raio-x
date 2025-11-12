@@ -6,7 +6,7 @@ import { TopBanner } from "@/components/home/top-banner";
 import { HeroSection } from "@/components/home/hero-section";
 import { ContextSection } from "@/components/home/context-section";
 import { CnhCorporateSection } from "@/components/home/cnh-corporate-section";
-import { TailoredSolutionSection } from "@/components/home/tailored-solution-section";
+import { AuthoritySection } from "@/components/home/authority-section";
 import { SuccessStoriesSection } from "@/components/home/success-stories-section";
 import { LeaderSection } from "@/components/home/leader-section";
 import { SiteFooter } from "@/components/home/site-footer";
@@ -28,7 +28,7 @@ export default function Home() {
         <ContextSection />
         <CnhCorporateSection />
         <SuccessStoriesSection />
-        <TailoredSolutionSection />
+        <AuthoritySection />
         <LeaderSection />
         <DiagnosisSection />
         <MethodSection />
