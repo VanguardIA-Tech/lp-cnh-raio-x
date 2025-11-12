@@ -27,8 +27,8 @@ export default function Home() {
       <main className="flex flex-col">
         <ContextSection />
         <CnhCorporateSection />
-        <TailoredSolutionSection />
         <SuccessStoriesSection />
+        <TailoredSolutionSection />
         <LeaderSection />
         <DiagnosisSection />
         <MethodSection />
