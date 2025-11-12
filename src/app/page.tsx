@@ -14,7 +14,7 @@ import { DiagnosisSection } from "@/components/home/diagnosis-section";
 import { MethodSection } from "@/components/home/method-section";
 
 const floatingCTAClasses =
-  "fixed bottom-6 right-6 z-50 shadow-xl shadow-orange-500/20 transition hover:scale-[1.02]";
+  "fixed bottom-6 left-6 right-6 sm:left-auto sm:w-auto z-50 shadow-xl shadow-orange-500/20 transition hover:scale-[1.02]";
 
 export default function Home() {
   return (
@@ -38,7 +38,7 @@ export default function Home() {
 
       <Button
         asChild
-        className={`${floatingCTAClasses} rounded-md bg-orange-500 px-6 py-6 text-base font-semibold text-white hover:bg-orange-600`}
+        className={`${floatingCTAClasses} rounded-md bg-orange-500 px-6 py-4 text-base font-semibold text-white hover:bg-orange-600 text-center`}
       >
         <Link
           href="/form"
