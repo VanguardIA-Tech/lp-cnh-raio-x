@@ -47,7 +47,7 @@ export function SuccessStoriesSection() {
             <div
               key={text}
               className="
-                group relative flex h-full flex-col items-center justify-center gap-4
+                group relative flex h-full flex-col items-center justify-start gap-4
                 rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6
                 shadow-sm transition duration-200 ease-out
                 hover:border-slate-700 hover:bg-slate-900 hover:shadow-lg
