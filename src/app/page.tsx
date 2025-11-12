@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { TopBanner } from "@/components/home/top-banner";
 import { HeroSection } from "@/components/home/hero-section";
 import { ContextSection } from "@/components/home/context-section";
-import { SelectionCriteriaSection } from "@/components/home/selection-section";
+import { CnhCorporateSection } from "@/components/home/cnh-corporate-section";
 import { TailoredSolutionSection } from "@/components/home/tailored-solution-section";
 import { SuccessStoriesSection } from "@/components/home/success-stories-section";
 import { LeaderSection } from "@/components/home/leader-section";
@@ -26,7 +26,7 @@ export default function Home() {
 
       <main className="flex flex-col">
         <ContextSection />
-        <SelectionCriteriaSection />
+        <CnhCorporateSection />
         <TailoredSolutionSection />
         <SuccessStoriesSection />
         <LeaderSection />
