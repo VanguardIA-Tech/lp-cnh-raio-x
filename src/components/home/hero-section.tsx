@@ -15,7 +15,7 @@ export function HeroSection() {
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-[-8%] right-[-12%] h-[80vw] w-[80vw] rounded-full bg-[#FF7A18]/[0.20] blur-[140px] lg:h-[60rem] lg:w-[60rem]"
+        className="absolute bottom-0 right-[-12%] h-[60vw] w-[60vw] rounded-full bg-[#FF7A18]/[0.20] blur-[140px] lg:h-[40rem] lg:w-[40rem]"
       />
 
       <div className="relative z-10 mx-auto h-full w-full max-w-7xl px-6 py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
