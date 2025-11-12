@@ -7,25 +7,25 @@ const differentiators = [
   {
     icon: Workflow,
     title: "Fluxos mapeados",
-    description: "Diagnóstico detalhado e co-criação com quem executa os processos",
+    description: "Diagnóstico detalhado e co-criação com quem executa os processos.",
     highlight: "Diagnóstico detalhado",
   },
   {
     icon: Gauge,
     title: "Eficiência contínua",
-    description: "Sistemas adaptativos que evoluem com a operação sem travar o time",
+    description: "Sistemas adaptativos que evoluem com a operação sem travar o time.",
     highlight: "evoluem",
   },
   {
     icon: Sparkles,
     title: "IA integrada",
-    description: "Automação inteligente conectada aos sistemas que você já usa",
+    description: "Automação inteligente conectada aos sistemas que você já usa.",
     highlight: "conectada",
   },
   {
     icon: ShieldCheck,
     title: "Segurança e governança",
-    description: "Implementações alinhadas à cultura, compliance e ritmo da empresa",
+    description: "Implementações alinhadas à cultura, compliance e ritmo da empresa.",
     highlight: "compliance",
   },
 ] as const;
@@ -83,7 +83,7 @@ export function TailoredSolutionSection() {
                   sob medida
                 </span>
               </strong>{" "}
-              para o seu negócio
+              para o seu negócio.
             </h2>
 
             <div className="max-w-prose space-y-4 text-base text-slate-200 sm:text-lg">
@@ -95,7 +95,7 @@ export function TailoredSolutionSection() {
                 totalmente adaptados ao seu fluxo real. Cada empresa passa por um{" "}
                 <strong className="font-semibold text-slate-100">diagnóstico profundo</strong>,{" "}
                 <strong className="font-semibold text-slate-100">mapeamento de processos</strong> e
-                prototipagem de soluções
+                prototipagem de soluções.
               </p>
               <p className="leading-relaxed">
                 Ao final, você ganha um “
@@ -103,7 +103,7 @@ export function TailoredSolutionSection() {
                   Sistema Vivo de Eficiência
                 </strong>
                 ”: tecnologia que se adapta às pessoas e a sua empresa, e não o contrário.
-                Exatamente o que você nunca tinha encontrado, mas sabe que é o que faltava
+                Exatamente o que você nunca tinha encontrado, mas sabe que é o que faltava.
               </p>
             </div>
 
