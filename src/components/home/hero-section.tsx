@@ -53,7 +53,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
+        <div className="mt-10 flex h-full justify-center lg:col-span-5 lg:mt-0">
           <div className="relative h-full w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg">
             <video
               src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
