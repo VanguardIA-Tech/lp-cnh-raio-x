@@ -3,7 +3,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function LeaderSection() {
   return (
-    <section className="bg-[#022100] py-12 sm:py-16">
+    <section className="bg-[#020F00] py-12 sm:py-16">
       <div className={`${sectionContainerClass} gap-8`}>
         {/* Grid com itens alinhados ao topo */}
         <div className="grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
@@ -52,7 +52,7 @@ export function LeaderSection() {
             <div className="
               mt-8 w-[85%] max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg
               transition-all duration-300 hover:border-green-500/40 hover:shadow-xl hover:shadow-green-500/20
-              md:mt-0 md:max-w-full
+              md:mt-0 md:max-w/full
             ">
               <Image
                 src="/jorge4.webp"

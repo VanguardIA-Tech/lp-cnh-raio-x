@@ -5,7 +5,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function DiagnosisSection() {
   return (
-    <section className="bg-[#022100] py-14 sm:py-20 md:py-24">
+    <section className="bg-[#020F00] py-14 sm:py-20 md:py-24">
       <div
         className={`${sectionContainerClass} grid items-start gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16`}
       >

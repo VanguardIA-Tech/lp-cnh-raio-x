@@ -42,7 +42,7 @@ function emphasizeMetrics(text: string) {
 
 export function SuccessStoriesSection() {
   return (
-    <section className="bg-[#022100] py-16 text-white sm:py-24">
+    <section className="bg-[#020F00] py-16 text-white sm:py-24">
       <div className={`${sectionContainerClass} gap-10`}>
         <h2 className="text-center text-2xl font-semibold leading-snug text-slate-50 sm:text-3xl">
           Empresas que já transformaram seus resultados com o ICIA.

@@ -11,7 +11,7 @@ const socialLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-800 bg-[#022100] text-slate-300">
+    <footer className="border-t border-slate-800 bg-[#020F00] text-slate-300">
       <div className={`${sectionContainerClass} py-8 md:py-10`}>
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between md:items-center">
           {/* Logo */}
