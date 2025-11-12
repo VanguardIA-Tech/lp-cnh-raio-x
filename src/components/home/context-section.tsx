@@ -20,50 +20,38 @@ export function ContextSection() {
             {/* Blobs de fundo */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.12)_0%,transparent_60%)] opacity-70 blur-[100px] left-[-8%] top-[-6%]"
+              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.12)_0%,transparent_60%)] opacity-70 blur-[90px] left-[-8%] top-[-6%]"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,24,0.10)_0%,transparent_60%)] opacity-80 blur-[120px] right-[-10%] bottom-[-8%]"
+              className="pointer-events-none absolute -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,24,0.10)_0%,transparent_60%)] opacity-80 blur-[110px] right-[-10%] bottom-[-8%]"
             />
 
             {/* Frases com estilos individuais */}
-            <div className="flex flex-col items-center gap-4 text-balance text-lg leading-relaxed text-slate-300 md:gap-3">
+            <div className="flex flex-col items-center gap-3 text-balance text-lg leading-relaxed text-slate-300 md:gap-3.5">
               {/* Linha 1: Problema (Ruído) */}
-              <div className="rounded-xl bg-[linear-gradient(180deg,rgba(0,0,0,.22)_0%,rgba(0,0,0,.08)_100%)] px-4 py-3">
-                <p>
-                  A maioria das empresas usa IA de forma{" "}
-                  <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
-                    tática
-                  </span>
-                  ,{" "}
-                  <span className="inline-block rounded-full border border-orange-500/25 bg-orange-500/10 px-2 py-0.5 text-slate-200">
-                    sem direção nem propósito
-                  </span>
-                  .
-                </p>
-              </div>
+              <p>
+                A maioria das empresas usa IA de forma{" "}
+                <span className="bg-gradient-to-r from-[#2F76FF] to-orange-500/65 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5 opacity-80">
+                  tática
+                </span>
+                , sem direção nem propósito.
+              </p>
 
               {/* Linha 2: Consequência (Ruído) */}
-              <div className="rounded-xl bg-[linear-gradient(180deg,rgba(0,0,0,.22)_0%,rgba(0,0,0,.08)_100%)] px-4 py-3">
-                <p>
-                  O resultado?{" "}
-                  <span className="bg-gradient-to-r from-blue-500/30 to-orange-500/30 bg-[length:100%_3px] bg-bottom bg-no-repeat pb-1">
-                    Dependência de poucos
-                  </span>{" "}
-                  e{" "}
-                  <span className="inline-block rounded-full border border-orange-500/25 bg-orange-500/10 px-2 py-0.5 text-slate-200">
-                    desperdício de potencial coletivo
-                  </span>
-                  .
-                </p>
-              </div>
+              <p>
+                O resultado?{" "}
+                <span className="bg-gradient-to-r from-[#2F76FF] to-orange-500/65 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5 opacity-80">
+                  Dependência de poucos
+                </span>{" "}
+                e desperdício de potencial coletivo.
+              </p>
 
               {/* Linha 3: Solução (Foco) */}
-              <div className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+              <div className="relative w-full py-2">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(40rem_20rem_at_50%_50%,rgba(47,118,255,.18)_0%,rgba(47,118,255,0)_70%)]"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(38rem_18rem_at_50%_60%,rgba(47,118,255,.20)_0%,transparent_60%)]"
                 />
                 <p>
                   A <strong className="font-bold text-slate-100">CNH Corporativa</strong> nasceu para resolver isso: formar{" "}
@@ -71,7 +59,7 @@ export function ContextSection() {
                     pilotos de IA
                   </span>{" "}
                   dentro das empresas, com{" "}
-                  <span className="inline-block rounded-full border border-orange-500/25 bg-orange-500/10 px-2 py-0.5 text-slate-200">
+                  <span className="inline-block rounded-full border border-white/10 bg-white/[.06] px-2.5 py-0.5 backdrop-blur-sm">
                     método, filosofia e impacto real
                   </span>
                   .
