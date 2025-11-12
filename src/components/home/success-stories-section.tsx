@@ -3,36 +3,26 @@ import * as React from "react";
 
 const stories = [
   {
-    text: "Sindarpa — 80 profissionais habilitados",
-    logo: "/logo-sindarpa.png", // Logo adicionado
+    title: "Sindarpa",
+    subtitle: "80 profissionais habilitados",
+    logo: "/logo-sindarpa.png",
   },
   {
-    text: "Rede Mais Saúde — times médicos e administrativos certificados",
+    title: "Rede Mais Saúde",
+    subtitle: "times médicos e administrativos certificados",
     logo: "/logo-rede-mais-saude.png",
   },
   {
-    text: "Silveira Athias Advogados — IA aplicada à rotina jurídica",
+    title: "Silveira Athias Advogados",
+    subtitle: "IA aplicada à rotina jurídica",
     logo: "/logo-silveiraathias.png",
   },
   {
-    text: "DO IT Hub — ecossistema empresarial habilitado",
+    title: "DO IT Hub",
+    subtitle: "ecossistema empresarial habilitado",
     logo: "/logo-doithub.png",
   },
 ] as const;
-
-// Helper to format the text with different styles
-function formatStoryText(fullText: string) {
-  const parts = fullText.split("—");
-  if (parts.length < 2) {
-    return fullText;
-  }
-  return (
-    <>
-      <span className="font-semibold text-slate-100">{parts[0].trim()}</span>
-      <span className="text-slate-300"> — {parts.slice(1).join("—").trim()}</span>
-    </>
-  );
-}
 
 export function SuccessStoriesSection() {
   return (
@@ -43,9 +33,9 @@ export function SuccessStoriesSection() {
         </h2>
 
         <div className="grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
-          {stories.map(({ text, logo }) => (
+          {stories.map(({ title, subtitle, logo }) => (
             <div
-              key={text}
+              key={title}
               className="
                 group relative flex h-full flex-col items-center justify-start gap-4
                 rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6
@@ -59,15 +49,20 @@ export function SuccessStoriesSection() {
                 <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white/95 p-2">
                   <img
                     src={logo}
-                    alt=""
+                    alt={`${title} Logo`}
                     aria-hidden="true"
                     className="h-full w-full object-contain"
                   />
                 </div>
               )}
-              <p className="text-base text-slate-50 sm:text-lg">
-                {formatStoryText(text)}
-              </p>
+              <div className="space-y-1">
+                <h3 className="text-base font-semibold text-slate-50 sm:text-lg">
+                  {title}
+                </h3>
+                <p className="text-sm text-slate-300">
+                  {subtitle}
+                </p>
+              </div>
             </div>
           ))}
         </div>
