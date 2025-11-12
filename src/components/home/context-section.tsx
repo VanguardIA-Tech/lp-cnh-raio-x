@@ -9,10 +9,14 @@ export function ContextSection() {
       />
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
-          <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
-            A IA já está em todo lugar — mas{" "}
-            <span className="text-orange-400">quase ninguém sabe conduzir</span>.
-          </h2>
+          <div className="space-y-2">
+            <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
+              A IA já está em todo lugar
+            </h2>
+            <p className="text-balance text-xl font-medium text-orange-400 sm:text-2xl">
+              — mas quase ninguém sabe conduzir.
+            </p>
+          </div>
           <div className="space-y-4 text-lg leading-relaxed text-slate-300">
             <p>
               A maioria das empresas usa IA de forma{" "}
