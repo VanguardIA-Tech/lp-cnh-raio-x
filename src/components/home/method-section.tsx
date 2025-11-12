@@ -2,7 +2,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function MethodSection() {
   return (
-    <section className="border-t border-slate-800 bg-slate-950 py-14 sm:py-20 md:py-24">
+    <section className="border-t border-slate-800 bg-[#022100] py-14 sm:py-20 md:py-24">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="max-w-3xl space-y-5">
           <h2 className="text-3xl font-bold leading-tight text-slate-50 sm:text-4xl">

@@ -51,7 +51,7 @@ const Highlight = ({ text, highlight }: { text: string; highlight: string }) => 
 
 export function TailoredSolutionSection() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-24">
+    <section className="relative overflow-hidden bg-[#022100] py-16 sm:py-24">
       {/* Blobs for the entire section */}
       <div
         aria-hidden="true"

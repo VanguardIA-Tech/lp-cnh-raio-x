@@ -14,7 +14,7 @@ const painPoints = [
 
 export function PainPointsSection() {
   return (
-    <section className="bg-slate-950 py-16 sm:py-24">
+    <section className="bg-[#022100] py-16 sm:py-24">
       <div className={sectionContainerClass}>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-semibold text-slate-50 sm:text-3xl">

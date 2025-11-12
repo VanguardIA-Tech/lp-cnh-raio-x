@@ -21,7 +21,7 @@ const benefits = [
 
 export function SelectionCriteriaSection() {
   return (
-    <section className="bg-slate-900 py-16 sm:py-20 lg:py-24">
+    <section className="bg-[#022100] py-16 sm:py-20 lg:py-24">
       <div className={`${sectionContainerClass} gap-10`}>
         {/* Cabeçalho centralizado */}
         <div className="mx-auto max-w-4xl space-y-5 text-center">

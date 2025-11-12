@@ -3,7 +3,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function LeaderSection() {
   return (
-    <section className="bg-slate-950 py-12 sm:py-16">
+    <section className="bg-[#022100] py-12 sm:py-16">
       <div className={`${sectionContainerClass} gap-8`}>
         {/* Grid com itens alinhados ao topo */}
         <div className="grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">

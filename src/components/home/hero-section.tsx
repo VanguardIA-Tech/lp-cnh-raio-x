@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative flex-grow overflow-hidden bg-[#0B1220] text-white">
+    <section className="relative flex-grow overflow-hidden bg-[#022100] text-white">
       {/* Aurora Mesh Blobs */}
       <div
         aria-hidden="true"
