@@ -8,7 +8,7 @@ export function LeaderSection() {
         {/* Grid com itens alinhados ao topo */}
         <div className="grid items-start gap-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
           {/* Coluna esquerda: hierarquia e ritmo com texto maior */}
-          <div className="space-y-5 sm:space-y-6">
+          <div className="space-y-5 text-center sm:space-y-6 md:text-left">
             <h2 className="text-balance text-3xl font-semibold leading-tight text-slate-50 sm:text-4xl lg:text-5xl">
               <span className="font-bold text-orange-400">Quem lidera</span> o movimento de{" "}
               <span className="font-bold text-orange-400">Eficiência Inteligente no Brasil</span>.

@@ -10,7 +10,7 @@ export function DiagnosisSection() {
         className={`${sectionContainerClass} grid items-start gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16`}
       >
         {/* Coluna de Texto */}
-        <div className="flex flex-col items-start gap-5">
+        <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left">
           <h2 className="max-w-xl text-3xl font-bold leading-tight text-slate-50 sm:text-4xl">
             Descubra onde a <span className="text-blue-400">IA</span> pode{" "}
             <span className="text-orange-400">liberar horas</span> e{" "}

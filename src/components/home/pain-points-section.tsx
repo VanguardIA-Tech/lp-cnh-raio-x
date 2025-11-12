@@ -28,7 +28,7 @@ export function PainPointsSection() {
 
         <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:mt-16">
           {painPoints.map((point) => (
-            <div key={point} className="flex items-start gap-3">
+            <div key={point} className="flex items-start gap-3 text-center sm:text-left">
               <CheckCircle
                 className="mt-1 h-5 w-5 flex-shrink-0 text-blue-500"
                 aria-hidden="true"

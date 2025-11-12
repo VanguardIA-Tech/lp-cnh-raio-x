@@ -64,7 +64,7 @@ export function TailoredSolutionSection() {
 
       <div className={`${sectionContainerClass} gap-8`}>
         <div className="grid gap-10 lg:grid-cols-2">
-          <div className="relative z-10 space-y-6">
+          <div className="relative z-10 space-y-6 text-center sm:text-left">
             {/* Contrast Veil */}
             <div
               aria-hidden="true"
@@ -146,7 +146,7 @@ export function TailoredSolutionSection() {
                     className="
                       flex h-full flex-col gap-3 rounded-2xl border border-slate-800
                       bg-slate-900 p-6 shadow-sm transition
-                      duration-200 ease-out
+                      duration-200 ease-out text-center sm:text-left
                       hover:border-slate-700 hover:shadow-[0_12px_28px_rgba(255,122,24,0.10)]
                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500
                       active:scale-[0.99]
