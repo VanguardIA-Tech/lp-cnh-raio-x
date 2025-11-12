@@ -21,40 +21,56 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto h-full w-full max-w-7xl px-6 py-14 sm:py-20 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
-            Transforme sua operação com{" "}
-            <span className="text-orange-400">
-              sistemas personalizados de IA
-            </span>{" "}
-            e automação integrados à sua realidade.
-            <span className="mt-2 block font-semibold text-orange-400">
-              Tudo feito para atender o seu negócio.
-            </span>
+            Seu time está preparado para a{" "}
+            <span className="text-orange-400">nova era da IA?</span>
           </h1>
           <p className="mx-auto max-w-[600px] text-base text-slate-200 sm:mx-0 sm:text-lg">
-            O Programa ICIA (Inteligência Corporativa Integrada com Automação) é a aceleração que redesenha processos, integra pessoas e instala cultura de eficiência com IA. Sem precisar trocar seus sistemas atuais nem contratar um monte de gente com altos salários.
+            A CNH da IA Corporativa habilita líderes, colaboradores e parceiros para usar a
+            Inteligência Artificial de forma estratégica.
           </p>
 
-          <div className="flex flex-col items-center gap-3 sm:items-start">
+          <p className="text-center text-sm text-slate-300 sm:text-left">
+            <span className="font-semibold text-white">+5.000 profissionais</span> •{" "}
+            <span className="font-semibold text-white">+300 IAs corporativas instaladas</span> •
+            Clientes em todo o Brasil
+          </p>
+
+          <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
             <Button
               asChild
               className="inline-flex items-center rounded-md bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(34,197,94,.25)]"
             >
               <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
-                Quero meu Diagnóstico
+                Quero habilitar meu time
               </Link>
             </Button>
-            <p className="mt-1 text-sm italic text-slate-300">
-              O futuro das empresas eficientes é sob medida. A sua também pode ser.
-            </p>
+            <Link
+              href="/form"
+              className="text-center text-xs text-slate-300 underline transition hover:text-white sm:text-left sm:text-sm"
+            >
+              Ou gere agora o Raio-X de Eficiência com IA na sua empresa — gratuito e personalizado.
+            </Link>
           </div>
         </div>
 
-        <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0 lg:justify-end">
-          <img
-            src="/jorge3.webp"
-            alt="Retrato de Jorge Auad"
-            className="h-auto max-h-[50vh] w-auto max-w-full object-contain object-bottom lg:h-full lg:max-h-none"
-          />
+        <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
+          <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg">
+            <video
+              src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-6 text-center">
+              <p className="text-lg font-semibold text-white drop-shadow-md">
+                “99% usam IA. 1% pilota.”
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
