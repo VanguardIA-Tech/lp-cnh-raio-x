@@ -28,8 +28,8 @@ export default function Home() {
         <ContextSection />
         <CnhCorporateSection />
         <SuccessStoriesSection />
+        <DiagnosisSection /> {/* MOVIDA PARA CÁ */}
         <AuthoritySection />
-        <DiagnosisSection />
         <MethodSection />
         <FinalCtaSection />
       </main>
