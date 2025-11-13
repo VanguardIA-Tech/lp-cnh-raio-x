@@ -2,7 +2,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function ContextSection() {
   return (
-    <section className="relative overflow-hidden border-t border-slate-800 bg-[#020F00] py-16 sm:py-24">
+    <section className="relative overflow-hidden border-t border-slate-700 bg-[#020F00] py-16 sm:py-24">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
           {/* Título e Subtítulo */}
@@ -20,7 +20,7 @@ export function ContextSection() {
             {/* Blobs de fundo */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(47,118,255,0.12)_0%,transparent_60%)] opacity-70 blur-[90px] left-[-8%] top-[-6%]"
+              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.12)_0%,transparent_60%)] opacity-70 blur-[90px] left-[-8%] top-[-6%]"
             />
             <div
               aria-hidden="true"
@@ -32,7 +32,7 @@ export function ContextSection() {
               {/* Linha 1: Problema (Ruído) */}
               <p>
                 A maioria das empresas usa IA de forma{" "}
-                <span className="bg-gradient-to-r from-[#2F76FF] to-orange-500/65 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5 opacity-80">
+                <span className="bg-gradient-to-r from-green-500 to-orange-500/65 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5 opacity-80">
                   tática
                 </span>
                 , sem direção nem propósito.
@@ -41,7 +41,7 @@ export function ContextSection() {
               {/* Linha 2: Consequência (Ruído) */}
               <p>
                 O resultado?{" "}
-                <span className="bg-gradient-to-r from-[#2F76FF] to-orange-500/65 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5 opacity-80">
+                <span className="bg-gradient-to-r from-green-500 to-orange-500/65 bg-[length:100%_2px] bg-bottom bg-no-repeat pb-0.5 opacity-80">
                   Dependência de poucos
                 </span>{" "}
                 e desperdício de potencial coletivo.
@@ -51,11 +51,11 @@ export function ContextSection() {
               <div className="relative w-full py-2">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(38rem_18rem_at_50%_60%,rgba(47,118,255,.20)_0%,transparent_60%)]"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(38rem_18rem_at_50%_60%,rgba(34,197,94,.20)_0%,transparent_60%)]"
                 />
                 <p>
                   A <strong className="font-bold text-slate-100">CNH Corporativa</strong> nasceu para resolver isso: formar{" "}
-                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text font-semibold text-transparent">
+                  <span className="bg-gradient-to-r from-green-400 to-green-300 bg-clip-text font-semibold text-transparent">
                     pilotos de IA
                   </span>{" "}
                   dentro das empresas, com{" "}

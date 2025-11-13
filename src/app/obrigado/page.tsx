@@ -66,7 +66,7 @@ export default function ObrigadoPage() {
           </div>
 
           {/* Divisor */}
-          <hr className="mb-6 h-px w-full max-w-xs border-slate-800" />
+          <hr className="mb-6 h-px w-full max-w-xs border-slate-700" />
 
           {/* 3. Bloco de Exclusividade */}
           <p className="max-w-prose text-base text-slate-300 sm:text-lg">
@@ -77,7 +77,7 @@ export default function ObrigadoPage() {
           </p>
 
           {/* Divisor */}
-          <hr className="my-8 h-px w-full max-w-md border-slate-800" />
+          <hr className="my-8 h-px w-full max-w-md border-slate-700" />
 
           {/* 4. Footer Interno */}
           <footer className="flex w-full flex-col items-center gap-6">
@@ -91,7 +91,7 @@ export default function ObrigadoPage() {
                 priority
               />
             </Link>
-            <p className="text-xs uppercase tracking-widest text-slate-500">
+            <p className="text-xs uppercase tracking-widest text-slate-400">
               Eficiência que liberta
             </p>
             <nav aria-label="Redes sociais">
@@ -103,7 +103,7 @@ export default function ObrigadoPage() {
                     aria-label={social.name}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-md p-2 text-slate-400 transition-colors hover:text-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+                    className="rounded-md p-2 text-slate-300 transition-colors hover:text-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
                     data-track="true"
                   >
                     <social.icon className="h-5 w-5" aria-hidden="true" />

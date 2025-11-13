@@ -11,7 +11,7 @@ const socialLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-800 bg-[#020F00] text-slate-300">
+    <footer className="border-t border-slate-700 bg-[#020F00] text-slate-300">
       <div className={`${sectionContainerClass} py-8 md:py-10`}>
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between md:items-center">
           {/* Logo */}
@@ -41,7 +41,7 @@ export function SiteFooter() {
                   aria-label={social.name}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-md p-2 text-slate-400 transition-colors hover:text-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+                  className="rounded-md p-2 text-slate-300 transition-colors hover:text-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
                   data-track="true"
                   role="listitem"
                 >
@@ -53,8 +53,8 @@ export function SiteFooter() {
         </div>
 
         {/* Linha Inferior */}
-        <div className="border-t border-slate-800 pt-8 text-center">
-          <p className="text-xs uppercase tracking-widest text-slate-500">
+        <div className="border-t border-slate-700 pt-8 text-center">
+          <p className="text-xs uppercase tracking-widest text-slate-400">
             “VanguardIA — Inteligência Aplicada à Prosperidade.”
           </p>
         </div>

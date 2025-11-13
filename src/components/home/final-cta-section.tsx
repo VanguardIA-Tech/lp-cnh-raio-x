@@ -5,7 +5,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function FinalCtaSection() {
   return (
-    <section className="border-t border-slate-800 bg-[#020F00] py-16 sm:py-24 md:py-32">
+    <section className="border-t border-slate-700 bg-[#020F00] py-16 sm:py-24 md:py-32">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
           <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">

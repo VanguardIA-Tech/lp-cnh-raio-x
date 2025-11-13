@@ -68,7 +68,7 @@ export function SuccessStoriesSection() {
         </div>
 
         <div
-          className="mx-auto my-2 h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"
+          className="mx-auto my-2 h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-green-500/20 to-transparent"
           aria-hidden="true"
         />
 

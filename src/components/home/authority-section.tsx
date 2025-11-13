@@ -2,7 +2,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function AuthoritySection() {
   return (
-    <section className="relative overflow-hidden border-t border-slate-800 bg-[#020F00] py-16 sm:py-24">
+    <section className="relative overflow-hidden border-t border-slate-700 bg-[#020F00] py-16 sm:py-24">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
           {/* Título */}
