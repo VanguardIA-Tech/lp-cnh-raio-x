@@ -124,7 +124,7 @@ const FormStep2 = ({ form }: FormStep2Props) => {
                       <Checkbox
                         checked={isSelected}
                         onCheckedChange={() => toggleArrayValue("focusAreas", focus.value)}
-                        className="mt-0.5"
+                        className="mt-0.5 rounded-full border-slate-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 focus-visible:ring-green-500"
                       />
                       <div className="flex-1 flex items-center gap-3">
                         <Icon className={`w-5 h-5 flex-shrink-0 ${isSelected ? 'text-orange-400' : 'text-slate-400'}`} />

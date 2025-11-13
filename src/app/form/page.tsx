@@ -130,7 +130,7 @@ export default function FormPage() {
 
   return (
     <section className="min-h-screen w-screen bg-[#020F00] text-slate-100">
-      <div className="h-full w-full rounded-none border border-slate-800 bg-slate-900/80 flex flex-col">
+      <div className="h-full w-full rounded-none border border-transparent bg-transparent flex flex-col">
         <div className="flex-1 overflow-y-auto px-6 py-8 md:px-12 md:py-12 lg:px-20">
           <div className="max-w-6xl mx-auto">
             <FormHeader />
@@ -159,7 +159,7 @@ export default function FormPage() {
           </div>
         </div>
 
-        <div className="w-full border-t border-slate-800 bg-slate-900/80 px-6 py-4 md:px-12 lg:px-20">
+        <div className="w-full border-t border-slate-800/60 bg-[#020F00] px-6 py-4 md:px-12 lg:px-20">
           <div className="max-w-6xl mx-auto flex gap-4">
             {currentStep > 1 && (
               <Button

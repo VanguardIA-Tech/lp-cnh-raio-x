@@ -16,22 +16,9 @@ interface FormStep3Props {
 }
 
 const FREE_EMAIL_DOMAINS = new Set([
-  "gmail.com",
-  "gmail.com.br",
-  "hotmail.com",
-  "hotmail.com.br",
-  "outlook.com",
-  "outlook.com.br",
-  "live.com",
-  "live.com.br",
-  "yahoo.com",
-  "yahoo.com.br",
-  "icloud.com",
-  "aol.com",
-  "msn.com",
-  "bol.com.br",
-  "uol.com.br",
-  "terra.com.br"
+  "gmail.com","gmail.com.br","hotmail.com","hotmail.com.br","outlook.com","outlook.com.br",
+  "live.com","live.com.br","yahoo.com","yahoo.com.br","icloud.com","aol.com","msn.com",
+  "bol.com.br","uol.com.br","terra.com.br"
 ]);
 
 function getEmailDomain(email: string) {
@@ -43,47 +30,33 @@ function getEmailDomain(email: string) {
 function formatWhatsapp(value: string) {
   const raw = String(value);
   const digits = raw.replace(/\D/g, "");
-
   let rest = digits;
   let prefix = "";
-
   if (rest.startsWith("55")) {
     prefix = "+55 ";
     rest = rest.slice(2);
   } else if (raw.trim().startsWith("+")) {
     prefix = "+";
   }
-
   const ddd = rest.slice(0, 2);
   const number = rest.slice(2, 11);
-
   let formatted = prefix;
-  if (ddd) {
-    formatted += ddd + " ";
-  }
-  if (number.length > 5) {
-    formatted += number.slice(0, 5) + "-" + number.slice(5);
-  } else if (number.length > 0) {
-    formatted += number;
-  }
-
+  if (ddd) formatted += ddd + " ";
+  if (number.length > 5) formatted += number.slice(0, 5) + "-" + number.slice(5);
+  else if (number.length > 0) formatted += number;
   return formatted.trim();
 }
 
 function caretIndexForNthDigit(formatted: string, n: number) {
   if (n <= 0) {
-    for (let i = 0; i < formatted.length; i++) {
-      if (/\d/.test(formatted[i])) return i;
-    }
+    for (let i = 0; i < formatted.length; i++) if (/\d/.test(formatted[i])) return i;
     return 0;
   }
   let count = 0;
   for (let i = 0; i < formatted.length; i++) {
     if (/\d/.test(formatted[i])) {
       count++;
-      if (count === n) {
-        return i + 1;
-      }
+      if (count === n) return i + 1;
     }
   }
   return formatted.length;
@@ -103,13 +76,11 @@ const FormStep3 = ({ form }: FormStep3Props) => {
       window.clearTimeout(debounceRef.current);
       debounceRef.current = null;
     }
-
     const value = String(email || "").trim();
     if (!value || !value.includes("@")) {
       lastShownDomainRef.current = null;
       return;
     }
-
     debounceRef.current = window.setTimeout(() => {
       const domain = getEmailDomain(value);
       if (domain && FREE_EMAIL_DOMAINS.has(domain)) {
@@ -122,7 +93,6 @@ const FormStep3 = ({ form }: FormStep3Props) => {
       }
       debounceRef.current = null;
     }, EMAIL_DEBOUNCE_MS);
-
     return () => {
       if (debounceRef.current) {
         window.clearTimeout(debounceRef.current);
@@ -135,29 +105,16 @@ const FormStep3 = ({ form }: FormStep3Props) => {
     const inputEl = e.target;
     const rawValue = inputEl.value;
     const selectionStart = inputEl.selectionStart ?? rawValue.length;
-
     const digitsLeftOfCursor = rawValue.slice(0, selectionStart).replace(/\D/g, "").length;
-
     const formatted = formatWhatsapp(rawValue);
-
-    form.setValue("whatsapp", formatted, {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true,
-    });
-
+    form.setValue("whatsapp", formatted, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
     requestAnimationFrame(() => {
       const el = whatsappInputRef.current;
       if (!el) return;
-
       const totalDigits = formatted.replace(/\D/g, "").length;
       const n = Math.min(digitsLeftOfCursor, totalDigits);
       const newCaret = caretIndexForNthDigit(formatted, n);
-      try {
-        el.setSelectionRange(newCaret, newCaret);
-      } catch {
-        //
-      }
+      try { el.setSelectionRange(newCaret, newCaret); } catch {}
     });
   };
 
@@ -253,10 +210,8 @@ const FormStep3 = ({ form }: FormStep3Props) => {
                   <Checkbox
                     id="lgpd"
                     checked={!!field.value}
-                    onCheckedChange={(checked) =>
-                      field.onChange(checked === true)
-                    }
-                    className="mt-0.5"
+                    onCheckedChange={(checked) => field.onChange(checked === true)}
+                    className="mt-0.5 rounded-full border-slate-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 focus-visible:ring-green-500"
                   />
                 </FormControl>
                 <label htmlFor="lgpd" className="text-sm cursor-pointer flex-1 text-left">
