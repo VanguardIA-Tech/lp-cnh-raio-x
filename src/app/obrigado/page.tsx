@@ -13,10 +13,10 @@ export default function ObrigadoPage() {
   const isCalendlyExternal = /^https?:\/\//i.test(calendlyUrl);
 
   return (
-    <main className="min-h-screen w-full bg-slate-950 text-slate-100">
+    <main className="min-h-screen w-full bg-[#020F00] text-slate-100">
       <div className="mx-auto w-full max-w-5xl p-4 sm:p-6 lg:p-8">
         {/* HERO / CONFIRMAÇÃO */}
-        <section className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8 md:p-10 text-center">
+        <section className="rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8 md:p-10 text-center">
           <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-600/20 ring-1 ring-green-500/30">
               <CheckCircle2 className="h-7 w-7 text-green-400" aria-hidden="true" />
@@ -50,7 +50,7 @@ export default function ObrigadoPage() {
         </section>
 
         {/* BLOCO 2 — PRÓXIMO PASSO */}
-        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8">
           <div className="mx-auto max-w-3xl text-center space-y-4">
             <h2 className="text-2xl font-bold sm:text-3xl">
               Seu próximo passo é ver como as empresas estão formando times piloto de IA.
@@ -81,7 +81,7 @@ export default function ObrigadoPage() {
         </section>
 
         {/* BLOCO 3 — PROVAS E LEGADO */}
-        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8">
           <div className="space-y-6">
             <Carousel className="w-full">
               <CarouselContent>
@@ -152,9 +152,9 @@ export default function ObrigadoPage() {
         </section>
 
         {/* BLOCO 4 — EXCLUSIVIDADE */}
-        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8 text-center">
+        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8 text-center">
           <div className="mx-auto max-w-3xl space-y-5">
-            <p className="text-base text-slate-200 sm:text-lg">
+            <p className="text-base text-slate-300 sm:text-lg">
               O programa CNH Corporativa faz parte da seleção das 100 empresas habilitadas em 2026.
             </p>
             <Button
