@@ -9,7 +9,7 @@ const HighlightBox = ({ className }: HighlightBoxProps) => {
     <aside
       aria-label="Destaque Raio-X de Eficiência com IA"
       className={cn(
-        "rounded-xl border border-white/10 bg-gradient-to-r from-green-600 to-orange-500 text-white shadow-medium",
+        "rounded-xl border border-white/10 bg-green-600 text-white shadow-medium",
         "p-5 sm:p-6",
         "sticky top-2 lg:top-8",
         className

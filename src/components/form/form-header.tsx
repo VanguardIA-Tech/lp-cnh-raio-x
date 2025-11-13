@@ -18,10 +18,10 @@ const FormHeader = () => {
         </div>
         
         <div className="flex flex-col gap-2 items-center md:items-end">
-          <Badge className="bg-gradient-to-r from-green-600 to-orange-500 text-white text-xs font-medium w-full justify-center px-4 py-1.5 rounded-full border-0">
+          <Badge className="bg-green-600 text-white text-xs font-medium w-full justify-center px-4 py-1.5 rounded-full border-0">
             +100 negócios acelerados em 2025
           </Badge>
-          <Badge className="bg-gradient-to-r from-green-600 to-orange-500 text-white text-xs font-medium w-full justify-center px-4 py-1.5 rounded-full border-0">
+          <Badge className="bg-green-600 text-white text-xs font-medium w-full justify-center px-4 py-1.5 rounded-full border-0">
             +5.000 profissionais habilitados em IA
           </Badge>
         </div>
