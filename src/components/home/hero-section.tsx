@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative flex-grow overflow-hidden bg-[#020F00] text-white">
+    <section className="relative overflow-hidden bg-[#020F00] text-white lg:min-h-screen">
       {/* Aurora Mesh Blobs */}
       <div
         aria-hidden="true"
@@ -18,7 +19,7 @@ export function HeroSection() {
         className="absolute bottom-0 right-[-12%] h-[60vw] w-[60vw] rounded-full bg-[#FF7A18]/[0.20] blur-[140px] lg:h-[40rem] lg:w-[40rem]"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:grid lg:min-h-screen lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
@@ -72,6 +73,24 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll Down — seta pulsante */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center">
+        <Link
+          href="#conteudo"
+          aria-label="Rolar para o conteúdo"
+          title="Rolar para o conteúdo"
+          id="cta-scroll-down"
+          data-cta="scroll-down"
+          data-track="true"
+          className="pointer-events-auto group inline-flex flex-col items-center gap-2 text-slate-300 hover:text-white"
+        >
+          <span className="rounded-full border border-white/15 bg-white/5 p-2.5 shadow-soft backdrop-blur-sm transition-colors group-hover:bg-white/10">
+            <ChevronDown className="h-6 w-6 animate-pulse" aria-hidden="true" />
+          </span>
+          <span className="text-xs">Role para ver mais</span>
+        </Link>
       </div>
     </section>
   );

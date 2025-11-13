@@ -19,7 +19,7 @@ export default function Home() {
     <div className="bg-[#020F00] text-slate-100">
       <HeroSection />
 
-      <main className="flex flex-col">
+      <main id="conteudo" className="flex flex-col">
         <ContextSection />
         <CnhCorporateSection />
         <SuccessStoriesSection />
