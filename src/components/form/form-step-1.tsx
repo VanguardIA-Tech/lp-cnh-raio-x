@@ -10,14 +10,19 @@ interface FormStep1Props {
   form: UseFormReturn<FormValues>;
 }
 
+const darkInput =
+  "h-12 text-center md:text-left bg-slate-950/50 border-slate-800 text-slate-100 placeholder:text-slate-400";
+
+const triggerBase = "h-12 bg-slate-950/50 border-slate-800 text-slate-100";
+
 const FormStep1 = ({ form }: FormStep1Props) => {
   return (
     <div className="space-y-8 animate-in fade-in duration-500 text-center md:text-left">
       <div className="space-y-3">
-        <h2 className="text-3xl font-bold text-foreground">
+        <h2 className="text-3xl font-bold text-slate-100">
           Comece seu Raio-X de Eficiência com IA
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-slate-400">
           Responda em 2 minutos. Em 5, você recebe o relatório no WhatsApp e e-mail.
         </p>
       </div>
@@ -29,14 +34,14 @@ const FormStep1 = ({ form }: FormStep1Props) => {
           render={({ field }) => (
             <FormItem>
               <Label htmlFor="company" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <Building2 className="w-4 h-4 text-primary" />
+                <Building2 className="w-4 h-4 text-orange-400" />
                 Nome da empresa *
               </Label>
               <FormControl>
                 <Input
                   id="company"
                   placeholder="Ex: Rede Mais Saúde"
-                  className="h-12 text-center md:text-left"
+                  className={darkInput}
                   {...field}
                 />
               </FormControl>
@@ -51,12 +56,12 @@ const FormStep1 = ({ form }: FormStep1Props) => {
           render={({ field }) => (
             <FormItem>
               <Label className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <User className="w-4 h-4 text-primary" />
+                <User className="w-4 h-4 text-orange-400" />
                 Seu cargo/função *
               </Label>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="h-12">
+                  <SelectTrigger className={triggerBase}>
                     <SelectValue placeholder="Selecione seu cargo" />
                   </SelectTrigger>
                   <SelectContent>
@@ -83,12 +88,12 @@ const FormStep1 = ({ form }: FormStep1Props) => {
           render={({ field }) => (
             <FormItem>
               <Label className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <Users className="w-4 h-4 text-primary" />
+                <Users className="w-4 h-4 text-orange-400" />
                 Número de colaboradores *
               </Label>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="h-12">
+                  <SelectTrigger className={triggerBase}>
                     <SelectValue placeholder="Selecione a faixa" />
                   </SelectTrigger>
                   <SelectContent>
@@ -114,12 +119,12 @@ const FormStep1 = ({ form }: FormStep1Props) => {
           render={({ field }) => (
             <FormItem>
               <Label className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <Briefcase className="w-4 h-4 text-primary" />
+                <Briefcase className="w-4 h-4 text-orange-400" />
                 Setor de atuação *
               </Label>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="h-12">
+                  <SelectTrigger className={triggerBase}>
                     <SelectValue placeholder="Selecione o setor" />
                   </SelectTrigger>
                   <SelectContent>
@@ -142,7 +147,7 @@ const FormStep1 = ({ form }: FormStep1Props) => {
         />
       </div>
 
-      <p className="text-sm text-muted-foreground text-center">
+      <p className="text-sm text-slate-400 text-center">
         Faltam só 2 etapas
       </p>
     </div>

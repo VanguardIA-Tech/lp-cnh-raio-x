@@ -55,10 +55,10 @@ const FormStep2 = ({ form }: FormStep2Props) => {
   return (
     <div className="space-y-8 animate-in fade-in duration-500 text-center md:text-left">
       <div className="space-y-3">
-        <h2 className="text-3xl font-bold text-foreground">
+        <h2 className="text-3xl font-bold text-slate-100">
           Onde a IA pode gerar mais impacto para você?
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-slate-400">
           Escolha até 3 áreas para o Raio-X priorizar.
         </p>
       </div>
@@ -82,13 +82,13 @@ const FormStep2 = ({ form }: FormStep2Props) => {
                       className={`
                         flex flex-col items-center gap-2 p-4 rounded-lg border-2 transition-all duration-300
                         ${isSelected 
-                          ? 'border-primary bg-primary/5 shadow-soft' 
-                          : 'border-border hover:border-primary/50 hover:bg-secondary'
+                          ? 'border-orange-500 bg-orange-500/10 shadow-soft' 
+                          : 'border-slate-800 hover:border-orange-500/60 hover:bg-slate-900/60'
                         }
                       `}
                     >
-                      <Icon className={`w-6 h-6 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
-                      <span className={`text-xs font-medium text-center ${isSelected ? 'text-primary' : 'text-foreground'}`}>
+                      <Icon className={`w-6 h-6 ${isSelected ? 'text-orange-400' : 'text-slate-400'}`} />
+                      <span className={`text-xs font-medium text-center ${isSelected ? 'text-orange-400' : 'text-slate-100'}`}>
                         {area.label}
                       </span>
                     </button>
@@ -116,8 +116,8 @@ const FormStep2 = ({ form }: FormStep2Props) => {
                       className={`
                         flex items-start text-left gap-3 p-4 rounded-lg border-2 cursor-pointer transition-all duration-300
                         ${isSelected 
-                          ? 'border-primary bg-primary/5 shadow-soft' 
-                          : 'border-border hover:border-primary/50 hover:bg-secondary'
+                          ? 'border-orange-500 bg-orange-500/10 shadow-soft' 
+                          : 'border-slate-800 hover:border-orange-500/60 hover:bg-slate-900/60'
                         }
                       `}
                     >
@@ -127,7 +127,7 @@ const FormStep2 = ({ form }: FormStep2Props) => {
                         className="mt-0.5"
                       />
                       <div className="flex-1 flex items-center gap-3">
-                        <Icon className={`w-5 h-5 flex-shrink-0 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
+                        <Icon className={`w-5 h-5 flex-shrink-0 ${isSelected ? 'text-orange-400' : 'text-slate-400'}`} />
                         <span className="text-sm">{focus.label}</span>
                       </div>
                     </label>
@@ -159,9 +159,9 @@ const FormStep2 = ({ form }: FormStep2Props) => {
                     className="w-full"
                   />
                 </FormControl>
-                <div className="flex justify-between text-xs text-muted-foreground">
+                <div className="flex justify-between text-xs text-slate-400">
                   <span>0 - Nada ainda</span>
-                  <span className="font-semibold text-primary">{aiUsageValue}</span>
+                  <span className="font-semibold text-orange-400">{aiUsageValue}</span>
                   <span>10 - Totalmente integrada</span>
                 </div>
               </div>
@@ -182,7 +182,7 @@ const FormStep2 = ({ form }: FormStep2Props) => {
                 <Textarea
                   id="bottleneck"
                   placeholder="Ex: demora em relatórios ou retrabalho entre áreas"
-                  className="min-h-[100px] resize-none text-center md:text-left"
+                  className="min-h-[100px] resize-none text-center md:text-left bg-slate-950/50 border-slate-800 text-slate-100 placeholder:text-slate-400"
                   {...field}
                 />
               </FormControl>
@@ -192,7 +192,7 @@ const FormStep2 = ({ form }: FormStep2Props) => {
         />
       </div>
 
-      <p className="text-sm text-muted-foreground text-center">
+      <p className="text-sm text-slate-400 text-center">
         Faltam 30 segundos para o seu Raio-X personalizado
       </p>
     </div>

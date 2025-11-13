@@ -164,10 +164,10 @@ const FormStep3 = ({ form }: FormStep3Props) => {
   return (
     <div className="space-y-8 animate-in fade-in duration-500 text-center md:text-left">
       <div className="space-y-3">
-        <h2 className="text-3xl font-bold text-foreground">
+        <h2 className="text-3xl font-bold text-slate-100">
           Pra onde enviamos seu Raio-X?
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-slate-400">
           Seu relatório personalizado será enviado em até 5 minutos.
         </p>
       </div>
@@ -179,14 +179,14 @@ const FormStep3 = ({ form }: FormStep3Props) => {
           render={({ field }) => (
             <FormItem>
               <Label htmlFor="fullName" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <User className="w-4 h-4 text-primary" />
+                <User className="w-4 h-4 text-orange-400" />
                 Nome completo *
               </Label>
               <FormControl>
                 <Input
                   id="fullName"
                   placeholder="Digite seu nome completo"
-                  className="h-12 text-center md:text-left"
+                  className="h-12 text-center md:text-left bg-slate-950/50 border-slate-800 text-slate-100 placeholder:text-slate-400"
                   {...field}
                 />
               </FormControl>
@@ -201,7 +201,7 @@ const FormStep3 = ({ form }: FormStep3Props) => {
           render={({ field }) => (
             <FormItem>
               <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <Mail className="w-4 h-4 text-primary" />
+                <Mail className="w-4 h-4 text-orange-400" />
                 E-mail corporativo *
               </Label>
               <FormControl>
@@ -209,7 +209,7 @@ const FormStep3 = ({ form }: FormStep3Props) => {
                   id="email"
                   type="email"
                   placeholder="nome@empresa.com"
-                  className="h-12 text-center md:text-left"
+                  className="h-12 text-center md:text-left bg-slate-950/50 border-slate-800 text-slate-100 placeholder:text-slate-400"
                   {...field}
                 />
               </FormControl>
@@ -224,7 +224,7 @@ const FormStep3 = ({ form }: FormStep3Props) => {
           render={({ field }) => (
             <FormItem>
               <Label htmlFor="whatsapp" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-                <Phone className="w-4 h-4 text-primary" />
+                <Phone className="w-4 h-4 text-orange-400" />
                 WhatsApp (com DDD) *
               </Label>
               <FormControl>
@@ -235,7 +235,7 @@ const FormStep3 = ({ form }: FormStep3Props) => {
                   value={field.value || ""}
                   onChange={handleWhatsappChange}
                   ref={whatsappInputRef}
-                  className="h-12 text-center md:text-left"
+                  className="h-12 text-center md:text-left bg-slate-950/50 border-slate-800 text-slate-100 placeholder:text-slate-400"
                 />
               </FormControl>
               <FormMessage />
@@ -248,7 +248,7 @@ const FormStep3 = ({ form }: FormStep3Props) => {
           name="lgpdConsent"
           render={({ field }) => (
             <FormItem>
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border">
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-slate-900/60 border border-slate-800">
                 <FormControl>
                   <Checkbox
                     id="lgpd"

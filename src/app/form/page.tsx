@@ -129,8 +129,8 @@ export default function FormPage() {
   useEffect(() => {}, []);
 
   return (
-    <section className="min-h-screen min-w-screen w-screen h-screen bg-background">
-      <div className="h-full w-full bg-card border border-border flex flex-col">
+    <section className="min-h-screen w-screen bg-[#020F00] text-slate-100">
+      <div className="h-full w-full rounded-none border border-slate-800 bg-slate-900/80 flex flex-col">
         <div className="flex-1 overflow-y-auto px-6 py-8 md:px-12 md:py-12 lg:px-20">
           <div className="max-w-6xl mx-auto">
             <FormHeader />
@@ -159,14 +159,14 @@ export default function FormPage() {
           </div>
         </div>
 
-        <div className="w-full border-t border-border bg-card px-6 py-4 md:px-12 lg:px-20">
+        <div className="w-full border-t border-slate-800 bg-slate-900/80 px-6 py-4 md:px-12 lg:px-20">
           <div className="max-w-6xl mx-auto flex gap-4">
             {currentStep > 1 && (
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleBack}
-                className="flex-1 h-12"
+                className="flex-1 h-12 border-slate-700 text-slate-200"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Voltar
@@ -178,7 +178,7 @@ export default function FormPage() {
                 type="button"
                 onClick={handleNext}
                 disabled={!canProceed}
-                className="flex-1 h-12 bg-gradient-primary text-white transition-opacity hover:opacity-90"
+                className="flex-1 h-12 bg-orange-500 text-white transition hover:bg-orange-600 disabled:opacity-60"
               >
                 Próximo
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -188,7 +188,7 @@ export default function FormPage() {
                 type="button"
                 onClick={handleSubmitClick}
                 disabled={!canProceed}
-                className="flex-1 h-12 bg-gradient-primary text-white font-bold transition-opacity hover:opacity-90"
+                className="flex-1 h-12 bg-orange-500 text-white font-bold transition hover:bg-orange-600 disabled:opacity-60"
               >
                 🚀 Gerar meu Raio-X agora
               </Button>
