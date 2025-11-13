@@ -7,10 +7,12 @@ import { Mail, Phone, User } from "lucide-react";
 import { toast } from "sonner";
 import { useRef, useEffect } from "react";
 import type { ChangeEvent } from "react";
+import { UseFormReturn } from "react-hook-form";
+import { FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+import { type FormValues } from "./form-schema";
 
 interface FormStep3Props {
-  formData: any;
-  updateFormData: (field: string, value: any) => void;
+  form: UseFormReturn<FormValues>;
 }
 
 const FREE_EMAIL_DOMAINS = new Set([
@@ -89,10 +91,12 @@ function caretIndexForNthDigit(formatted: string, n: number) {
 
 const EMAIL_DEBOUNCE_MS = 800;
 
-const FormStep3 = ({ formData, updateFormData }: FormStep3Props) => {
+const FormStep3 = ({ form }: FormStep3Props) => {
   const whatsappInputRef = useRef<HTMLInputElement | null>(null);
   const debounceRef = useRef<number | null>(null);
   const lastShownDomainRef = useRef<string | null>(null);
+
+  const email = form.watch("email");
 
   useEffect(() => {
     if (debounceRef.current) {
@@ -100,14 +104,14 @@ const FormStep3 = ({ formData, updateFormData }: FormStep3Props) => {
       debounceRef.current = null;
     }
 
-    const email = String(formData.email || "").trim();
-    if (!email || !email.includes("@")) {
+    const value = String(email || "").trim();
+    if (!value || !value.includes("@")) {
       lastShownDomainRef.current = null;
       return;
     }
 
     debounceRef.current = window.setTimeout(() => {
-      const domain = getEmailDomain(email);
+      const domain = getEmailDomain(value);
       if (domain && FREE_EMAIL_DOMAINS.has(domain)) {
         if (lastShownDomainRef.current !== domain) {
           toast("Dica: prefira um e-mail corporativo (ex: nome@empresa.com) para agilizar o atendimento.");
@@ -125,7 +129,7 @@ const FormStep3 = ({ formData, updateFormData }: FormStep3Props) => {
         debounceRef.current = null;
       }
     };
-  }, [formData.email]);
+  }, [email]);
 
   const handleWhatsappChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputEl = e.target;
@@ -136,7 +140,11 @@ const FormStep3 = ({ formData, updateFormData }: FormStep3Props) => {
 
     const formatted = formatWhatsapp(rawValue);
 
-    updateFormData("whatsapp", formatted);
+    form.setValue("whatsapp", formatted, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
 
     requestAnimationFrame(() => {
       const el = whatsappInputRef.current;
@@ -165,62 +173,100 @@ const FormStep3 = ({ formData, updateFormData }: FormStep3Props) => {
       </div>
 
       <div className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="fullName" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <User className="w-4 h-4 text-primary" />
-            Nome completo *
-          </Label>
-          <Input
-            id="fullName"
-            placeholder="Digite seu nome completo"
-            value={formData.fullName || ""}
-            onChange={(e) => updateFormData("fullName", e.target.value)}
-            className="h-12 text-center md:text-left"
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="fullName"
+          render={({ field }) => (
+            <FormItem>
+              <Label htmlFor="fullName" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <User className="w-4 h-4 text-primary" />
+                Nome completo *
+              </Label>
+              <FormControl>
+                <Input
+                  id="fullName"
+                  placeholder="Digite seu nome completo"
+                  className="h-12 text-center md:text-left"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="space-y-2">
-          <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <Mail className="w-4 h-4 text-primary" />
-            E-mail corporativo *
-          </Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="nome@empresa.com"
-            value={formData.email || ""}
-            onChange={(e) => updateFormData("email", e.target.value)}
-            className="h-12 text-center md:text-left"
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <Mail className="w-4 h-4 text-primary" />
+                E-mail corporativo *
+              </Label>
+              <FormControl>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="nome@empresa.com"
+                  className="h-12 text-center md:text-left"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="space-y-2">
-          <Label htmlFor="whatsapp" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <Phone className="w-4 h-4 text-primary" />
-            WhatsApp (com DDD) *
-          </Label>
-          <Input
-            id="whatsapp"
-            type="tel"
-            placeholder="+55 11 9XXXX-XXXX"
-            value={formData.whatsapp || ""}
-            onChange={handleWhatsappChange}
-            ref={whatsappInputRef}
-            className="h-12 text-center md:text-left"
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="whatsapp"
+          render={({ field }) => (
+            <FormItem>
+              <Label htmlFor="whatsapp" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <Phone className="w-4 h-4 text-primary" />
+                WhatsApp (com DDD) *
+              </Label>
+              <FormControl>
+                <Input
+                  id="whatsapp"
+                  type="tel"
+                  placeholder="+55 11 9XXXX-XXXX"
+                  value={field.value || ""}
+                  onChange={handleWhatsappChange}
+                  ref={whatsappInputRef}
+                  className="h-12 text-center md:text-left"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border">
-          <Checkbox
-            id="lgpd"
-            checked={formData.lgpdConsent || false}
-            onCheckedChange={(checked) => updateFormData("lgpdConsent", checked as boolean)}
-            className="mt-0.5"
-          />
-          <label htmlFor="lgpd" className="text-sm cursor-pointer flex-1 text-left">
-            Autorizo o uso dos dados para geração do meu Raio-X personalizado e contato consultivo. *
-          </label>
-        </div>
+        <FormField
+          control={form.control}
+          name="lgpdConsent"
+          render={({ field }) => (
+            <FormItem>
+              <div className="flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border">
+                <FormControl>
+                  <Checkbox
+                    id="lgpd"
+                    checked={!!field.value}
+                    onCheckedChange={(checked) =>
+                      field.onChange(checked === true)
+                    }
+                    className="mt-0.5"
+                  />
+                </FormControl>
+                <label htmlFor="lgpd" className="text-sm cursor-pointer flex-1 text-left">
+                  Autorizo o uso dos dados para geração do meu Raio-X personalizado e contato consultivo. *
+                </label>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </div>
     </div>
   );

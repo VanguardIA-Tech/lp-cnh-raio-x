@@ -2,13 +2,15 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Building2, User, Users, Briefcase } from "lucide-react";
+import { UseFormReturn } from "react-hook-form";
+import { FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+import { type FormValues, roleOptions, employeeRangeOptions, sectorOptions } from "./form-schema";
 
 interface FormStep1Props {
-  formData: any;
-  updateFormData: (field: string, value: string) => void;
+  form: UseFormReturn<FormValues>;
 }
 
-const FormStep1 = ({ formData, updateFormData }: FormStep1Props) => {
+const FormStep1 = ({ form }: FormStep1Props) => {
   return (
     <div className="space-y-8 animate-in fade-in duration-500 text-center md:text-left">
       <div className="space-y-3">
@@ -21,77 +23,123 @@ const FormStep1 = ({ formData, updateFormData }: FormStep1Props) => {
       </div>
 
       <div className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="company" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <Building2 className="w-4 h-4 text-primary" />
-            Nome da empresa *
-          </Label>
-          <Input
-            id="company"
-            placeholder="Ex: Rede Mais Saúde"
-            value={formData.company || ""}
-            onChange={(e) => updateFormData("company", e.target.value)}
-            className="h-12 text-center md:text-left"
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="company"
+          render={({ field }) => (
+            <FormItem>
+              <Label htmlFor="company" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <Building2 className="w-4 h-4 text-primary" />
+                Nome da empresa *
+              </Label>
+              <FormControl>
+                <Input
+                  id="company"
+                  placeholder="Ex: Rede Mais Saúde"
+                  className="h-12 text-center md:text-left"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="space-y-2">
-          <Label htmlFor="role" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <User className="w-4 h-4 text-primary" />
-            Seu cargo/função *
-          </Label>
-          <Select value={formData.role || ""} onValueChange={(value) => updateFormData("role", value)}>
-            <SelectTrigger className="h-12">
-              <SelectValue placeholder="Selecione seu cargo" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="ceo">CEO</SelectItem>
-              <SelectItem value="diretor">Diretor</SelectItem>
-              <SelectItem value="gerente">Gerente</SelectItem>
-              <SelectItem value="coordenador">Coordenador</SelectItem>
-              <SelectItem value="outro">Outro</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <Label className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <User className="w-4 h-4 text-primary" />
+                Seu cargo/função *
+              </Label>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="h-12">
+                    <SelectValue placeholder="Selecione seu cargo" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {roleOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt === "ceo" ? "CEO" :
+                         opt === "diretor" ? "Diretor" :
+                         opt === "gerente" ? "Gerente" :
+                         opt === "coordenador" ? "Coordenador" :
+                         "Outro"}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="space-y-2">
-          <Label htmlFor="employees" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <Users className="w-4 h-4 text-primary" />
-            Número de colaboradores *
-          </Label>
-          <Select value={formData.employees || ""} onValueChange={(value) => updateFormData("employees", value)}>
-            <SelectTrigger className="h-12">
-              <SelectValue placeholder="Selecione a faixa" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="1-20">1 a 20</SelectItem>
-              <SelectItem value="21-50">21 a 50</SelectItem>
-              <SelectItem value="51-200">51 a 200</SelectItem>
-              <SelectItem value="200+">Mais de 200</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <FormField
+          control={form.control}
+          name="employees"
+          render={({ field }) => (
+            <FormItem>
+              <Label className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <Users className="w-4 h-4 text-primary" />
+                Número de colaboradores *
+              </Label>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="h-12">
+                    <SelectValue placeholder="Selecione a faixa" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {employeeRangeOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt === "1-20" ? "1 a 20" :
+                         opt === "21-50" ? "21 a 50" :
+                         opt === "51-200" ? "51 a 200" :
+                         "Mais de 200"}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-        <div className="space-y-2">
-          <Label htmlFor="sector" className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
-            <Briefcase className="w-4 h-4 text-primary" />
-            Setor de atuação *
-          </Label>
-          <Select value={formData.sector || ""} onValueChange={(value) => updateFormData("sector", value)}>
-            <SelectTrigger className="h-12">
-              <SelectValue placeholder="Selecione o setor" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="industria">Indústria</SelectItem>
-              <SelectItem value="servicos">Serviços</SelectItem>
-              <SelectItem value="saude">Saúde</SelectItem>
-              <SelectItem value="varejo">Varejo</SelectItem>
-              <SelectItem value="juridico">Jurídico</SelectItem>
-              <SelectItem value="educacao">Educação</SelectItem>
-              <SelectItem value="outro">Outro</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <FormField
+          control={form.control}
+          name="sector"
+          render={({ field }) => (
+            <FormItem>
+              <Label className="flex items-center gap-2 text-sm font-medium justify-center md:justify-start">
+                <Briefcase className="w-4 h-4 text-primary" />
+                Setor de atuação *
+              </Label>
+              <FormControl>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="h-12">
+                    <SelectValue placeholder="Selecione o setor" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {sectorOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt === "industria" ? "Indústria" :
+                         opt === "servicos" ? "Serviços" :
+                         opt === "saude" ? "Saúde" :
+                         opt === "varejo" ? "Varejo" :
+                         opt === "juridico" ? "Jurídico" :
+                         opt === "educacao" ? "Educação" : "Outro"}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </div>
 
       <p className="text-sm text-muted-foreground text-center">
