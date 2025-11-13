@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TopBanner } from "@/components/home/top-banner";
 import { HeroSection } from "@/components/home/hero-section";
 import { ContextSection } from "@/components/home/context-section";
 import { CnhCorporateSection } from "@/components/home/cnh-corporate-section";
@@ -18,10 +17,7 @@ const floatingCTAClasses =
 export default function Home() {
   return (
     <div className="bg-[#020F00] text-slate-100">
-      <div className="flex flex-col">
-        <TopBanner />
-        <HeroSection />
-      </div>
+      <HeroSection />
 
       <main className="flex flex-col">
         <ContextSection />
