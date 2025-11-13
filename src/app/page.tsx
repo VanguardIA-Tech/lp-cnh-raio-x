@@ -10,7 +10,6 @@ import { AuthoritySection } from "@/components/home/authority-section";
 import { SuccessStoriesSection } from "@/components/home/success-stories-section";
 import { SiteFooter } from "@/components/home/site-footer";
 import { DiagnosisSection } from "@/components/home/diagnosis-section";
-import { MethodSection } from "@/components/home/method-section";
 import { FinalCtaSection } from "@/components/home/final-cta-section";
 
 const floatingCTAClasses =
@@ -28,9 +27,8 @@ export default function Home() {
         <ContextSection />
         <CnhCorporateSection />
         <SuccessStoriesSection />
-        <DiagnosisSection /> {/* MOVIDA PARA CÁ */}
+        <DiagnosisSection />
         <AuthoritySection />
-        <MethodSection />
         <FinalCtaSection />
       </main>
 
