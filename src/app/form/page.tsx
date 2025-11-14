@@ -1,320 +1,201 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useForm, FieldErrors } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
-import { ArrowRight, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
-import { useFormTelemetry } from "@/components/FormObserver";
-
+import { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Progress } from "@/components/ui/progress";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-const formSchema = z.object({
-  name: z.string().min(1, "Queremos saber quem lidera a transformação."),
-  role: z.string().min(1, "Assim entendemos seu papel na decisão e operação."),
-  company: z.string().min(1, "Para conectar ao mapeamento setorial."),
-  employees: z.enum(["até 30", "30 a 100", "100 a 500", "acima de 500"], {
-    errorMap: () => ({ message: "Selecione uma opção." }),
-  }),
-  challenge: z.enum(
-    [
-      "Processos lentos / retrabalho",
-      "Falta de integração entre sistemas",
-      "Equipe sobrecarregada",
-      "Falta de clareza estratégica",
-    ],
-    { errorMap: () => ({ message: "Selecione uma opção." }) }
-  ),
-  whatsapp: z.string().min(10, "Enviaremos o link direto do diagnóstico via WhatsApp."),
-  email: z.string().email("Por favor, insira um e-mail corporativo válido."),
-  lgpd: z.boolean().refine((val) => val === true, {
-    message: "Você precisa autorizar o contato para enviar.",
-  }),
-});
+import FormHeader from "@/components/form/form-header";
+import FormProgress from "@/components/form/form-progress";
+import HighlightBox from "@/components/form/highlight-box";
+import FormStep1 from "@/components/form/form-step-1";
+import FormStep2 from "@/components/form/form-step-2";
+import FormStep3 from "@/components/form/form-step-3";
+import { formSchema, type FormValues, defaultFormValues } from "@/components/form/form-schema";
+import { useFormTelemetry } from "@/components/FormObserver";
+import { Form } from "@/components/ui/form";
 
-type FormValues = z.infer<typeof formSchema>;
+const TOTAL_STEPS = 3;
+const WEBHOOK_URL = "https://automation.infra.vanguardia.cloud/webhook/funil-icia";
 
-const step1Fields: (keyof FormValues)[] = ["name", "role", "company"];
+const step1Fields: (keyof FormValues)[] = ["company", "role", "employees", "sector"];
+const step2Fields: (keyof FormValues)[] = ["priorityAreas", "focusAreas", "aiUsage", "bottleneck"];
+const step3Fields: (keyof FormValues)[] = ["fullName", "email", "whatsapp", "lgpdConsent"];
 
 export default function FormPage() {
-  const [step, setStep] = useState(1);
   const router = useRouter();
   const { onSuccess, onValidationError } = useFormTelemetry();
+
+  const [currentStep, setCurrentStep] = useState(1);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
-    defaultValues: {
-      name: "",
-      role: "",
-      company: "",
-      whatsapp: "",
-      email: "",
-      lgpd: false,
-    },
+    defaultValues: defaultFormValues,
   });
 
-  const { formState } = form;
+  const formData = form.watch();
 
-  const handleNextStep = () => setStep(2);
-  const handlePrevStep = () => setStep(1);
+  const stepFields = useMemo(() => {
+    if (currentStep === 1) return step1Fields;
+    if (currentStep === 2) return step2Fields;
+    return step3Fields;
+  }, [currentStep]);
+
+  const canProceed = useMemo(() => {
+    const v = formData;
+    if (currentStep === 1) return !!v.company && !!v.role && !!v.employees && !!v.sector;
+    if (currentStep === 2)
+      return (v.priorityAreas?.length || 0) > 0 &&
+        (v.priorityAreas?.length || 0) <= 3 &&
+        (v.focusAreas?.length || 0) > 0 &&
+        typeof v.aiUsage === "number" &&
+        String(v.bottleneck || "").trim().length > 0;
+    return (
+      String(v.fullName || "").trim().length > 0 &&
+      String(v.email || "").trim().length > 0 &&
+      String(v.whatsapp || "").trim().length > 0 &&
+      v.lgpdConsent === true
+    );
+  }, [currentStep, formData]);
+
+  const handleNext = async () => {
+    const ok = await form.trigger(stepFields as any);
+    if (!ok) {
+      const firstError = Object.keys(form.formState.errors)[0] as keyof FormValues | undefined;
+      onValidationError(firstError);
+      toast.error("Por favor, corrija os campos desta etapa.");
+      return;
+    }
+    if (currentStep < TOTAL_STEPS) {
+      setCurrentStep((s) => s + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep((s) => s - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   const onSubmit = async (values: FormValues) => {
-    const webhookUrl = "https://automation.infra.vanguardia.cloud/webhook/funil-icia";
-    
     let utms = {};
     try {
-      const storedUtms = sessionStorage.getItem("vanguardia_utms");
-      if (storedUtms) {
-        utms = JSON.parse(storedUtms);
-      }
-    } catch (error) {
-      console.error("Failed to parse UTMs from sessionStorage", error);
-    }
+      const stored = sessionStorage.getItem("vanguardia_utms");
+      if (stored) utms = JSON.parse(stored);
+    } catch {}
 
     const payload = {
       ...values,
       ...utms,
       funil: "funil-icia-direto",
+      submittedAt: new Date().toISOString(),
     };
 
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+    const resp = await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-      if (!response.ok) {
-        const errorBody = await response.text();
-        console.error("Webhook response error:", errorBody);
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      await onSuccess(values.email);
-      toast.success("Formulário enviado com sucesso!");
-      router.push("/obrigado");
-
-    } catch (error) {
-      console.error("Failed to submit form:", error);
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => "");
+      console.error("Webhook error:", resp.status, text);
       toast.error("Ocorreu um erro ao enviar o formulário. Tente novamente.");
+      return;
     }
+
+    await onSuccess(values.email);
+    toast.success("Raio-X gerado com sucesso!");
+    router.push("/obrigado");
   };
 
-  const onValidationErrors = (errors: FieldErrors<FormValues>) => {
-    const firstErrorField = Object.keys(errors)[0] as keyof FormValues | undefined;
-    onValidationError(firstErrorField);
+  const handleSubmitClick = async () => {
+    const ok = await form.trigger(step3Fields as any);
+    if (!ok) {
+      const firstError = Object.keys(form.formState.errors)[0] as keyof FormValues | undefined;
+      onValidationError(firstError);
+      toast.error("Por favor, corrija os campos desta etapa.");
+      return;
+    }
+    await onSubmit(form.getValues());
   };
 
-  const watchedStep1Values = form.watch(step1Fields);
-  const [isStep1Valid, setIsStep1Valid] = useState(false);
-
-  useEffect(() => {
-    const validateStep1 = async () => {
-      const step1Schema = formSchema.pick({ name: true, role: true, company: true });
-      const result = await step1Schema.safeParseAsync({
-        name: watchedStep1Values[0],
-        role: watchedStep1Values[1],
-        company: watchedStep1Values[2],
-      });
-      setIsStep1Valid(result.success);
-    };
-    validateStep1();
-  }, [watchedStep1Values]);
+  useEffect(() => {}, []);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
-      <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mb-10 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
-            Diagnóstico de Eficiência e IA Integrada
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">
-            Quer descobrir quanto <strong className="text-orange-400">tempo</strong> e <strong className="text-orange-400">margem</strong> sua empresa pode recuperar com <strong className="text-blue-400">IA</strong>? Preencha o diagnóstico inicial e receba uma <strong className="text-blue-400">análise personalizada</strong> em até <strong className="text-blue-400">48h</strong>.
-          </p>
-        </div>
+    <section className="min-h-screen w-screen bg-[#020F00] text-slate-100">
+      <div className="h-full w-full rounded-none border border-transparent bg-transparent flex flex-col">
+        <div className="flex-1 overflow-y-auto px-6 py-8 md:px-12 md:py-12 lg:px-20">
+          <div className="max-w-6xl mx-auto">
+            <FormHeader />
 
-        <div className="mb-8 space-y-3">
-          <div className="flex justify-between text-sm font-medium text-slate-300" aria-label={`Etapa ${step} de 2`}>
-            <span className={step >= 1 ? "text-blue-400" : ""}>1. Contato</span>
-            <span className={step >= 2 ? "text-blue-400" : ""}>2. Detalhes & Envio</span>
-          </div>
-          <Progress value={step === 1 ? 50 : 100} className="h-2 w-full bg-slate-800 [&>div]:bg-blue-600" />
-        </div>
+            <div className="mt-6">
+              <FormProgress currentStep={currentStep} totalSteps={TOTAL_STEPS} />
+            </div>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-lg shadow-blue-500/5">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit, onValidationErrors)} data-clarity-mask="true">
-              <div className="flex h-20 items-center justify-between border-b border-slate-800 p-4">
-                {step === 1 ? (
-                  <div></div>
-                ) : (
-                  <Button type="button" variant="outline" onClick={handlePrevStep} className="h-10 border-slate-600 bg-transparent px-4 text-slate-200 hover:bg-slate-800 hover:text-white" id="btn-form-back" data-track="true">
-                    Voltar
-                  </Button>
-                )}
+            <div className="mt-8">
+              <div className="max-w-6xl mx-auto grid gap-6 lg:grid-cols-12 items-start">
+                <div className="lg:col-span-12">
+                  <div className="mb-6">
+                    <HighlightBox />
+                  </div>
 
-                {step === 1 && (
-                  <Button
-                    type="button"
-                    onClick={handleNextStep}
-                    disabled={!isStep1Valid}
-                    className={cn(
-                      "h-10 px-4 text-base font-semibold text-white transition-colors",
-                      isStep1Valid
-                        ? "bg-orange-500 hover:bg-orange-600"
-                        : "bg-orange-500/20 text-orange-400/70 cursor-not-allowed"
-                    )}
-                    id="btn-form-next"
-                    data-track="true"
-                  >
-                    Continuar <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </Button>
-                )}
-              </div>
-
-              <div className="p-6 sm:p-8">
-                <div aria-live="polite">
-                  {step === 1 && (
-                    <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
-                      <FormField control={form.control} name="name" render={({ field }) => (
-                        <FormItem className="sm:col-span-2">
-                          <FormLabel>Nome completo</FormLabel>
-                          <FormControl><Input placeholder="Seu nome" {...field} aria-required="true" /></FormControl>
-                          <FormDescription>Queremos saber quem lidera a transformação.</FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="role" render={({ field }) => (
-                        <FormItem className="sm:col-span-2">
-                          <FormLabel>Cargo ou função na empresa</FormLabel>
-                          <FormControl><Input placeholder="Ex: Diretor de Operações" {...field} aria-required="true" /></FormControl>
-                          <FormDescription>Assim entendemos seu papel na decisão e operação.</FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
-                      <FormField control={form.control} name="company" render={({ field }) => (
-                        <FormItem className="sm:col-span-2">
-                          <FormLabel>Nome da empresa</FormLabel>
-                          <FormControl><Input placeholder="Nome da sua empresa" {...field} aria-required="true" /></FormControl>
-                          <FormDescription>Para conectar ao mapeamento setorial.</FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )} />
+                  <Form {...form}>
+                    <div className="min-h-[60vh]">
+                      {currentStep === 1 && <FormStep1 form={form} />}
+                      {currentStep === 2 && <FormStep2 form={form} />}
+                      {currentStep === 3 && <FormStep3 form={form} />}
                     </div>
-                  )}
-
-                  {step === 2 && (
-                    <div className="space-y-8">
-                      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
-                        <FormField control={form.control} name="employees" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel><strong>Número aproximado de colaboradores</strong></FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value} required aria-required="true">
-                              <FormControl><SelectTrigger><SelectValue placeholder="Selecione o tamanho" /></SelectTrigger></FormControl>
-                              <SelectContent>
-                                <SelectItem value="até 30">até 30</SelectItem>
-                                <SelectItem value="30 a 100">30 a 100</SelectItem>
-                                <SelectItem value="100 a 500">100 a 500</SelectItem>
-                                <SelectItem value="acima de 500">acima de 500</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                        <FormField control={form.control} name="challenge" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel><strong>Principal desafio atual</strong></FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value} required aria-required="true">
-                              <FormControl><SelectTrigger><SelectValue placeholder="Selecione o desafio" /></SelectTrigger></FormControl>
-                              <SelectContent>
-                                <SelectItem value="Processos lentos / retrabalho">Processos lentos / retrabalho</SelectItem>
-                                <SelectItem value="Falta de integração entre sistemas">Falta de integração entre sistemas</SelectItem>
-                                <SelectItem value="Equipe sobrecarregada">Equipe sobrecarregada</SelectItem>
-                                <SelectItem value="Falta de clareza estratégica">Falta de clareza estratégica</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                        <FormField control={form.control} name="whatsapp" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel><strong>WhatsApp corporativo</strong></FormLabel>
-                            <FormControl><Input type="tel" placeholder="(00) 00000-0000" {...field} aria-required="true" /></FormControl>
-                            <FormDescription>Enviaremos o link direto do diagnóstico.</FormDescription>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                        <FormField control={form.control} name="email" render={({ field }) => (
-                          <FormItem>
-                            <FormLabel><strong>E-mail corporativo</strong></FormLabel>
-                            <FormControl><Input type="email" placeholder="seuemail@empresa.com" {...field} aria-required="true" /></FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )} />
-                      </div>
-                      <FormField control={form.control} name="lgpd" render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-slate-700 p-4">
-                          <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-slate-400 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" aria-required="true" /></FormControl>
-                          <div className="space-y-1 leading-none">
-                            <FormLabel>Li e autorizo o contato para o Diagnóstico ICIA conforme a LGPD.</FormLabel>
-                            <FormMessage />
-                          </div>
-                        </FormItem>
-                      )} />
-                      <div className="flex flex-col items-center gap-3 pt-4">
-                        <Button
-                          type="submit"
-                          disabled={!formState.isValid || formState.isSubmitting}
-                          className={cn(
-                            "h-14 w-full max-w-xs px-6 text-base font-semibold text-white transition-colors",
-                            formState.isValid && !formState.isSubmitting
-                              ? "bg-green-600 hover:bg-green-700"
-                              : "bg-green-500/20 text-green-300/70 cursor-not-allowed"
-                          )}
-                          id="btn-form-submit"
-                          data-cta="lead"
-                          data-track="true"
-                        >
-                          {formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
-                          Receber meu Diagnóstico de Eficiência
-                        </Button>
-                        <p className="text-center text-xs text-slate-400">
-                          Tempo médio de resposta: 24h úteis. Sua eficiência começa com clareza.
-                        </p>
-                      </div>
-                    </div>
-                  )}
+                  </Form>
                 </div>
               </div>
-            </form>
-          </Form>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full border-t border-slate-800/60 bg-[#020F00] px-6 py-4 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto flex gap-4">
+            {currentStep > 1 && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleBack}
+                className="flex-1 h-12 border-slate-700 text-slate-200"
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Voltar
+              </Button>
+            )}
+
+            {currentStep < TOTAL_STEPS ? (
+              <Button
+                type="button"
+                onClick={handleNext}
+                disabled={!canProceed}
+                className="flex-1 h-12 bg-orange-500 text-white transition hover:bg-orange-600 disabled:opacity-60"
+              >
+                Próximo
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                onClick={handleSubmitClick}
+                disabled={!canProceed}
+                className="flex-1 h-12 bg-orange-500 text-white font-bold transition hover:bg-orange-600 disabled:opacity-60"
+              >
+                🚀 Gerar meu Raio-X agora
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

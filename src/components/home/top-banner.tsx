@@ -1,6 +1,6 @@
 export function TopBanner() {
   return (
-    <header className="bg-blue-600">
+    <header className="bg-green-600">
       <div className="mx-auto max-w-6xl px-4 py-2 text-center text-sm font-medium text-white sm:text-base">
         <span role="img" aria-label="alvo" className="mr-2 inline-block">
           🎯

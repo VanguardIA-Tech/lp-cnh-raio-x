@@ -1,118 +1,178 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Instagram, Youtube } from "lucide-react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { CheckCircle2, ArrowRight, Play } from "lucide-react";
 
-const cases = [
-  {
-    text: (
-      <>
-        Rede Mais Saúde — <strong className="text-orange-400">25 dias → 3 dias</strong>
-      </>
-    ),
-  },
-  {
-    text: (
-      <>
-        Silveira Athias — <strong className="text-orange-400">IA em 100 %</strong> dos fluxos
-      </>
-    ),
-  },
-  {
-    text: (
-      <>
-        DO IT Hub — <strong className="text-orange-400">300 % + de eficiência</strong> operacional
-      </>
-    ),
-  },
-];
-
-const socialLinks = [
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Instagram", href: "#", icon: Instagram },
-  { name: "YouTube", href: "#", icon: Youtube },
-];
+const PROCESS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm";
 
 export default function ObrigadoPage() {
-  return (
-    <main className="flex min-h-screen w-full items-center justify-center bg-slate-950 p-4 sm:p-6 lg:p-8">
-      <div className="w-full max-w-5xl rounded-2xl border border-slate-800 bg-slate-900/80 p-7 sm:p-10 md:p-12">
-        <div className="flex flex-col items-center text-center">
-          {/* 1. Hero/Confirmação */}
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
-            Sua <strong className="text-orange-400">aplicação foi enviada!</strong>
-          </h1>
-          <p className="mt-4 max-w-prose text-base text-slate-300 sm:text-lg">
-            Em breve meu time de especialistas entrará em contato para agendar o seu{" "}
-            <strong className="text-orange-400">diagnóstico</strong>.
-          </p>
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || "/form";
+  const isCalendlyExternal = /^https?:\/\//i.test(calendlyUrl);
 
-          {/* 2. Mini-cases Grade */}
-          <div className="my-8 w-full max-w-4xl">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {cases.map((caseItem, index) => (
-                <div
-                  key={index}
-                  className="flex h-24 items-center justify-center rounded-lg border border-slate-800 bg-slate-800/40 p-4 sm:h-28 sm:p-6"
+  return (
+    <main className="min-h-screen w-full bg-[#020F00] text-slate-100">
+      <div className="mx-auto w-full max-w-5xl p-4 sm:p-6 lg:p-8">
+        {/* HERO / CONFIRMAÇÃO */}
+        <section className="rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8 md:p-10 text-center">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-600/20 ring-1 ring-green-500/30">
+              <CheckCircle2 className="h-7 w-7 text-green-400" aria-hidden="true" />
+            </div>
+
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+              Perfeito. Sua empresa está na lista de seleção para habilitação em IA.
+            </h1>
+
+            <p className="mt-1 max-w-prose text-base text-slate-300 sm:text-lg">
+              Em até 5 minutos você receberá um Raio-X de Eficiência com IA no seu e-mail e WhatsApp.
+            </p>
+
+            <div className="pt-2">
+              <Button
+                asChild
+                className="h-auto rounded-md bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
+              >
+                <Link
+                  href={calendlyUrl}
+                  {...(isCalendlyExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  id="cta-calendly-primary"
+                  data-cta="calendar"
+                  data-track="true"
                 >
-                  <p className="text-base font-medium text-slate-100 sm:text-lg">
-                    {caseItem.text}
-                  </p>
-                </div>
-              ))}
+                  Agendar Conversa com Especialista <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
             </div>
           </div>
+        </section>
 
-          {/* Divisor */}
-          <hr className="mb-6 h-px w-full max-w-xs border-slate-800" />
-
-          {/* 3. Bloco de Exclusividade */}
-          <p className="max-w-prose text-base text-slate-300 sm:text-lg">
-            Este programa é <strong className="text-orange-400">exclusivo</strong> e{" "}
-            <strong className="text-orange-400">personalizado</strong>, faz parte da seleção das apenas{" "}
-            <strong className="text-orange-400">100 empresas selecionadas</strong> em 2026 para{" "}
-            <strong className="text-orange-400">integração corporativa de IA</strong> no Brasil
-          </p>
-
-          {/* Divisor */}
-          <hr className="my-8 h-px w-full max-w-md border-slate-800" />
-
-          {/* 4. Footer Interno */}
-          <footer className="flex w-full flex-col items-center gap-6">
-            <Link href="/" aria-label="Página Inicial da VanguardIA">
-              <Image
-                src="/vanguardia-logo.png"
-                alt="VanguardIA Logo"
-                width={165}
-                height={35}
-                className="h-auto w-36 object-contain"
-                priority
-              />
-            </Link>
-            <p className="text-xs uppercase tracking-widest text-slate-500">
-              Eficiência que liberta
+        {/* BLOCO 2 — PRÓXIMO PASSO */}
+        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8">
+          <div className="mx-auto max-w-3xl text-center space-y-4">
+            <h2 className="text-2xl font-bold sm:text-3xl">
+              Seu próximo passo é ver como as empresas estão formando times piloto de IA.
+            </h2>
+            <p className="text-base text-slate-300 sm:text-lg">
+              Nossos consultores vão te mostrar como o processo funciona — da avaliação à certificação completa.
             </p>
-            <nav aria-label="Redes sociais">
-              <div className="flex items-center gap-2">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    aria-label={social.name}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md p-2 text-slate-400 transition-colors hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                    data-track="true"
-                  >
-                    <social.icon className="h-5 w-5" aria-hidden="true" />
-                  </a>
-                ))}
-              </div>
-            </nav>
-          </footer>
-        </div>
+            <div className="pt-2">
+              <Button
+                asChild
+                variant="outline"
+                className="h-auto border-slate-700 bg-slate-950/40 px-6 py-3 text-base text-slate-100 hover:bg-slate-900"
+              >
+                <a
+                  href={PROCESS_VIDEO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="cta-watch-process"
+                  data-cta="watch-process-video"
+                  data-track="true"
+                >
+                  <Play className="mr-2 h-4 w-4" aria-hidden="true" />
+                  Assistir vídeo de 2 minutos sobre o processo
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* BLOCO 3 — PROVAS E LEGADO */}
+        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8">
+          <div className="space-y-6">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {/* Slide 1 — Sindarpa */}
+                <CarouselItem className="md:basis-1/2 lg:basis-1/2">
+                  <div className="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-950/50">
+                    <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-md bg-white/90 px-2 py-1">
+                      <Image
+                        src="/logo-sindarpa.png"
+                        alt="Sindarpa"
+                        width={24}
+                        height={24}
+                        className="h-6 w-6 object-contain"
+                      />
+                      <span className="text-xs font-medium text-slate-900">Sindarpa</span>
+                    </div>
+                    <video
+                      src={PROCESS_VIDEO_URL}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="h-[260px] w-full object-cover sm:h-[320px]"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <p className="text-sm font-medium text-white">
+                        “A IA não substitui pessoas, ela liberta o potencial delas.”
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                {/* Slide 2 — Rede Mais Saúde */}
+                <CarouselItem className="md:basis-1/2 lg:basis-1/2">
+                  <div className="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-950/50">
+                    <div className="absolute left-3 top-3 z-10 flex items-center gap-2 rounded-md bg-white/90 px-2 py-1">
+                      <Image
+                        src="/logo-rede-mais-saude.png"
+                        alt="Rede Mais Saúde"
+                        width={24}
+                        height={24}
+                        className="h-6 w-6 object-contain"
+                      />
+                      <span className="text-xs font-medium text-slate-900">Rede Mais Saúde</span>
+                    </div>
+                    <video
+                      src={PROCESS_VIDEO_URL}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="h-[260px] w-full object-cover sm:h-[320px]"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <p className="text-sm font-medium text-white">
+                        “A IA não substitui pessoas, ela liberta o potencial delas.”
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        </section>
+
+        {/* BLOCO 4 — EXCLUSIVIDADE */}
+        <section className="mt-8 rounded-2xl border border-slate-800 bg-slate-950/50 p-6 sm:p-8 text-center">
+          <div className="mx-auto max-w-3xl space-y-5">
+            <p className="text-base text-slate-300 sm:text-lg">
+              O programa CNH Corporativa faz parte da seleção das 100 empresas habilitadas em 2026.
+            </p>
+            <Button
+              asChild
+              className="h-auto rounded-md bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-green-600/30 transition hover:bg-green-700"
+            >
+              <Link
+                href={calendlyUrl}
+                {...(isCalendlyExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                id="cta-final-slot"
+                data-cta="calendar-final"
+                data-track="true"
+              >
+                Garantir minha vaga <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+        </section>
       </div>
     </main>
   );
