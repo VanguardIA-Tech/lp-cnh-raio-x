@@ -23,8 +23,24 @@ export function HeroSection() {
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
-            <span className="text-[#7CFF00] filter drop-shadow-[0_0_16px_rgba(124,255,0,0.85)]">
-              nova era da IA?
+            {/* Container relativo para posicionar a bola de luz atrás do trecho destacado */}
+            <span className="relative inline-block">
+              {/* Bola de luz (decorativa) */}
+              <span
+                aria-hidden="true"
+                className="
+                  pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                  -z-10
+                  h-36 w-36 sm:h-44 sm:w-44 md:h-56 md:w-56 lg:h-64 lg:w-64
+                  rounded-full
+                  blur-[72px]
+                  bg-[radial-gradient(closest-side,rgba(255,122,24,0.16),rgba(124,255,0,0.12),transparent_60%)]
+                  opacity-95
+                "
+              />
+              <span className="text-[#7CFF00] filter drop-shadow-[0_0_16px_rgba(124,255,0,0.85)]">
+                nova era da IA?
+              </span>
             </span>
           </h1>
           <p className="mx-auto max-w-[600px] text-base text-slate-200 sm:mx-0 sm:text-lg">
