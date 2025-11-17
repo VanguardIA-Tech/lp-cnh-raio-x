@@ -19,7 +19,8 @@ import { useFormTelemetry } from "@/components/FormObserver";
 import { Form } from "@/components/ui/form";
 
 const TOTAL_STEPS = 3;
-const WEBHOOK_URL = "https://automation.infra.vanguardia.cloud/webhook/funil-icia";
+// Atualizado para o endpoint solicitado pelo usuário
+const WEBHOOK_URL = "https://automation.infra.vanguardia.cloud/webhook/funil-cnh";
 
 const step1Fields: (keyof FormValues)[] = ["company", "role", "employees", "sector"];
 const step2Fields: (keyof FormValues)[] = ["priorityAreas", "focusAreas", "aiUsage", "bottleneck"];
@@ -93,7 +94,8 @@ export default function FormPage() {
     const payload = {
       ...values,
       ...utms,
-      funil: "funil-icia-direto",
+      // Atualizado conforme solicitado pelo usuário
+      funil: "funil-cnh-ditero",
       submittedAt: new Date().toISOString(),
     };
 
