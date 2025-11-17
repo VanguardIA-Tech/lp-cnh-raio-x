@@ -23,7 +23,9 @@ export function HeroSection() {
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
-            <span className="text-orange-400">nova era da IA?</span>
+            <span className="text-[#7CFF00] filter drop-shadow-[0_0_16px_rgba(124,255,0,0.85)]">
+              nova era da IA?
+            </span>
           </h1>
           <p className="mx-auto max-w-[600px] text-base text-slate-200 sm:mx-0 sm:text-lg">
             A CNH da IA Corporativa habilita líderes, colaboradores e parceiros para usar a
