@@ -70,10 +70,14 @@ export function HeroSection() {
               className="h-full w-full object-cover"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-6 text-center">
-              <p className="text-lg font-semibold text-white drop-shadow-md">
-                “99% usam IA. 1% pilota.”
-              </p>
+            
+            {/* Faixa de texto ajustada */}
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex justify-center p-6">
+              <div className="w-fit rounded-lg bg-black/30 px-4 py-2 backdrop-blur-sm">
+                <p className="text-lg font-semibold text-white drop-shadow-md">
+                  99% usam IA. 1% pilota.
+                </p>
+              </div>
             </div>
           </div>
         </div>
