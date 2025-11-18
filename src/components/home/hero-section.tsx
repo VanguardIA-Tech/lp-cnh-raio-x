@@ -25,7 +25,7 @@ export function HeroSection() {
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
-            <span className="text-[#7CFF00] filter drop-shadow-[0_0_16px_rgba(44,90,0,0.85)]">
+            <span className="text-[color:var(--hero-accent)] filter drop-shadow-[0_0_16px_rgba(44,90,0,0.85)]">
               nova era da IA?
             </span>
           </h1>
@@ -43,7 +43,7 @@ export function HeroSection() {
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
             <Button
               asChild
-              className="inline-flex items-center rounded-md bg-[#7CFF00] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(44,90,0,0.18)] filter drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] transition hover:bg-[#6BEE00] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 uppercase"
+              className="inline-flex items-center rounded-md bg-[var(--hero-accent)] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(44,90,0,0.18)] filter drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] transition hover:bg-[var(--hero-accent-hover)] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 uppercase"
             >
               <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
                 Quero habilitar meu time

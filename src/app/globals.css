@@ -49,6 +49,10 @@
     --shadow-strong: 0 16px 48px -8px hsl(214 100% 31% / 0.16);
     
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Hero / CTA accent colors (configuradas conforme pedido) */
+    --hero-accent: #7CFF00;
+    --hero-accent-hover: #6BEE00;
   }
 
   /* Dark theme: palette atualizada conforme solicitado
@@ -102,6 +106,10 @@
     --shadow-soft: 0 2px 8px -2px hsl(91 100% 50% / 0.08);
     --shadow-medium: 0 8px 24px -4px hsl(91 100% 50% / 0.12);
     --shadow-strong: 0 16px 48px -8px hsl(91 100% 50% / 0.16);
+
+    /* Hero / CTA accent colors also available in dark mode */
+    --hero-accent: #7CFF00;
+    --hero-accent-hover: #6BEE00;
   }
 }
 
