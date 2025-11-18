@@ -37,14 +37,14 @@ export function HeroSection() {
             {/* Linha 1: Dois itens lado a lado com gradiente laranja suave */}
             <div className="flex flex-col gap-3 sm:flex-row">
               <div
-                className="inline-block rounded-full bg-gradient-to-r from-orange-500/80 to-orange-400/80 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
+                className="inline-block rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
                 role="status"
                 aria-label="+5.000 profissionais"
               >
                 +5.000 profissionais
               </div>
               <div
-                className="inline-block rounded-full bg-gradient-to-r from-orange-500/80 to-orange-400/80 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
+                className="inline-block rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
                 role="status"
                 aria-label="+300 IAs corporativas instaladas"
               >
