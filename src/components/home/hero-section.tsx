@@ -83,7 +83,7 @@ export function HeroSection() {
         <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
           <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg lg:h-[75vh]">
             <video
-              src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
+              src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4"
               autoPlay
               loop
               muted
