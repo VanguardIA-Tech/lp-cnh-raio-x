@@ -8,6 +8,7 @@
   }
 
   :root {
+    /* Light theme (mantive valores originais para o modo claro) */
     --background: 210 17% 98%;
     --foreground: 215 25% 27%;
 
@@ -48,10 +49,19 @@
     --shadow-strong: 0 16px 48px -8px hsl(214 100% 31% / 0.16);
     
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Hero / CTA accent colors (configuradas conforme pedido) */
+    --hero-accent: #7CFF00;
+    --hero-accent-hover: #6BEE00;
   }
 
+  /* Dark theme: palette atualizada conforme solicitado
+     - fundo principal: #020F00  -> HSL ≈ 112 100% 3%
+     - hero accent (verde claro): #7CFF00 -> HSL ≈ 91 100% 50%
+     - CTA / botão (laranja): #FF7A18 -> HSL ≈ 25 100% 55%
+  */
   .dark {
-    --background: 215 28% 17%;
+    --background: 112 100% 3%;
     --foreground: 210 17% 98%;
 
     --card: 215 25% 20%;
@@ -60,10 +70,16 @@
     --popover: 215 25% 20%;
     --popover-foreground: 210 17% 98%;
 
-    --primary: 214 100% 55%;
+    /* Marca / cor principal agora como o acento do hero (verde claro) */
+    --primary: 91 100% 50%;
     --primary-foreground: 215 28% 17%;
-    
-    --primary-glow: 214 100% 65%;
+
+    /* Tom mais claro para brilho/glow */
+    --primary-glow: 91 100% 65%;
+
+    /* CTA (botões laranja) */
+    --cta: 25 100% 55%;
+    --cta-foreground: 215 28% 17%;
 
     --secondary: 215 25% 23%;
     --secondary-foreground: 210 17% 98%;
@@ -71,7 +87,7 @@
     --muted: 215 25% 23%;
     --muted-foreground: 215 16% 65%;
 
-    --accent: 214 100% 55%;
+    --accent: 25 100% 55%; /* mantém o acento como laranja para CTAs quando necessário */
     --accent-foreground: 215 28% 17%;
 
     --destructive: 0 84% 60%;
@@ -79,7 +95,21 @@
 
     --border: 215 25% 27%;
     --input: 215 25% 27%;
-    --ring: 214 100% 55%;
+    --ring: 91 100% 50%;
+
+    /* Gradientes atualizados para combinar com a paleta */
+    --gradient-primary: linear-gradient(135deg, hsl(91 100% 50%), hsl(25 100% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(91 100% 50%), hsl(112 100% 3%));
+
+    --radius: 0.75rem;
+    
+    --shadow-soft: 0 2px 8px -2px hsl(91 100% 50% / 0.08);
+    --shadow-medium: 0 8px 24px -4px hsl(91 100% 50% / 0.12);
+    --shadow-strong: 0 16px 48px -8px hsl(91 100% 50% / 0.16);
+
+    /* Hero / CTA accent colors also available in dark mode */
+    --hero-accent: #7CFF00;
+    --hero-accent-hover: #6BEE00;
   }
 }
 

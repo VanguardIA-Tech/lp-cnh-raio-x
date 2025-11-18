@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
+const HERO_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
+
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#020F00] text-white lg:min-h-screen">
@@ -23,7 +25,9 @@ export function HeroSection() {
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
           <h1 className="mx-auto max-w-[560px] text-3xl font-extrabold leading-tight tracking-tight sm:mx-0 sm:text-4xl md:text-5xl lg:text-[44px]">
             Seu time está preparado para a{" "}
-            <span className="text-orange-400">nova era da IA?</span>
+            <span className="text-[color:var(--hero-accent)] filter drop-shadow-[0_0_16px_rgba(44,90,0,0.85)]">
+              nova era da IA?
+            </span>
           </h1>
           <p className="mx-auto max-w-[600px] text-base text-slate-200 sm:mx-0 sm:text-lg">
             A CNH da IA Corporativa habilita líderes, colaboradores e parceiros para usar a
@@ -39,7 +43,7 @@ export function HeroSection() {
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
             <Button
               asChild
-              className="inline-flex items-center rounded-md bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(34,197,94,.25)]"
+              className="inline-flex items-center rounded-md bg-[var(--hero-accent)] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(44,90,0,0.18)] filter drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] transition hover:bg-[var(--hero-accent-hover)] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 uppercase"
             >
               <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
                 Quero habilitar meu time
@@ -57,7 +61,7 @@ export function HeroSection() {
         <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
           <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg lg:h-[75vh]">
             <video
-              src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
+              src={HERO_VIDEO_URL}
               autoPlay
               loop
               muted
@@ -66,17 +70,21 @@ export function HeroSection() {
               className="h-full w-full object-cover"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-6 text-center">
-              <p className="text-lg font-semibold text-white drop-shadow-md">
-                “99% usam IA. 1% pilota.”
-              </p>
+            
+            {/* Faixa de texto ajustada */}
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex justify-center p-6">
+              <div className="w-fit rounded-full bg-black/50 px-4 py-2 backdrop-blur-sm">
+                <p className="text-lg font-semibold text-white drop-shadow-md">
+                  99% usam IA. 1% pilota.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Down — seta pulsante */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center">
+      {/* Scroll Down — seta pulsante (Oculto no mobile, visível a partir de lg) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 hidden justify-center lg:flex">
         <Link
           href="#conteudo"
           aria-label="Rolar para o conteúdo"

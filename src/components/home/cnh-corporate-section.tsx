@@ -1,59 +1,45 @@
-import { Award, Briefcase, MonitorPlay, Users } from "lucide-react";
 import { sectionContainerClass } from "./section-container";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Zap, Users, TrendingUp, ShieldCheck } from "lucide-react";
 
 const features = [
   {
-    icon: Award,
-    text: "Formação oficial para líderes e equipes",
-  },
-  {
-    icon: Briefcase,
-    text: "Aplicação prática em processos reais (vendas, marketing, financeiro, operações)",
-  },
-  {
-    icon: MonitorPlay,
-    text: "Treinamentos presenciais, online ou híbridos",
+    icon: Zap,
+    text: "Aceleração de Produtividade: Reduza o tempo gasto em tarefas repetitivas em até 40%.",
   },
   {
     icon: Users,
-    text: "Certificação reconhecida + acesso à Comunidade VanguardIA Corporate",
+    text: "Cultura de Inovação: Transforme colaboradores em 'pilotos de IA', prontos para liderar a mudança.",
+  },
+  {
+    icon: TrendingUp,
+    text: "Vantagem Competitiva: Use a IA para gerar insights estratégicos e tomar decisões mais rápidas.",
+  },
+  {
+    icon: ShieldCheck,
+    text: "Segurança e Ética: Implemente políticas de uso responsável, minimizando riscos e vazamentos.",
   },
 ];
 
 export function CnhCorporateSection() {
   return (
-    <section className="bg-[#020F00] py-16 sm:py-20 lg:py-24">
-      <div className={`${sectionContainerClass} gap-10`}>
-        <div className="mx-auto max-w-4xl space-y-5 text-center">
-          <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
-            A primeira certificação que transforma colaboradores em{" "}
-            <span className="text-orange-400">pilotos de IA estratégicos</span>
+    <section className="bg-[#020F00] py-14 sm:py-20 md:py-24">
+      <div className={`${sectionContainerClass} grid items-center gap-12 lg:grid-cols-2 lg:gap-16`}>
+        {/* Coluna de Texto */}
+        <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
+          <h2 className="max-w-xl text-3xl font-bold leading-tight text-slate-50 sm:text-4xl">
+            O que é a <span className="text-cyan-400">CNH da IA Corporativa</span>?
           </h2>
-        </div>
 
-        <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:shadow-lg hover:shadow-green-500/10 sm:p-8">
-          <div
-            aria-hidden="true"
-            className="absolute -z-10 h-[38rem] w-[38rem] blur-[120px]"
-            style={{
-              left: "14%",
-              top: "42%",
-              background: "radial-gradient(closest-side, rgba(34, 197, 94, 0.25), transparent)",
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -z-10 h-[52rem] w-[52rem] blur-[160px]"
-            style={{
-              right: "-8%",
-              bottom: "-12%",
-              background: "radial-gradient(closest-side, rgba(255, 122, 24, 0.15), transparent)",
-            }}
-          />
+          <div className="max-w-prose space-y-4 text-base text-slate-300 sm:text-lg">
+            <p>
+              É o programa de habilitação que transforma o uso da Inteligência Artificial de uma ferramenta individual para um motor de crescimento estratégico em toda a sua organização.
+            </p>
+            <p>
+              Garantimos que cada líder e colaborador saiba como pilotar as IAs corporativas, maximizando a eficiência e a segurança.
+            </p>
+          </div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {features.map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-start gap-4 text-left">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-green-500/20 to-cyan-500/20 ring-1 ring-inset ring-white/10">
@@ -63,21 +49,23 @@ export function CnhCorporateSection() {
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="mt-10 flex justify-center">
-            <Button
-              asChild
-              className="h-auto rounded-md bg-orange-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition-all duration-300 hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(255,122,24,.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:scale-[0.98]"
-            >
-              <Link
-                href="/form"
-                id="cta-cnh-corporate"
-                data-cta="corporate-presentation"
-                data-track="true"
-              >
-                Solicitar Apresentação Corporativa
-              </Link>
-            </Button>
+        {/* Coluna de Imagem/Visual */}
+        <div className="relative flex justify-center lg:justify-end">
+          <div className="relative h-[300px] w-full max-w-md overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/50 shadow-2xl sm:h-[400px] lg:h-[500px]">
+            {/* Placeholder para imagem ou visual */}
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-900 to-slate-950">
+              <div className="text-center">
+                <Zap className="mx-auto h-10 w-10 text-cyan-400" />
+                <p className="mt-2 text-lg font-semibold text-slate-300">
+                  IA Corporativa em Ação
+                </p>
+                <p className="text-sm text-slate-500">
+                  (Visual de dashboard ou case de uso)
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
