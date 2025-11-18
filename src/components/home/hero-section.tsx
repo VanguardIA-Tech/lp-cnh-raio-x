@@ -8,7 +8,7 @@ export function HeroSection() {
       {/* Aurora Mesh Blobs */}
       <div
         aria-hidden="true"
-        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[#22C55E]/[0.35] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
+        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[#FF7A18]/[0.35] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
       />
       <div
         aria-hidden="true"
