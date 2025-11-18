@@ -32,35 +32,11 @@ export function HeroSection() {
             Inteligência Artificial de forma estratégica.
           </p>
 
-          {/* Bullets como faixas em coluna - Novo Estilo */}
-          <div className="mx-auto mt-2 flex flex-col items-center gap-3 sm:mx-0 sm:items-start">
-            {/* Linha 1: Dois itens lado a lado com gradiente laranja suave */}
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <div
-                className="inline-block rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
-                role="status"
-                aria-label="+5.000 profissionais"
-              >
-                +5.000 profissionais
-              </div>
-              <div
-                className="inline-block rounded-full bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
-                role="status"
-                aria-label="+300 IAs corporativas instaladas"
-              >
-                +300 IAs corporativas instaladas
-              </div>
-            </div>
-
-            {/* Linha 2: Um item abaixo com borda metálica laranja */}
-            <div
-              className="inline-block rounded-full border border-orange-500/70 bg-slate-900/50 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-sm backdrop-blur-sm"
-              role="status"
-              aria-label="Clientes em todo o Brasil"
-            >
-              Clientes em todo o Brasil
-            </div>
-          </div>
+          <p className="text-center text-sm text-slate-300 sm:text-left">
+            <span className="font-semibold text-white">+5.000 profissionais</span> •{" "}
+            <span className="font-semibold text-white">+300 IAs corporativas instaladas</span> •
+            Clientes em todo o Brasil
+          </p>
 
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
             <Button
