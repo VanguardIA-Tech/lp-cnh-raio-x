@@ -53,6 +53,43 @@
     /* Hero / CTA accent colors (configuradas conforme pedido) */
     --hero-accent: #7CFF00;
     --hero-accent-hover: #6BEE00;
+
+    /* Centralização de cores principais da home */
+    --color-bg-main: #020F00;
+    --color-cta: #FF7A18;
+    --color-green-500: #22C55E;
+    --color-cyan-300: #6EE7F9;
+    --color-shadow-deep: rgba(44,90,0,0.85);
+    --color-shadow-deep-strong: rgba(44,90,0,0.18);
+    --color-cta-shadow: rgba(255,122,24,0.25);
+    --color-green-shadow: rgba(34,197,94,0.25);
+    --color-green-soft: rgba(34,197,94,0.12);
+    --color-cta-soft: rgba(255,122,24,0.10);
+    --color-green-strong: rgba(34,197,94,0.20);
+    --color-bg-cyan: rgba(110,231,249,0.25);
+    --color-bg-green: rgba(34,197,94,0.35);
+    --color-bg-orange: rgba(255,122,24,0.20);
+    --color-text-slate-100: #f1f5f9;
+    --color-text-slate-300: #cbd5e1;
+    --color-border-slate-700: #334155;
+    --color-bg-green-600: #16a34a;
+    --color-bg-green-700: #15803d;
+    --color-bg-orange-500: #f97316;
+    --color-bg-orange-600: #ea580c;
+    --color-text-white: #fff;
+    --color-text-slate-900: #0f172a;
+  }
+
+  /* Component utilities for cards with metallic border */
+  @layer components {
+    .card-metal-inner {
+      background-color: var(--color-bg-main);
+      transition: background-color 200ms var(--transition-smooth);
+    }
+
+    .card-metal-inner:hover {
+      background-color: rgba(2, 15, 0, 0.9);
+    }
   }
 
   /* Dark theme: palette atualizada conforme solicitado

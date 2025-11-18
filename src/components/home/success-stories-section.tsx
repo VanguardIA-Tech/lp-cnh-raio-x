@@ -26,7 +26,7 @@ const stories = [
 
 export function SuccessStoriesSection() {
   return (
-    <section className="bg-[#020F00] py-16 text-white sm:py-24">
+    <section className="bg-[color:var(--color-bg-main)] py-16 text-[color:var(--color-text-white)] sm:py-24">
       <div className={`${sectionContainerClass} gap-10`}>
         <h2 className="text-center text-2xl font-semibold leading-snug text-slate-50 sm:text-3xl">
           Empresas, sindicatos e associações que já habilitaram seus times
@@ -34,34 +34,35 @@ export function SuccessStoriesSection() {
 
         <div className="grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
           {stories.map(({ title, subtitle, logo }) => (
-            <div
-              key={title}
-              className="
-                group relative flex h-full flex-col items-center justify-start gap-4
-                rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6
-                shadow-sm transition duration-200 ease-out
-                hover:border-slate-700 hover:bg-slate-900 hover:shadow-lg
-                focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-green-500
-                active:scale-[0.99]
-              "
-            >
-              {logo && (
-                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white/95 p-2">
-                  <img
-                    src={logo}
-                    alt={`${title} Logo`}
-                    aria-hidden="true"
-                    className="h-full w-full object-contain"
-                  />
+            <div key={title} className="rounded-2xl p-[2.5px] bg-gradient-to-r from-[#bfff00] via-white/80 to-[#7CFF00]">
+              <div
+                className="
+                  group relative flex h-full flex-col items-center justify-start gap-4
+                  rounded-2xl card-metal-inner p-6 w-full transition duration-200 ease-out
+                  hover:shadow-lg
+                  focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-green-500
+                  active:scale-[0.99]
+                "
+                style={{ boxSizing: 'border-box' }}
+              >
+                {logo && (
+                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white/95 p-2">
+                    <img
+                      src={logo}
+                      alt={`${title} Logo`}
+                      aria-hidden="true"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                )}
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-slate-50 sm:text-lg">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-slate-300">
+                    {subtitle}
+                  </p>
                 </div>
-              )}
-              <div className="space-y-1">
-                <h3 className="text-base font-semibold text-slate-50 sm:text-lg">
-                  {title}
-                </h3>
-                <p className="text-sm text-slate-300">
-                  {subtitle}
-                </p>
               </div>
             </div>
           ))}

@@ -16,7 +16,7 @@ const floatingCTAClasses =
 
 export default function Home() {
   return (
-    <div className="bg-[#020F00] text-slate-100">
+    <div className="bg-[color:var(--color-bg-main)] text-[color:var(--color-text-slate-100)]">
       <HeroSection />
 
       <main id="conteudo" className="flex flex-col">
@@ -32,7 +32,7 @@ export default function Home() {
 
       <Button
         asChild
-        className={`${floatingCTAClasses} rounded-md bg-orange-500 px-8 py-4 text-base font-semibold text-white hover:bg-orange-600 text-center`}
+        className={`${floatingCTAClasses} rounded-md bg-[color:var(--color-bg-orange-500)] px-8 py-4 text-base font-semibold text-[color:var(--color-text-white)] hover:bg-[color:var(--color-bg-orange-600)] text-center`}
       >
         <Link
           href="/form"

@@ -6,19 +6,19 @@ const HERO_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v17634
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#020F00] text-white lg:min-h-screen">
+    <section className="relative overflow-hidden bg-[color:var(--color-bg-main)] text-[color:var(--color-text-white)] lg:min-h-screen">
       {/* Aurora Mesh Blobs */}
       <div
         aria-hidden="true"
-        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[#22C55E]/[0.35] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
+        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[color:var(--color-bg-green)] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
       />
       <div
         aria-hidden="true"
-        className="absolute right-[10%] top-[30%] h-[48vw] w-[48vw] rounded-full bg-[#6EE7F9]/[0.25] blur-[100px] lg:h-[34rem] lg:w-[34rem]"
+        className="absolute right-[10%] top-[30%] h-[48vw] w-[48vw] rounded-full bg-[color:var(--color-bg-cyan)] blur-[100px] lg:h-[34rem] lg:w-[34rem]"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-0 right-[-12%] h-[60vw] w-[60vw] rounded-full bg-[#FF7A18]/[0.20] blur-[140px] lg:h-[40rem] lg:w-[40rem]"
+        className="absolute bottom-0 right-[-12%] h-[60vw] w-[60vw] rounded-full bg-[color:var(--color-bg-orange)] blur-[140px] lg:h-[40rem] lg:w-[40rem]"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:grid lg:min-h-screen lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
@@ -45,7 +45,7 @@ export function HeroSection() {
               asChild
               className="inline-flex items-center rounded-md bg-[var(--hero-accent)] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(44,90,0,0.18)] filter drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] transition hover:bg-[var(--hero-accent-hover)] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 uppercase"
             >
-              <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
+              <Link href="https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia" id="cta-hero" data-cta="lead" data-track="true" target="_blank" rel="noopener noreferrer">
                 Quero habilitar meu time
               </Link>
             </Button>
@@ -59,7 +59,7 @@ export function HeroSection() {
         </div>
 
         <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
-          <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg lg:h-[75vh]">
+          <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-[color:var(--color-border-slate-700)] bg-white/5 shadow-lg lg:h-[75vh]">
             <video
               src={HERO_VIDEO_URL}
               autoPlay
