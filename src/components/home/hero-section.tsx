@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
+const HERO_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
+
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#020F00] text-white lg:min-h-screen">
@@ -41,7 +43,7 @@ export function HeroSection() {
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
             <Button
               asChild
-              className="inline-flex items-center rounded-md bg-[#7CFF00] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(124,255,0,0.18)] filter drop-shadow-[0_0_18px_rgba(124,255,0,0.85)] transition hover:bg-[#6BEE00] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+              className="inline-flex items-center rounded-md bg-[#7CFF00] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(44,90,0,0.18)] filter drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] transition hover:bg-[#6BEE00] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
             >
               <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
                 Quero habilitar meu time
@@ -59,7 +61,7 @@ export function HeroSection() {
         <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
           <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70 shadow-lg lg:h-[75vh]">
             <video
-              src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
+              src={HERO_VIDEO_URL}
               autoPlay
               loop
               muted

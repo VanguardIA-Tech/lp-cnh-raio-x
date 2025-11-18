@@ -18,6 +18,8 @@ const steps = [
   },
 ];
 
+const DIAGNOSIS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
+
 export function DiagnosisSection() {
   return (
     <section className="bg-[#020F00] py-14 sm:py-20 md:py-24">
@@ -73,7 +75,7 @@ export function DiagnosisSection() {
         {/* Coluna Auxiliar (Painel Visual) - Mantendo o vídeo */}
         <div className="relative hidden h-full min-h-[320px] overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/50 md:flex">
           <video
-            src="https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm"
+            src={DIAGNOSIS_VIDEO_URL}
             autoPlay
             loop
             muted
