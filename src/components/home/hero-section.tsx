@@ -83,8 +83,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Down — seta pulsante */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center">
+      {/* Scroll Down — seta pulsante (Oculto no mobile, visível a partir de lg) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 hidden justify-center lg:flex">
         <Link
           href="#conteudo"
           aria-label="Rolar para o conteúdo"
