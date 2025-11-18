@@ -41,7 +41,7 @@ export function HeroSection() {
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
             <Button
               asChild
-              className="inline-flex items-center rounded-md bg-[#7CFF00] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(124,255,0,0.18)] filter drop-shadow-[0_0_18px_rgba(124,255,0,0.85)] transition hover:bg-[#6BEE00] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+              className="inline-flex items-center rounded-md bg-orange-500 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 hover:shadow-[0_0_24px_rgba(34,197,94,.25)]"
             >
               <Link href="/form" id="cta-hero" data-cta="lead" data-track="true">
                 Quero habilitar meu time
