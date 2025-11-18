@@ -73,7 +73,7 @@ export function HeroSection() {
             
             {/* Faixa de texto ajustada */}
             <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex justify-center p-6">
-              <div className="w-fit rounded-lg bg-black/30 px-4 py-2 backdrop-blur-sm">
+              <div className="w-fit rounded-full bg-black/50 px-4 py-2 backdrop-blur-sm">
                 <p className="text-lg font-semibold text-white drop-shadow-md">
                   99% usam IA. 1% pilota.
                 </p>
