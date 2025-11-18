@@ -32,24 +32,24 @@ export function HeroSection() {
             Inteligência Artificial de forma estratégica.
           </p>
 
-          {/* Bullets como faixas em coluna */}
-          <div className="mx-auto mt-2 flex w-full max-w-[420px] flex-col items-center gap-3">
+          {/* Bullets como faixas em coluna - Novo Estilo */}
+          <div className="mx-auto mt-2 flex flex-col items-center gap-3 sm:mx-0 sm:items-start">
             <div
-              className="w-full rounded-full border border-orange-500/90 bg-orange-500/6 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm"
+              className="inline-block rounded-full bg-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
               role="status"
               aria-label="+5.000 profissionais"
             >
               +5.000 profissionais
             </div>
             <div
-              className="w-full rounded-full border border-orange-500/90 bg-orange-500/6 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm"
+              className="inline-block rounded-full bg-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
               role="status"
               aria-label="+300 IAs corporativas instaladas"
             >
               +300 IAs corporativas instaladas
             </div>
             <div
-              className="w-full rounded-full border border-orange-500/90 bg-orange-500/6 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm"
+              className="inline-block rounded-full bg-orange-500 px-4 py-1.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-500/20"
               role="status"
               aria-label="Clientes em todo o Brasil"
             >
