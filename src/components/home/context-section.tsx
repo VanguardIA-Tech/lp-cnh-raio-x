@@ -2,7 +2,7 @@ import { sectionContainerClass } from "./section-container";
 
 export function ContextSection() {
   return (
-    <section className="relative overflow-hidden border-t border-slate-700 bg-[#020F00] py-16 sm:py-24">
+    <section className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
           {/* Título e Subtítulo */}
@@ -10,7 +10,7 @@ export function ContextSection() {
             <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
               A IA já está em todo lugar
             </h2>
-            <p className="text-balance text-xl font-medium text-orange-400 sm:text-2xl">
+            <p className="text-balance text-xl font-medium text-[color:var(--color-cta)] sm:text-2xl">
               mas quase ninguém sabe conduzir.
             </p>
           </div>
@@ -20,11 +20,11 @@ export function ContextSection() {
             {/* Blobs de fundo */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.12)_0%,transparent_60%)] opacity-70 blur-[90px] left-[-8%] top-[-6%]"
+              className="pointer-events-none absolute -z-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,var(--color-green-soft)_0%,transparent_60%)] opacity-70 blur-[90px] left-[-8%] top-[-6%]"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,24,0.10)_0%,transparent_60%)] opacity-80 blur-[110px] right-[-10%] bottom-[-8%]"
+              className="pointer-events-none absolute -z-10 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,var(--color-cta-soft)_0%,transparent_60%)] opacity-80 blur-[110px] right-[-10%] bottom-[-8%]"
             />
 
             {/* Frases com estilos individuais */}
@@ -51,11 +51,11 @@ export function ContextSection() {
               <div className="relative w-full py-2">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(38rem_18rem_at_50%_60%,rgba(34,197,94,.20)_0%,transparent_60%)]"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(38rem_18rem_at_50%_60%,var(--color-green-strong)_0%,transparent_60%)]"
                 />
                 <p>
                   A <strong className="font-bold text-slate-100">CNH Corporativa</strong> nasceu para resolver isso: formar{" "}
-                  <span className="bg-gradient-to-r from-green-400 to-green-300 bg-clip-text font-semibold text-transparent">
+                  <span className="font-semibold text-[color:var(--hero-accent)]">
                     pilotos de IA
                   </span>{" "}
                   dentro das empresas, com{" "}

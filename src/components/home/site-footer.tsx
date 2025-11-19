@@ -4,15 +4,15 @@ import { Linkedin, Instagram, Youtube } from "lucide-react";
 import { sectionContainerClass } from "./section-container";
 
 const socialLinks = [
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Instagram", href: "#", icon: Instagram },
-  { name: "YouTube", href: "#", icon: Youtube },
+  { name: "LinkedIn", href: "https://br.linkedin.com/company/grupovanguardiabr", icon: Linkedin },
+  { name: "Instagram", href: "https://www.instagram.com/grupovanguard.ia/", icon: Instagram },
+  { name: "YouTube", href: "https://www.youtube.com/@VanguardiaGrupo", icon: Youtube },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-700 bg-[#020F00] text-slate-300">
-      <div className={`${sectionContainerClass} py-8 md:py-10`}>
+    <footer className="border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] text-[color:var(--color-text-slate-300)]">
+      <div className={`${sectionContainerClass} py-8 md:py-10 pb-24`}> {/* Adicionado pb-16 para maior espaçamento no mobile */}
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between md:items-center">
           {/* Logo */}
           <div className="text-center md:text-left">
@@ -41,7 +41,7 @@ export function SiteFooter() {
                   aria-label={social.name}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-md p-2 text-slate-300 transition-colors hover:text-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+                  className="rounded-md p-2 text-slate-300 transition-colors hover:text-[color:var(--hero-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--hero-accent)]"
                   data-track="true"
                   role="listitem"
                 >
@@ -55,7 +55,7 @@ export function SiteFooter() {
         {/* Linha Inferior */}
         <div className="border-t border-slate-700 pt-8 text-center">
           <p className="text-xs uppercase tracking-widest text-slate-400">
-            “VanguardIA — Inteligência Aplicada à Prosperidade.”
+            “Eficiência que liberta”
           </p>
         </div>
       </div>
