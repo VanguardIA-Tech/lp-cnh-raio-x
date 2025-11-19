@@ -95,7 +95,7 @@ export default function FormPage() {
       ...values,
       ...utms,
       // Atualizado conforme solicitado pelo usuário
-      funil: "funil-cnh-ditero",
+      funil: "funil-cnh-raiox",
       submittedAt: new Date().toISOString(),
     };
 
