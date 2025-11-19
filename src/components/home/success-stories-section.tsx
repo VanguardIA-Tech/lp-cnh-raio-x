@@ -1,5 +1,9 @@
+"use client"
+
 import { sectionContainerClass } from "./section-container";
 import * as React from "react";
+import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
+import testimonials from "@/data/testimonials.json";
 
 const stories = [
   {
@@ -34,7 +38,7 @@ export function SuccessStoriesSection() {
 
         <div className="grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
           {stories.map(({ title, subtitle, logo }) => (
-            <div key={title} className="rounded-2xl p-[2.5px] bg-gradient-to-r from-[#bfff00] via-white/80 to-[#7CFF00]">
+            <div key={title} className="rounded-2xl p-[2.5px] bg-metal-green">
               <div
                 className="
                   group relative flex h-full flex-col items-center justify-start gap-4
@@ -76,6 +80,10 @@ export function SuccessStoriesSection() {
         <p className="text-center text-xl italic text-slate-200 tracking-wide sm:text-2xl">
           “Não formamos usuários. Formamos pilotos”
         </p>
+
+        <div className="mt-8">
+          <TestimonialsCarousel items={testimonials} />
+        </div>
       </div>
     </section>
   );

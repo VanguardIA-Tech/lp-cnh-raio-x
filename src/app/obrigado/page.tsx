@@ -3,17 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
 import { CheckCircle2, ArrowRight, Play } from "lucide-react";
-import { useState } from "react";
-import testimonials from "./testimonials.json";
-import { Dialog } from "@/components/ui/dialog";
+import testimonials from "@/data/testimonials.json";
 
 const PROCESS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
 const whatsappUrl = "https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia";
 
 export default function ObrigadoPage() {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   return (
     <main className="min-h-screen w-full bg-[#020F00] text-slate-100">
@@ -90,41 +87,7 @@ export default function ObrigadoPage() {
           <h2 className="text-2xl font-bold sm:text-3xl text-center mb-6">
             Depoimentos
           </h2>
-          <div className="relative max-w-3xl mx-auto px-8 sm:px-12">
-            <Carousel opts={{ align: "start", loop: true, slidesToScroll: 1 }}>
-              <CarouselContent>
-                {testimonials.map((testimonial, index) => (
-                  <CarouselItem
-                    key={index}
-                    className="flex justify-center basis-full sm:basis-2/3 md:basis-1/2 lg:basis-1/3"
-                  >
-                    <div
-                      className="flex flex-col items-center cursor-pointer w-full max-w-[400px]"
-                      onClick={() => setSelectedVideo(testimonial.videoUrl)}
-                    >
-                      <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/50 shadow-lg w-full h-[370px] sm:h-[420px]">
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-10">
-                          <Play className="h-12 w-12 text-white" />
-                        </div>
-                        <video
-                          src={testimonial.videoUrl}
-                          className="w-full h-full object-cover"
-                          muted
-                          loop
-                          preload="metadata"
-                        />
-                      </div>
-                      <p className="mt-4 text-center text-base font-semibold text-slate-100">
-                        {testimonial.name}
-                      </p>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="bg-black/80 border-none text-white hover:bg-black/90 shadow-lg" />
-              <CarouselNext className="bg-black/80 border-none text-white hover:bg-black/90 shadow-lg" />
-            </Carousel>
-          </div>
+          <TestimonialsCarousel items={testimonials} />
         </section>
 
         {/* BLOCO 4 — EXCLUSIVIDADE */}
@@ -151,33 +114,7 @@ export default function ObrigadoPage() {
           </div>
         </section>
 
-        {/* Video Popup */}
-        <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-          {selectedVideo && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-              <div className="relative w-full max-w-3xl mx-4">
-                <button
-                  className="absolute top-2 right-2 z-20 rounded-full bg-black/80 text-white p-2 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white"
-                  onClick={() => setSelectedVideo(null)}
-                  aria-label="Fechar vídeo"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-                <div className="flex items-center justify-center w-full" style={{ maxHeight: '90vh' }}>
-                  <video
-                    src={selectedVideo}
-                    controls
-                    autoPlay
-                    className="w-full max-h-[90vh] rounded-lg shadow-2xl bg-black object-contain"
-                    style={{ aspectRatio: '16/9' }}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </Dialog>
+        {/* Video popup moved inside TestimonialsCarousel component */}
       </div>
     </main>
   );

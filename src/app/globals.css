@@ -78,6 +78,8 @@
     --color-bg-orange-600: #ea580c;
     --color-text-white: #fff;
     --color-text-slate-900: #0f172a;
+    /* Metallic green gradient */
+    --gradient-metal-green: linear-gradient(90deg, #bfff00 0%, rgba(255,255,255,0.8) 50%, #7CFF00 100%);
   }
 
   /* Component utilities for cards with metallic border */
@@ -89,6 +91,11 @@
 
     .card-metal-inner:hover {
       background-color: rgba(2, 15, 0, 0.9);
+    }
+
+    /* Utility to apply the metallic green gradient from the design */
+    .bg-metal-green {
+      background-image: var(--gradient-metal-green);
     }
   }
 
