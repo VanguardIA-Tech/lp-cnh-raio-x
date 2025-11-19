@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Play } from "lucide-react"
 import { Dialog } from "@/components/ui/dialog"
+import Autoplay from "embla-carousel-autoplay"
 
 type Testimonial = {
   name: string
@@ -27,12 +28,23 @@ export default function TestimonialsCarousel({ items, onSelect, className }: Pro
     onSelect?.(videoUrl)
   }
 
+  // Duplicar itens para criar efeito infinito sem "salto"
+  const infiniteItems = [...items, ...items, ...items]
+
   return (
     <div className={className}>
       <div className="relative max-w-3xl mx-auto px-8 sm:px-12">
-        <Carousel opts={{ align: "start", loop: true, slidesToScroll: 1 }}>
+        <Carousel
+          opts={{ align: "start", loop: true, slidesToScroll: 1 }}
+          plugins={[
+            Autoplay({
+              delay: 4000,
+              stopOnInteraction: false,
+            }),
+          ]}
+        >
           <CarouselContent>
-            {items.map((testimonial, index) => (
+            {infiniteItems.map((testimonial, index) => (
               <CarouselItem
                 key={index}
                 className="flex justify-center basis-full sm:basis-2/3 md:basis-1/2 lg:basis-1/3"
