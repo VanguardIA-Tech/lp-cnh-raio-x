@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
+import PrimaryCta from "@/components/cta/PrimaryCta";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { sectionContainerClass } from "./section-container";
 
 export function FinalCtaSection() {
   return (
-    <section className="border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24 md:py-32">
+    <section id="sec-final" aria-labelledby="heading-final" className="border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24 md:py-32">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
-          <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
+          <h2 id="heading-final" className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
             A nova era profissional começou
             <br />
             <span className="text-[color:var(--hero-accent)]">
@@ -24,20 +24,19 @@ export function FinalCtaSection() {
           </p>
 
           <div className="pt-6">
-            <Button
-              asChild
-              className="h-auto rounded-md bg-[color:var(--hero-accent)] px-8 py-4 text-base font-semibold text-[color:var(--color-text-slate-900)] shadow-lg shadow-[color:var(--color-green-shadow)] transition hover:bg-[color:var(--hero-accent-hover)] hover:shadow-[0_0_24px_var(--color-green-shadow)] uppercase"
+            <PrimaryCta
+              id="cta-final"
+              href="/form"
               size="lg"
+              variant="secondary"
+              className="h-auto rounded-md px-8 py-4 text-base font-semibold text-[color:var(--color-text-slate-900)] shadow-lg shadow-[color:var(--color-green-shadow)] transition hover:bg-[color:var(--hero-accent-hover)] hover:shadow-[0_0_24px_var(--color-green-shadow)] uppercase bg-[color:var(--hero-accent)]"
+              ariaLabel="Quero habilitar meu time"
+              dataCta="lead"
+              dataTrack="true"
+              dataVariant="final"
             >
-              <Link
-                href="/form"
-                id="cta-final"
-                data-cta="lead"
-                data-track="true"
-              >
-                Quero habilitar meu time
-              </Link>
-            </Button>
+              Quero habilitar meu time
+            </PrimaryCta>
           </div>
         </div>
       </div>

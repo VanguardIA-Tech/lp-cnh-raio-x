@@ -1,4 +1,7 @@
-import { Button } from "@/components/ui/button";
+import PrimaryCta from "@/components/cta/PrimaryCta";
+import VideoCard from "@/components/ui/video-card";
+import AuroraField from "@/components/decor/aurora-field";
+import { heroAurora } from "@/content/auroras";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
@@ -8,18 +11,7 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[color:var(--color-bg-main)] text-[color:var(--color-text-white)] lg:min-h-screen">
       {/* Aurora Mesh Blobs */}
-      <div
-        aria-hidden="true"
-        className="absolute left-[12%] top-[22%] h-[60vw] w-[60vw] rounded-full bg-[color:var(--color-bg-green)] blur-[100px] lg:h-[48rem] lg:w-[48rem]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute right-[10%] top-[30%] h-[48vw] w-[48vw] rounded-full bg-[color:var(--color-bg-cyan)] blur-[100px] lg:h-[34rem] lg:w-[34rem]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 right-[-12%] h-[60vw] w-[60vw] rounded-full bg-[color:var(--color-bg-orange)] blur-[140px] lg:h-[40rem] lg:w-[40rem]"
-      />
+      <AuroraField items={heroAurora} />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:grid lg:min-h-screen lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8">
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7">
@@ -41,14 +33,22 @@ export function HeroSection() {
           </p>
 
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start">
-            <Button
-              asChild
-              className="inline-flex items-center rounded-md bg-[var(--hero-accent)] px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_8px_30px_rgba(44,90,0,0.18)] filter drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] transition hover:bg-[var(--hero-accent-hover)] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 uppercase"
+            <PrimaryCta
+              id="cta-hero"
+              href="https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="md"
+              variant="secondary"
+              motion="gradient"
+              className="uppercase shadow-[0_8px_30px_rgba(44,90,0,0.18)] drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)]"
+              ariaLabel="Quero habilitar meu time"
+              dataCta="lead"
+              dataTrack="true"
+              dataVariant="hero"
             >
-              <Link href="https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia" id="cta-hero" data-cta="lead" data-track="true" target="_blank" rel="noopener noreferrer">
-                Quero habilitar meu time
-              </Link>
-            </Button>
+              Quero habilitar meu time
+            </PrimaryCta>
             <Link
               href="/form"
               className="text-center text-xs text-slate-300 underline transition hover:text-white sm:text-left sm:text-sm"
@@ -59,27 +59,15 @@ export function HeroSection() {
         </div>
 
         <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">
-          <div className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-[color:var(--color-border-slate-700)] bg-white/5 shadow-lg lg:h-[75vh]">
-            <video
-              src={HERO_VIDEO_URL}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="h-full w-full object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            
-            {/* Faixa de texto ajustada */}
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex justify-center p-6">
-              <div className="w-fit rounded-full bg-black/50 px-4 py-2 backdrop-blur-sm">
-                <p className="text-lg font-semibold text-white drop-shadow-md">
-                  99% usam IA. 1% pilota.
-                </p>
-              </div>
-            </div>
-          </div>
+          <VideoCard
+            src={HERO_VIDEO_URL}
+            className="w-full max-w-sm shadow-lg lg:h-[75vh]"
+            clickToOpen
+            dialogClassName="max-w-6xl"
+            dialogTitle="Prévia do vídeo do herói"
+          >
+            <p className="text-lg font-semibold text-white drop-shadow-md">99% usam IA. 1% pilota.</p>
+          </VideoCard>
         </div>
       </div>
 

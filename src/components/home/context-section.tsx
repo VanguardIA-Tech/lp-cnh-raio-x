@@ -2,12 +2,12 @@ import { sectionContainerClass } from "./section-container";
 
 export function ContextSection() {
   return (
-    <section className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24">
+    <section id="sec-context" aria-labelledby="heading-context" className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
           {/* Título e Subtítulo */}
           <div className="space-y-2">
-            <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
+            <h2 id="heading-context" className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
               A IA já está em todo lugar
             </h2>
             <p className="text-balance text-xl font-medium text-[color:var(--color-cta)] sm:text-2xl">

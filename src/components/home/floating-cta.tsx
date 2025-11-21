@@ -1,43 +1,45 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useFloatingCta } from "@/hooks/use-floating-cta";
-import Link from "next/link";
+import PrimaryCta from "@/components/cta/PrimaryCta";
+import { brandingCopy } from "@/content/branding";
+import { templateConfig } from "@/config/template-config";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 export function FloatingCta() {
   const isVisible = useFloatingCta();
+  const [mounted, setMounted] = useState(false);
 
-  return (
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       className={`
-        fixed bottom-0 left-0 right-0 z-50 transform-gpu bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 backdrop-blur-sm
+        fixed inset-x-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] sm:inset-auto sm:bottom-6 sm:right-6 z-50
+        w-[calc(100vw-2rem)] sm:w-auto
         transition-all duration-500 ease-in-out
-        ${isVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}
+        ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
       `}
     >
-      <div className="mx-auto flex max-w-7xl justify-center px-4 sm:justify-end sm:px-6 lg:px-8">
-        <Button
-          asChild
-          className="
-            h-auto w-full rounded-md bg-orange-500 px-6 py-3 text-center text-base font-semibold text-white
-            shadow-lg shadow-orange-500/30 transition-all duration-300
-            hover:bg-[color:var(--color-bg-orange-600)] hover:shadow-[0_0_24px_var(--color-cta-shadow)]
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400
-            focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950
-            active:scale-[0.98]
-            sm:w-auto
-          "
-        >
-          <Link
-            href="/form"
-            id="cta-floating"
-            data-cta="lead"
-            data-track="true"
-          >
-            Quero meu Diagnóstico de Eficiência com IA
-          </Link>
-        </Button>
-      </div>
-    </div>
+      <PrimaryCta
+        id="cta-floating"
+        href="/form"
+        size="md"
+        variant="primary"
+        className="w-full sm:w-auto shadow-lg shadow-orange-500/30"
+        ariaLabel={brandingCopy.hero.floatingCtaLabel || templateConfig.branding.primaryCtaText}
+        dataCta="lead"
+        dataTrack="true"
+        dataVariant="floating"
+      >
+        {brandingCopy.hero.floatingCtaLabel || templateConfig.branding.primaryCtaText}
+      </PrimaryCta>
+    </div>,
+    document.body
   );
 }

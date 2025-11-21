@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 // Este hook determina se o CTA flutuante deve estar visível
 // com base na posição de rolagem do usuário.
-export function useFloatingCta(threshold = 600) {
+export function useFloatingCta(threshold = 400) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

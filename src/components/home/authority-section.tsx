@@ -2,11 +2,11 @@ import { sectionContainerClass } from "./section-container";
 
 export function AuthoritySection() {
   return (
-    <section className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24">
+    <section id="sec-authority" aria-labelledby="heading-authority" className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24">
       <div className={`${sectionContainerClass} items-center text-center`}>
         <div className="mx-auto max-w-4xl space-y-6">
           {/* Título */}
-          <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
+          <h2 id="heading-authority" className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl md:text-5xl">
             Criado pela <span className="text-[color:var(--hero-accent)]">VanguardIA</span>, o movimento que nasceu na Amazônia para ensinar o Brasil a usar IA com propósito.
           </h2>
 

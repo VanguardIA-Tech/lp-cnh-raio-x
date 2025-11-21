@@ -1,4 +1,5 @@
 import { sectionContainerClass } from "./section-container";
+import PrimaryCta from "@/components/cta/PrimaryCta";
 import { Zap, Users, TrendingUp, ShieldCheck } from "lucide-react";
 
 const features = [
@@ -22,11 +23,11 @@ const features = [
 
 export function CnhCorporateSection() {
   return (
-    <section className="bg-[color:var(--color-bg-main)] py-14 sm:py-20 md:py-24">
+    <section id="sec-cnh" aria-labelledby="heading-cnh" className="bg-[color:var(--color-bg-main)] py-14 sm:py-20 md:py-24">
       <div className={`${sectionContainerClass} grid items-center gap-12 lg:grid-cols-2 lg:gap-16`}>
         {/* Coluna de Texto - Nova Copy */}
         <div className="flex flex-col items-center gap-7 text-center lg:items-start lg:text-left">
-          <h2 className="max-w-xl text-2xl sm:text-3xl font-bold leading-tight text-slate-50">
+          <h2 id="heading-cnh" className="max-w-xl text-2xl sm:text-3xl font-bold leading-tight text-slate-50">
             A primeira certificação que transforma colaboradores em <span className="text-[color:var(--hero-accent)]">pilotos de IA estratégicos.</span>
           </h2>
 
@@ -40,9 +41,19 @@ export function CnhCorporateSection() {
           </ul>
 
           <div className="mt-7">
-            <a href="/form" className="inline-block rounded-md bg-[color:var(--hero-accent)] px-7 py-3 text-base font-semibold text-[color:var(--color-text-slate-900)] shadow-md transition hover:bg-[color:var(--hero-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--hero-accent)]">
+            <PrimaryCta
+              id="cta-cnh-corporate"
+              href="/form"
+              size="md"
+              variant="secondary"
+              className="px-7 py-3 text-base font-semibold uppercase shadow-md transition focus-visible:ring-2 focus-visible:ring-[color:var(--hero-accent)]"
+              ariaLabel="Solicitar Apresentação Corporativa"
+              dataCta="corporate"
+              dataTrack="true"
+              dataVariant="cnh-corporate"
+            >
               Solicitar Apresentação Corporativa
-            </a>
+            </PrimaryCta>
           </div>
         </div>
 

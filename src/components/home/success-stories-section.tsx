@@ -1,6 +1,7 @@
 "use client"
 
 import { sectionContainerClass } from "./section-container";
+import MetalCard from "@/components/ui/metal-card";
 import * as React from "react";
 import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
 import testimonials from "@/data/testimonials.json";
@@ -30,45 +31,24 @@ const stories = [
 
 export function SuccessStoriesSection() {
   return (
-    <section className="bg-[color:var(--color-bg-main)] py-16 text-[color:var(--color-text-white)] sm:py-24">
+    <section id="sec-success" aria-labelledby="heading-success" className="bg-[color:var(--color-bg-main)] py-16 text-[color:var(--color-text-white)] sm:py-24">
       <div className={`${sectionContainerClass} gap-10`}>
-        <h2 className="text-center text-2xl font-semibold leading-snug text-slate-50 sm:text-3xl">
+        <h2 id="heading-success" className="text-center text-2xl font-semibold leading-snug text-slate-50 sm:text-3xl">
           Empresas, sindicatos e associações que já habilitaram seus times
         </h2>
 
         <div className="grid gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
           {stories.map(({ title, subtitle, logo }) => (
-            <div key={title} className="rounded-2xl p-[2.5px] bg-metal-green">
-              <div
-                className="
-                  group relative flex h-full flex-col items-center justify-start gap-4
-                  rounded-2xl card-metal-inner p-6 w-full transition duration-200 ease-out
-                  hover:shadow-lg
-                  focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-green-500
-                  active:scale-[0.99]
-                "
-                style={{ boxSizing: 'border-box' }}
-              >
-                {logo && (
-                  <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white/95 p-2">
-                    <img
-                      src={logo}
-                      alt={`${title} Logo`}
-                      aria-hidden="true"
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-                )}
-                <div className="space-y-1">
-                  <h3 className="text-base font-semibold text-slate-50 sm:text-lg">
-                    {title}
-                  </h3>
-                  <p className="text-sm text-slate-300">
-                    {subtitle}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <MetalCard
+              key={title}
+              title={title}
+              subtitle={subtitle}
+              logoSrc={logo}
+              dataVariant="success-story"
+              variant="metal-green"
+              padding="md"
+              ariaLabel={`Caso de sucesso: ${title}`}
+            />
           ))}
         </div>
 

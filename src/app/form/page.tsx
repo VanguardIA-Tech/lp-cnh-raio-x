@@ -15,12 +15,12 @@ import FormStep1 from "@/components/form/form-step-1";
 import FormStep2 from "@/components/form/form-step-2";
 import FormStep3 from "@/components/form/form-step-3";
 import { formSchema, type FormValues, defaultFormValues } from "@/components/form/form-schema";
+import { templateConfig } from "@/config/template-config";
 import { useFormTelemetry } from "@/components/FormObserver";
 import { Form } from "@/components/ui/form";
 
-const TOTAL_STEPS = 3;
-// Atualizado para o endpoint solicitado pelo usuário
-const WEBHOOK_URL = "https://automation.infra.vanguardia.cloud/webhook/funil-cnh";
+const TOTAL_STEPS = templateConfig.form.totalSteps;
+const WEBHOOK_URL = templateConfig.form.webhookUrl;
 
 const step1Fields: (keyof FormValues)[] = ["company", "role", "employees", "sector"];
 const step2Fields: (keyof FormValues)[] = ["priorityAreas", "focusAreas", "aiUsage", "bottleneck"];
@@ -95,7 +95,7 @@ export default function FormPage() {
       ...values,
       ...utms,
       // Atualizado conforme solicitado pelo usuário
-      funil: "funil-cnh-raiox",
+      funil: templateConfig.form.funilId,
       submittedAt: new Date().toISOString(),
     };
 

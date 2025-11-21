@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
 import { CheckCircle2, ArrowRight, Play } from "lucide-react";
 import testimonials from "@/data/testimonials.json";
+import { brandingCopy } from "@/content/branding";
 
 const PROCESS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
 const whatsappUrl = "https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia";
@@ -23,11 +24,11 @@ export default function ObrigadoPage() {
             </div>
 
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-              Perfeito. Sua empresa está na lista de seleção para habilitação em IA.
+              {brandingCopy.obrigado.heading}
             </h1>
 
             <p className="mt-1 max-w-prose text-base text-slate-300 sm:text-lg">
-              Em até 5 minutos você receberá um Raio-X de Eficiência com IA no seu e-mail e WhatsApp.
+              {brandingCopy.obrigado.subheading}
             </p>
 
             <div className="pt-2">

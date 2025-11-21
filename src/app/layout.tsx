@@ -8,6 +8,7 @@ import { ClientProvider } from "@/components/ClientProvider";
 import ClarityRouteTags from "@/components/ClarityRouteTags";
 import ClickTracker from "@/components/ClickTracker";
 import { UtmCollector } from "@/components/UtmCollector";
+import { templateConfig } from "@/config/template-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,9 +21,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VanguardIA — Eficiência Inteligente para Empresas",
-  description:
-    "Programa ICIA da VanguardIA: IA e automação sob medida para empresas de 30 a 1000 colaboradores.",
+  title: templateConfig.site.title,
+  description: templateConfig.site.description,
   icons: {
     icon: [
       // Ícones para tema claro (logo escuro)

@@ -165,3 +165,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Keyframes for gradient shift animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation class for gradient shift */
+.animate-gradient-shift {
+  background-image: linear-gradient(90deg, var(--hero-accent), var(--hero-accent-hover), var(--hero-accent));
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
