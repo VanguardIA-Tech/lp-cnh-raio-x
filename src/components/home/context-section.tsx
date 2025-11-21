@@ -2,21 +2,21 @@ import { sectionContainerClass } from "./section-container";
 
 export function ContextSection() {
   return (
-    <section id="sec-context" aria-labelledby="heading-context" className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24">
+    <section id="sec-context" aria-labelledby="heading-context" className="relative overflow-hidden border-t border-[color:var(--color-border-slate-700)] bg-[color:var(--color-bg-main)] py-16 sm:py-24 xl:py-28 2xl:py-32">
       <div className={`${sectionContainerClass} items-center text-center`}>
-        <div className="mx-auto max-w-4xl space-y-6">
+        <div className="mx-auto max-w-4xl space-y-6 xl:max-w-5xl xl:space-y-8 2xl:max-w-6xl 2xl:space-y-10">
           {/* Título e Subtítulo */}
-          <div className="space-y-2">
-            <h2 id="heading-context" className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
+          <div className="space-y-2 xl:space-y-3 2xl:space-y-4">
+            <h2 id="heading-context" className="text-balance text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl xl:text-5xl 2xl:text-6xl">
               A IA já está em todo lugar
             </h2>
-            <p className="text-balance text-xl font-medium text-[color:var(--color-cta)] sm:text-2xl">
+            <p className="text-balance text-xl font-medium text-[color:var(--color-cta)] sm:text-2xl xl:text-3xl 2xl:text-4xl">
               mas quase ninguém sabe conduzir.
             </p>
           </div>
 
           {/* Container "Ruído -> Foco" */}
-          <div className="relative mx-auto max-w-3xl pt-8">
+          <div className="relative mx-auto max-w-3xl pt-8 xl:max-w-4xl xl:pt-10 2xl:max-w-5xl 2xl:pt-12">
             {/* Blobs de fundo */}
             <div
               aria-hidden="true"
@@ -28,7 +28,7 @@ export function ContextSection() {
             />
 
             {/* Frases com estilos individuais */}
-            <div className="flex flex-col items-center gap-3 text-balance text-lg leading-relaxed text-slate-300 md:gap-3.5">
+            <div className="flex flex-col items-center gap-3 text-balance text-lg leading-relaxed text-slate-300 md:gap-3.5 xl:gap-4 xl:text-xl 2xl:gap-5 2xl:text-2xl">
               {/* Linha 1: Problema (Ruído) */}
               <p>
                 A maioria das empresas usa IA de forma{" "}

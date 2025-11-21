@@ -5,6 +5,38 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base para mobile */
+  }
+
+  /* Escalonamento responsivo de fonte base */
+  @media (min-width: 640px) {
+    html {
+      font-size: 17px; /* sm: 640px+ */
+    }
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px; /* md: 768px+ */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 19px; /* lg: 1024px+ */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    html {
+      font-size: 20px; /* xl: 1280px+ */
+    }
+  }
+
+  @media (min-width: 1536px) {
+    html {
+      font-size: 22px; /* 2xl: 1536px+ */
+    }
   }
 
   :root {

@@ -133,16 +133,16 @@ export default function FormPage() {
   return (
     <section className="min-h-screen w-screen bg-[#020F00] text-slate-100">
       <div className="h-full w-full rounded-none border border-transparent bg-transparent flex flex-col">
-        <div className="flex-1 overflow-y-auto px-6 py-8 md:px-12 md:py-12 lg:px-20">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex-1 overflow-y-auto px-6 py-8 md:px-12 md:py-12 lg:px-20 xl:px-28 xl:py-16 2xl:px-36 2xl:py-20">
+          <div className="max-w-6xl mx-auto xl:max-w-7xl 2xl:max-w-[1600px]">
             <FormHeader />
 
             <div className="mt-6">
               <FormProgress currentStep={currentStep} totalSteps={TOTAL_STEPS} />
             </div>
 
-            <div className="mt-8">
-              <div className="max-w-6xl mx-auto grid gap-6 lg:grid-cols-12 items-start">
+            <div className="mt-8 xl:mt-10 2xl:mt-12">
+              <div className="max-w-6xl mx-auto grid gap-6 lg:grid-cols-12 items-start xl:gap-8 2xl:gap-10 xl:max-w-7xl 2xl:max-w-[1600px]">
                 <div className="lg:col-span-12">
                   <div className="mb-6">
                     <HighlightBox />

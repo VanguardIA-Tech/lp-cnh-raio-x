@@ -21,7 +21,7 @@ export function FloatingCta() {
     <div
       className={`
         fixed inset-x-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] sm:inset-auto sm:bottom-6 sm:right-6 z-50
-        w-[calc(100vw-2rem)] sm:w-auto
+        w-[calc(100vw-2rem)] sm:w-auto xl:bottom-8 xl:right-8 2xl:bottom-10 2xl:right-10
         transition-all duration-500 ease-in-out
         ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}
       `}
@@ -31,7 +31,7 @@ export function FloatingCta() {
         href="/form"
         size="md"
         variant="primary"
-        className="w-full sm:w-auto shadow-lg shadow-orange-500/30"
+        className="w-full sm:w-auto shadow-lg shadow-orange-500/30 xl:text-lg 2xl:text-xl"
         ariaLabel={brandingCopy.hero.floatingCtaLabel || templateConfig.branding.primaryCtaText}
         dataCta="lead"
         dataTrack="true"

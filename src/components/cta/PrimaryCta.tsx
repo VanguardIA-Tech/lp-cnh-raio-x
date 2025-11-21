@@ -64,9 +64,9 @@ export function PrimaryCta({
     success: "bg-green-600 text-white hover:bg-green-700",
   }[variant];
   const sizeClass = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-4 py-2 text-sm xl:px-5 xl:py-2.5 xl:text-base 2xl:px-6 2xl:py-3 2xl:text-lg",
+    md: "px-6 py-3 text-base xl:px-8 xl:py-4 xl:text-lg 2xl:px-10 2xl:py-5 2xl:text-xl",
+    lg: "px-8 py-4 text-lg xl:px-10 xl:py-5 xl:text-xl 2xl:px-12 2xl:py-6 2xl:text-2xl",
   }[size];
 
   const motionClass = motion === "gradient" ? "animate-gradient-shift" : "";
