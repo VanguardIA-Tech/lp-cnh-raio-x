@@ -1,0 +1,33 @@
+import { Badge } from "@/components/ui/badge";
+
+const FormHeader = () => {
+  return (
+    <header className="space-y-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left md:justify-between flex-wrap gap-4">
+        <div className="flex items-center gap-3">
+          <img
+            src="https://res.cloudinary.com/dcg2hwh7x/image/upload/v1754072832/Avatar_e_Logos_Vanguardia_Prancheta_1_co%CC%81pia_19_fs9aqj.png"
+            alt="VanguardIA logo"
+            loading="lazy"
+            className="w-12 h-12 object-contain"
+          />
+          <div>
+            <h1 className="text-xl font-bold text-slate-100">VanguardIA</h1>
+            <p className="text-xs text-slate-400">Eficiência que liberta</p>
+          </div>
+        </div>
+        
+        <div className="flex flex-col gap-2 items-center md:items-end">
+          <Badge className="bg-green-600 text-white text-xs font-medium w-full justify-center px-4 py-1.5 rounded-full border-0">
+            +100 negócios acelerados em 2025
+          </Badge>
+          <Badge className="bg-green-600 text-white text-xs font-medium w-full justify-center px-4 py-1.5 rounded-full border-0">
+            +5.000 profissionais habilitados em IA
+          </Badge>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default FormHeader;

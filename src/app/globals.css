@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    /* Light theme (mantive valores originais para o modo claro) */
+    --background: 210 17% 98%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 214 100% 31%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-glow: 214 100% 45%;
+
+    --secondary: 210 17% 95%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 210 17% 95%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 214 100% 31%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 100% 31%;
+
+    --radius: 0.75rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 31%), hsl(214 100% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 100% 31%), hsl(220 100% 50%));
+    
+    --shadow-soft: 0 2px 8px -2px hsl(214 100% 31% / 0.08);
+    --shadow-medium: 0 8px 24px -4px hsl(214 100% 31% / 0.12);
+    --shadow-strong: 0 16px 48px -8px hsl(214 100% 31% / 0.16);
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Hero / CTA accent colors (configuradas conforme pedido) */
+    --hero-accent: #7CFF00;
+    --hero-accent-hover: #6BEE00;
+
+    /* Centralização de cores principais da home */
+    --color-bg-main: #020F00;
+    --color-cta: #FF7A18;
+    --color-green-500: #22C55E;
+    --color-cyan-300: #6EE7F9;
+    --color-shadow-deep: rgba(44,90,0,0.85);
+    --color-shadow-deep-strong: rgba(44,90,0,0.18);
+    --color-cta-shadow: rgba(255,122,24,0.25);
+    --color-green-shadow: rgba(34,197,94,0.25);
+    --color-green-soft: rgba(34,197,94,0.12);
+    --color-cta-soft: rgba(255,122,24,0.10);
+    --color-green-strong: rgba(34,197,94,0.20);
+    --color-bg-cyan: rgba(110,231,249,0.25);
+    --color-bg-green: rgba(34,197,94,0.35);
+    --color-bg-orange: rgba(255,122,24,0.20);
+    --color-text-slate-100: #f1f5f9;
+    --color-text-slate-300: #cbd5e1;
+    --color-border-slate-700: #334155;
+    --color-bg-green-600: #16a34a;
+    --color-bg-green-700: #15803d;
+    --color-bg-orange-500: #f97316;
+    --color-bg-orange-600: #ea580c;
+    --color-text-white: #fff;
+    --color-text-slate-900: #0f172a;
+    /* Metallic green gradient */
+    --gradient-metal-green: linear-gradient(90deg, #bfff00 0%, rgba(255,255,255,0.8) 50%, #7CFF00 100%);
+  }
+
+  /* Component utilities for cards with metallic border */
+  @layer components {
+    .card-metal-inner {
+      background-color: var(--color-bg-main);
+      transition: background-color 200ms var(--transition-smooth);
+    }
+
+    .card-metal-inner:hover {
+      background-color: rgba(2, 15, 0, 0.9);
+    }
+
+    /* Utility to apply the metallic green gradient from the design */
+    .bg-metal-green {
+      background-image: var(--gradient-metal-green);
+    }
+  }
+
+  /* Dark theme: palette atualizada conforme solicitado
+     - fundo principal: #020F00  -> HSL ≈ 112 100% 3%
+     - hero accent (verde claro): #7CFF00 -> HSL ≈ 91 100% 50%
+     - CTA / botão (laranja): #FF7A18 -> HSL ≈ 25 100% 55%
+  */
+  .dark {
+    --background: 112 100% 3%;
+    --foreground: 210 17% 98%;
+
+    --card: 215 25% 20%;
+    --card-foreground: 210 17% 98%;
+
+    --popover: 215 25% 20%;
+    --popover-foreground: 210 17% 98%;
+
+    /* Marca / cor principal agora como o acento do hero (verde claro) */
+    --primary: 91 100% 50%;
+    --primary-foreground: 215 28% 17%;
+
+    /* Tom mais claro para brilho/glow */
+    --primary-glow: 91 100% 65%;
+
+    /* CTA (botões laranja) */
+    --cta: 25 100% 55%;
+    --cta-foreground: 215 28% 17%;
+
+    --secondary: 215 25% 23%;
+    --secondary-foreground: 210 17% 98%;
+
+    --muted: 215 25% 23%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 25 100% 55%; /* mantém o acento como laranja para CTAs quando necessário */
+    --accent-foreground: 215 28% 17%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 17% 98%;
+
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 91 100% 50%;
+
+    /* Gradientes atualizados para combinar com a paleta */
+    --gradient-primary: linear-gradient(135deg, hsl(91 100% 50%), hsl(25 100% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(91 100% 50%), hsl(112 100% 3%));
+
+    --radius: 0.75rem;
+    
+    --shadow-soft: 0 2px 8px -2px hsl(91 100% 50% / 0.08);
+    --shadow-medium: 0 8px 24px -4px hsl(91 100% 50% / 0.12);
+    --shadow-strong: 0 16px 48px -8px hsl(91 100% 50% / 0.16);
+
+    /* Hero / CTA accent colors also available in dark mode */
+    --hero-accent: #7CFF00;
+    --hero-accent-hover: #6BEE00;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Keyframes for gradient shift animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation class for gradient shift */
+.animate-gradient-shift {
+  background-image: linear-gradient(90deg, var(--hero-accent), var(--hero-accent-hover), var(--hero-accent));
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
