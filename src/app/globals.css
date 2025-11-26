@@ -29,13 +29,13 @@
 
   @media (min-width: 1280px) {
     html {
-      font-size: 20px; /* xl: 1280px+ */
+      font-size: 19px; /* xl: 1280px+ */
     }
   }
 
   @media (min-width: 1536px) {
     html {
-      font-size: 22px; /* 2xl: 1536px+ */
+      font-size: 20px; /* 2xl: 1536px+ */
     }
   }
 
