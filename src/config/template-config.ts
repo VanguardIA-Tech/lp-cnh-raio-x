@@ -8,10 +8,12 @@ export const templateConfig = {
     companyName: "VanguardIA",
     primaryCtaText: "Agendar Diagnóstico de Eficiência com IA",
     whatsappNumber: "+55 91 98041-3150",
+    whatsappMessage: "Olá! Gostaria de agendar um diagnóstico de eficiência com IA.",
   },
   form: {
     webhookUrl: "https://automation.infra.vanguardia.cloud/webhook/funil-cnh",
     funilId: "funil-cnh-raiox",
+    funilIdSecondary: "funil-cnh-direto",
     totalSteps: 3,
   },
   analytics: {

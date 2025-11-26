@@ -1,13 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import PrimaryCta from "@/components/cta/PrimaryCta";
 import VideoCard from "@/components/ui/video-card";
 import AuroraField from "@/components/decor/aurora-field";
 import { heroAurora } from "@/content/auroras";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { MiniLeadForm } from "@/components/form/mini-lead-form";
 
 const HERO_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
 
 export function HeroSection() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  
+  const handleOpenForm = () => {
+    setIsFormOpen(true);
+  };
+  
   return (
     <section className="relative overflow-hidden bg-[color:var(--color-bg-main)] text-[color:var(--color-text-white)] lg:min-h-screen">
       {/* Aurora Mesh Blobs */}
@@ -35,9 +45,8 @@ export function HeroSection() {
           <div className="mt-4 flex flex-col items-center gap-4 sm:items-start xl:mt-6 xl:gap-5 2xl:mt-8 2xl:gap-6">
             <PrimaryCta
               id="cta-hero"
-              href="https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia"
-              target="_blank"
-              rel="noopener noreferrer"
+              asButton
+              onClick={handleOpenForm}
               size="md"
               variant="secondary"
               motion="gradient"
@@ -56,6 +65,8 @@ export function HeroSection() {
               Ou gere agora o Raio-X de Eficiência com IA na sua empresa — gratuito e personalizado.
             </Link>
           </div>
+
+          <MiniLeadForm open={isFormOpen} onOpenChange={setIsFormOpen} />
         </div>
 
         <div className="mt-10 flex justify-center lg:col-span-5 lg:mt-0">

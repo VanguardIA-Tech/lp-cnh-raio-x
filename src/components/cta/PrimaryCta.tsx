@@ -33,6 +33,8 @@ export type PrimaryCtaProps = {
   target?: string;
   rel?: string;
   motion?: Motion;
+  onClick?: () => void;
+  asButton?: boolean;
 };
 
 export function PrimaryCta({
@@ -54,6 +56,8 @@ export function PrimaryCta({
   target,
   rel,
   motion = "none",
+  onClick,
+  asButton = false,
 }: PrimaryCtaProps) {
   const text = label || brandingCopy.hero.floatingCtaLabel || templateConfig.branding.primaryCtaText;
   const aria = ariaLabel || text;
@@ -85,6 +89,25 @@ export function PrimaryCta({
       )}
     </>
   );
+
+  // Render as button when onClick is provided or asButton is true
+  if (onClick || asButton) {
+    return (
+      <Button
+        className={cn(baseClass, variantClass, sizeClass, motionClass, className)}
+        disabled={disabled}
+        type={type}
+        onClick={onClick}
+        id={id}
+        data-cta={dataCta}
+        data-variant={dataVariant || templateConfig.analytics.variant}
+        aria-label={aria}
+        data-track={dataTrack}
+      >
+        {content}
+      </Button>
+    );
+  }
 
   return (
     <Button
