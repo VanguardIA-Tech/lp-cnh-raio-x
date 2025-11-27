@@ -24,8 +24,8 @@ import { Button } from "@/components/ui/button";
 import { templateConfig } from "@/config/template-config";
 
 const miniFormSchema = z.object({
-  nome: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
-  telefone: z.string().min(10, "Telefone inválido"),
+  fullName: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
+  whatsapp: z.string().min(10, "Telefone inválido"),
 });
 
 type MiniFormData = z.infer<typeof miniFormSchema>;
@@ -41,8 +41,8 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
   const form = useForm<MiniFormData>({
     resolver: zodResolver(miniFormSchema),
     defaultValues: {
-      nome: "",
-      telefone: "",
+      fullName: "",
+      whatsapp: "",
     },
   });
 
@@ -64,8 +64,8 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
 
       // Build payload with same structure as main form
       const payload = {
-        nome: data.nome,
-        telefone: data.telefone,
+        nome: data.fullName,
+        telefone: data.whatsapp,
         funil: templateConfig.form.funilIdSecondary,
         ...utmData,
       };
@@ -112,7 +112,7 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="nome"
+              name="fullName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Nome completo</FormLabel>
@@ -125,7 +125,7 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
             />
             <FormField
               control={form.control}
-              name="telefone"
+              name="whatsapp"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Telefone</FormLabel>
