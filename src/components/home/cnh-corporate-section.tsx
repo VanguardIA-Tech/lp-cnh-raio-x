@@ -26,10 +26,25 @@ export function CnhCorporateSection() {
     <section
       id="sec-cnh"
       aria-labelledby="heading-cnh"
-      className="bg-[color:var(--color-bg-main)] py-14 sm:py-20 md:py-24 xl:py-28 2xl:py-32"
+      className="relative overflow-hidden bg-[color:var(--color-bg-main)] py-14 sm:py-20 md:py-24 xl:py-28 2xl:py-32"
     >
+      {/* Desktop (md+) right-side background image limited in width */}
       <div
-        className={`${sectionContainerClass} grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20 2xl:gap-24`}
+        aria-hidden="true"
+        className="hidden md:block absolute inset-y-0 right-0 w-1/2 lg:w-[55%] xl:w-2/3 z-0 bg-[url('/jorge-sindarpa1.webp')] bg-cover bg-right"
+      />
+      {/* Desktop gradient overlay blending left to image with custom stops */}
+      <div
+        aria-hidden="true"
+        className="hidden md:block absolute inset-0 z-0 bg-[linear-gradient(to_right,var(--color-bg-main)_0%,var(--color-bg-main)_38%,rgba(2,15,0,0.85)_58%,transparent_82%)]"
+      />
+      {/* Mobile vertical gradient overlay limited to upper area (not covering image block) */}
+      <div
+        aria-hidden="true"
+        className="md:hidden absolute top-0 left-0 right-0 h-[70%] z-0 pointer-events-none bg-[linear-gradient(to_bottom,var(--color-bg-main)_0%,var(--color-bg-main)_30%,rgba(2,15,0,0,85)_55%,transparent_100%)]"
+      />
+      <div
+        className={`${sectionContainerClass} relative z-10 grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20 2xl:gap-24`}
       >
         {/* Coluna de Texto - Nova Copy */}
         <div className="flex flex-col items-center gap-7 text-center lg:items-start lg:text-left xl:gap-8 2xl:gap-10">
@@ -73,20 +88,16 @@ export function CnhCorporateSection() {
           </div>
         </div>
 
-        {/* Coluna de Imagem/Visual */}
-        <div className="relative flex justify-center lg:justify-end">
-          <div className="relative h-[300px] w-full max-w-md overflow-hidden rounded-2xl border border-[color:var(--color-border-slate-700)] bg-white/5 shadow-2xl sm:h-[400px] lg:h-[500px] xl:max-w-lg xl:h-[560px] 2xl:max-w-xl 2xl:h-[640px]">
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-black/80 to-black/90">
-              <div className="h-full w-full">
-                <img
-                  src="/jorge-sindarpa1.webp"
-                  alt="CNH Corporativa"
-                  className="h-full w-full object-cover rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
+        {/* Mobile image block below text */}
+        <div className="mt-10 w-full h-64 overflow-hidden rounded-xl md:hidden">
+          <img
+            src="/jorge-sindarpa1.webp"
+            alt="Treinamento corporativo"
+            className="h-full w-full object-cover"
+          />
         </div>
+        
+        
       </div>
     </section>
   );
