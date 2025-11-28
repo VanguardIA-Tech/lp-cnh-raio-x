@@ -41,7 +41,7 @@ export function CnhCorporateSection() {
       {/* Mobile vertical gradient overlay limited to upper area (not covering image block) */}
       <div
         aria-hidden="true"
-        className="md:hidden absolute top-0 left-0 right-0 h-[70%] z-0 pointer-events-none bg-[linear-gradient(to_bottom,var(--color-bg-main)_0%,var(--color-bg-main)_30%,rgba(2,15,0,0,85)_55%,transparent_100%)]"
+        className="md:hidden absolute top-0 left-0 right-0 h-[70%] z-0 pointer-events-none  bg-[linear-gradient(to_right,var(--color-bg-main)_0%,var(--color-bg-main)_32%,rgba(2,15,0,1)_45%,rgba(2,15,0,0.65)_58%,rgba(2,15,0,0.25)_72%,transparent_88%)]"
       />
       <div
         className={`${sectionContainerClass} relative z-10 grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20 2xl:gap-24`}

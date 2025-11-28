@@ -2,6 +2,8 @@ import PrimaryCta from "@/components/cta/PrimaryCta";
 import { CheckCircle2, Search, Users, TrendingUp } from "lucide-react";
 import VideoCard from "@/components/ui/video-card";
 import { sectionContainerClass } from "./section-container";
+import AuroraField from "@/components/decor/aurora-field";
+import { heroAurora } from "@/content/auroras";
 
 const steps = [
   {
@@ -22,9 +24,12 @@ const DIAGNOSIS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v
 
 export function DiagnosisSection() {
   return (
-    <section id="sec-diagnosis" aria-labelledby="heading-diagnosis" className="bg-[color:var(--color-bg-main)] py-14 sm:py-20 md:py-24 xl:py-28 2xl:py-32">
+    <section id="sec-diagnosis" aria-labelledby="heading-diagnosis" className="relative overflow-hidden bg-[color:var(--color-bg-main)] py-14 sm:py-20 md:py-24 xl:py-28 2xl:py-32">
+      {/* Aurora Mesh Blobs */}
+      <AuroraField items={heroAurora} />
+      
       <div
-        className={`${sectionContainerClass} grid items-start gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16 xl:gap-20 2xl:gap-24`}
+        className={`${sectionContainerClass} relative z-10 grid items-start gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16 xl:gap-20 2xl:gap-24`}
       >
         {/* Coluna de Texto e Etapas */}
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left xl:gap-6 2xl:gap-8">
@@ -45,7 +50,7 @@ export function DiagnosisSection() {
           </ul>
 
           {/* Box Raio-X */}
-          <div className="mt-6 space-y-3 rounded-lg border border-[color:var(--color-border-slate-700)] bg-white/5 p-4 xl:mt-8 xl:space-y-4 xl:p-6 2xl:mt-10 2xl:space-y-5 2xl:p-8">
+          <div className="relative z-20 mt-6 space-y-3 rounded-lg border border-[color:var(--color-border-slate-700)] bg-white/5 p-4 xl:mt-8 xl:space-y-4 xl:p-6 2xl:mt-10 2xl:space-y-5 2xl:p-8">
             <p className="text-sm text-slate-300 sm:text-base xl:text-lg 2xl:text-xl">
               <span className="font-semibold text-[color:var(--color-cta)]">
                 <Search className="inline h-5 w-5 mr-2 align-middle" />
