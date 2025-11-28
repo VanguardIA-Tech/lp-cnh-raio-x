@@ -17,10 +17,10 @@ export function HeroSection() {
   
   return (
     <section className="relative overflow-hidden bg-[color:var(--color-bg-main)] text-[color:var(--color-text-white)] lg:min-h-screen">
-      {/* Desktop (lg+) right-side background video limited in width */}
+      {/* Desktop (lg+) right-side background video with internal gradient overlay */}
       <div
         aria-hidden="true"
-        className="hidden lg:block absolute inset-y-0 right-0 w-1/2 xl:w-[55%] 2xl:w-1/2 z-0 overflow-hidden"
+        className="hidden lg:block absolute inset-y-0 right-0 w-1/2 xl:w-1/2 2xl:w-1/2 z-0 overflow-hidden"
       >
         <video
           autoPlay
@@ -31,19 +31,11 @@ export function HeroSection() {
         >
           <source src={HERO_VIDEO_URL} type="video/mp4" />
         </video>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--color-bg-main)_0%,rgba(2,15,0,0.95)_15%,rgba(2,15,0,0.7)_32%,rgba(2,15,0,0.35)_58%,transparent_85%)]"
+        />
       </div>
-
-      {/* Desktop gradient overlay blending left to video with custom stops */}
-      <div
-        aria-hidden="true"
-        className="hidden lg:block absolute inset-0 z-0 bg-[linear-gradient(to_right,var(--color-bg-main)_0%,var(--color-bg-main)_32%,rgba(2,15,0,1)_45%,rgba(2,15,0,0.65)_58%,rgba(2,15,0,0.25)_72%,transparent_88%)]"
-      />
-
-      {/* Mobile vertical gradient overlay limited to upper area */}
-      <div
-        aria-hidden="true"
-        className="lg:hidden absolute top-0 left-0 right-0 h-[65%] z-0 pointer-events-none bg-[linear-gradient(to_bottom,var(--color-bg-main)_0%,var(--color-bg-main)_28%,rgba(2,15,0,0.85)_50%,transparent_100%)]"
-      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-10 lg:grid lg:min-h-screen lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8 xl:max-w-[1400px] xl:gap-12 xl:px-12 xl:py-16 2xl:max-w-[1600px] 2xl:gap-16 2xl:px-16 2xl:py-20">
         <div className="flex flex-col gap-5 text-center sm:text-left lg:col-span-7 xl:gap-6 2xl:gap-8">
@@ -91,7 +83,7 @@ export function HeroSection() {
           <MiniLeadForm open={isFormOpen} onOpenChange={setIsFormOpen} />
         </div>
 
-        {/* Mobile video block below text */}
+        {/* Mobile video block below text (sem degradê) */}
         <div className="mt-10 w-full overflow-hidden rounded-xl lg:hidden">
           <video
             autoPlay
