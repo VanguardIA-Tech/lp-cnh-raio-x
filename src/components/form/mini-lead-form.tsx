@@ -64,8 +64,8 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
 
       // Build payload with same structure as main form
       const payload = {
-        nome: data.fullName,
-        telefone: data.whatsapp,
+        fullName: data.fullName,
+        whatsapp: data.whatsapp,
         funil: templateConfig.form.funilIdSecondary,
         ...utmData,
       };
