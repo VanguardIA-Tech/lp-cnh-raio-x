@@ -33,7 +33,7 @@ export function FloatingCta() {
         variant="primary"
         className="w-full sm:w-auto shadow-lg shadow-orange-500/30 xl:text-lg 2xl:text-xl"
         ariaLabel={brandingCopy.hero.floatingCtaLabel || templateConfig.branding.primaryCtaText}
-        dataCta="lead"
+        dataCta="floating-cta"
         dataTrack="true"
         dataVariant="floating"
       >

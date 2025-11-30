@@ -1,15 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
 import { CheckCircle2, ArrowRight, Play } from "lucide-react";
 import testimonials from "@/data/testimonials.json";
 import { brandingCopy } from "@/content/branding";
+import { templateConfig } from "@/config/template-config";
 
 const PROCESS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
-const whatsappUrl = "https://wa.me/5591980413150?text=Falar%20com%20o%20time%20da%20Vanguardia";
+const whatsappNumber = templateConfig.branding.whatsappNumber.replace(/[^\d]/g, "");
+const whatsappMessage = encodeURIComponent(templateConfig.branding.whatsappMessage);
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 export default function ObrigadoPage() {
 
@@ -41,7 +42,7 @@ export default function ObrigadoPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   id="cta-whatsapp-primary"
-                  data-cta="whatsapp"
+                  data-cta="whatsapp-primary"
                   data-track="true"
                 >
                   Agendar Conversa com Especialista <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
@@ -99,7 +100,9 @@ export default function ObrigadoPage() {
             </p>
             <Button
               asChild
+              data-cta="whatsapp-final"
               className="h-auto rounded-md bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-green-600/30 transition hover:bg-green-700"
+
             >
               <a
                 href={whatsappUrl}

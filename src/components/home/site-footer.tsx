@@ -36,6 +36,7 @@ export function SiteFooter() {
             <div className="flex items-center gap-2" role="list" aria-labelledby="social-links-heading">
               {socialLinks.map((social) => (
                 <a
+                  is={social.name}
                   key={social.name}
                   href={social.href}
                   aria-label={social.name}

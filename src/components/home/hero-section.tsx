@@ -66,13 +66,14 @@ export function HeroSection() {
               motion="gradient"
               className="uppercase shadow-[0_8px_30px_rgba(44,90,0,0.18)] drop-shadow-[0_0_18px_rgba(44,90,0,0.85)] hover:shadow-[0_0_32px_rgba(124,255,0,0.5)]"
               ariaLabel="Quero habilitar meu time"
-              dataCta="lead"
+              dataCta="cta-hero-whatsapp"
               dataTrack="true"
               dataVariant="hero"
             >
               Quero habilitar meu time
             </PrimaryCta>
             <Link
+              id="cta-hero-form"
               href="/form"
               className="text-center text-xs text-slate-300 underline transition hover:text-white sm:text-left sm:text-sm xl:text-base 2xl:text-lg"
             >

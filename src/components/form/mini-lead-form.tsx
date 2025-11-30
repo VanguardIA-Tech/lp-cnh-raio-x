@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -22,6 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { templateConfig } from "@/config/template-config";
+import { safeEvent } from "@/components/clarity/observability";
 
 const miniFormSchema = z.object({
   fullName: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -37,6 +38,7 @@ interface MiniLeadFormProps {
 
 export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const prevOpenRef = useRef(open);
 
   const form = useForm<MiniFormData>({
     resolver: zodResolver(miniFormSchema),
@@ -99,6 +101,19 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
     }
   };
 
+  // Track abertura e fechamento (inclui ESC e clique fora)
+  useEffect(() => {
+    // Abriu agora
+    if (!prevOpenRef.current && open) {
+      safeEvent("mini_form:open");
+    }
+    // Fechou agora
+    if (prevOpenRef.current && !open) {
+      safeEvent("mini_form:close");
+    }
+    prevOpenRef.current = open;
+  }, [open]);
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
@@ -109,7 +124,7 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" data-clarity-unmask="true">
             <FormField
               control={form.control}
               name="fullName"
@@ -136,7 +151,7 @@ export function MiniLeadForm({ open, onOpenChange }: MiniLeadFormProps) {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button type="submit" className="w-full" disabled={isSubmitting} id="mini-form-submit">
               {isSubmitting ? "Enviando..." : "Continuar no WhatsApp"}
             </Button>
           </form>

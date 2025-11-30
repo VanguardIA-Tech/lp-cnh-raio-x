@@ -16,8 +16,9 @@ import FormStep2 from "@/components/form/form-step-2";
 import FormStep3 from "@/components/form/form-step-3";
 import { formSchema, type FormValues, defaultFormValues } from "@/components/form/form-schema";
 import { templateConfig } from "@/config/template-config";
-import { useFormTelemetry } from "@/components/FormObserver";
+import { useFormTelemetry } from "@/components/clarity/FormObserver";
 import { Form } from "@/components/ui/form";
+import { safeEvent, setTag } from "@/components/clarity/observability";
 
 const TOTAL_STEPS = templateConfig.form.totalSteps;
 const WEBHOOK_URL = templateConfig.form.webhookUrl;
@@ -64,6 +65,8 @@ export default function FormPage() {
   }, [currentStep, formData]);
 
   const handleNext = async () => {
+    // explicit funnel event: user clicked next on current step
+    safeEvent(`form:next_click:step_${currentStep}`);
     const ok = await form.trigger(stepFields as any);
     if (!ok) {
       const firstError = Object.keys(form.formState.errors)[0] as keyof FormValues | undefined;
@@ -73,18 +76,26 @@ export default function FormPage() {
     }
     if (currentStep < TOTAL_STEPS) {
       setCurrentStep((s) => s + 1);
+      // success transition to next step
+      safeEvent(`form:next_success:from_${currentStep}_to_${currentStep + 1}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const handleBack = () => {
+    // explicit funnel event: user clicked back on current step
+    safeEvent(`form:back_click:step_${currentStep}`);
     if (currentStep > 1) {
       setCurrentStep((s) => s - 1);
+      // success transition to previous step
+      safeEvent(`form:back_success:from_${currentStep}_to_${currentStep - 1}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const onSubmit = async (values: FormValues) => {
+    // explicit funnel event: submit attempt begins
+    safeEvent("form:submit_attempt");
     let utms = {};
     try {
       const stored = sessionStorage.getItem("vanguardia_utms");
@@ -106,18 +117,25 @@ export default function FormPage() {
     });
 
     if (!resp.ok) {
+      // error path with http status tag
+      setTag("form_http_status", String(resp.status));
+      safeEvent("form:submit_error");
       const text = await resp.text().catch(() => "");
       console.error("Webhook error:", resp.status, text);
       toast.error("Ocorreu um erro ao enviar o formulário. Tente novamente.");
       return;
     }
 
+    // success path
+    safeEvent("form:submit_success");
     await onSuccess(values.email);
     toast.success("Raio-X gerado com sucesso!");
     router.push("/obrigado");
   };
 
   const handleSubmitClick = async () => {
+    // explicit funnel event: submit button clicked on step 3
+    safeEvent("form:submit_click");
     const ok = await form.trigger(step3Fields as any);
     if (!ok) {
       const firstError = Object.keys(form.formState.errors)[0] as keyof FormValues | undefined;
@@ -128,7 +146,11 @@ export default function FormPage() {
     await onSubmit(form.getValues());
   };
 
-  useEffect(() => {}, []);
+  // Track step views
+  useEffect(() => {
+    safeEvent(`form:step_${currentStep}_view`);
+    setTag("form_current_step", String(currentStep));
+  }, [currentStep]);
 
   return (
     <section className="min-h-screen w-screen bg-[#020F00] text-slate-100">
@@ -168,6 +190,7 @@ export default function FormPage() {
                 type="button"
                 variant="outline"
                 onClick={handleBack}
+                data-cta={`form_back_step_${currentStep}`}
                 className="flex-1 h-12 border-slate-700 text-slate-200"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -180,6 +203,7 @@ export default function FormPage() {
                 type="button"
                 onClick={handleNext}
                 disabled={!canProceed}
+                data-cta={`form_next_step_${currentStep}`}
                 className="flex-1 h-12 bg-orange-500 text-white transition hover:bg-orange-600 disabled:opacity-60"
               >
                 Próximo
@@ -190,6 +214,7 @@ export default function FormPage() {
                 type="button"
                 onClick={handleSubmitClick}
                 disabled={!canProceed}
+                data-cta="form_submit_step_3"
                 className="flex-1 h-12 bg-orange-500 text-white font-bold transition hover:bg-orange-600 disabled:opacity-60"
               >
                 🚀 Gerar meu Raio-X agora

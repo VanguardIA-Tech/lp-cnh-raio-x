@@ -66,7 +66,7 @@ export function DiagnosisSection() {
             variant="primary"
             className="mt-6 w-full rounded-md px-6 py-6 text-base font-semibold shadow-lg shadow-orange-500/30 transition hover:bg-orange-600 sm:w-auto xl:mt-8 2xl:mt-10"
             ariaLabel="Gerar Raio-X"
-            dataCta="primary"
+            dataCta="cta-diagnosis"
             dataTrack="true"
             dataVariant="diagnosis"
           >

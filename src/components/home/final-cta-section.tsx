@@ -34,7 +34,7 @@ export function FinalCtaSection() {
               variant="secondary"
               className="h-auto rounded-md px-8 py-4 text-base font-semibold text-[color:var(--color-text-slate-900)] shadow-lg shadow-[color:var(--color-green-shadow)] transition hover:bg-[color:var(--hero-accent-hover)] hover:shadow-[0_0_24px_var(--color-green-shadow)] uppercase bg-[color:var(--hero-accent)] xl:px-12 xl:py-6 xl:text-xl 2xl:px-16 2xl:py-7 2xl:text-2xl"
               ariaLabel="Quero habilitar meu time"
-              dataCta="lead"
+              dataCta="cta-final"
               dataTrack="true"
               dataVariant="final"
             >

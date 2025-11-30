@@ -4,10 +4,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { ClientProvider } from "@/components/ClientProvider";
-import ClarityRouteTags from "@/components/ClarityRouteTags";
-import ClickTracker from "@/components/ClickTracker";
-import { UtmCollector } from "@/components/UtmCollector";
+import { ClientProvider } from "@/components/clarity/ClientProvider";
+import ClarityRouteTags from "@/components/clarity/ClarityRouteTags";
+import ClickTracker from "@/components/clarity/ClickTracker";
+import { UtmCollector } from "@/components/clarity/UtmCollector";
 import { templateConfig } from "@/config/template-config";
 
 const geistSans = Geist({

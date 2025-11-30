@@ -79,7 +79,7 @@ export function CnhCorporateSection() {
               variant="secondary"
               className="px-7 py-3 text-base font-semibold uppercase shadow-md transition focus-visible:ring-2 focus-visible:ring-[color:var(--hero-accent)] xl:px-9 xl:py-4 xl:text-lg 2xl:px-11 2xl:py-5 2xl:text-xl"
               ariaLabel="Solicitar Apresentação Corporativa"
-              dataCta="corporate"
+              dataCta="cta-cnh"
               dataTrack="true"
               dataVariant="cnh-corporate"
             >
