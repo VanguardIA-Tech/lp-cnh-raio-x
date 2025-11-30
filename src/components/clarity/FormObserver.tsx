@@ -1,6 +1,6 @@
 "use client";
 import { useCallback } from "react";
-import { hashEmail, safeEvent, identifyOnce, upgrade, validationErrorOnce } from "@/lib/observability";
+import { hashEmail, safeEvent, identifyOnce, upgrade, validationErrorOnce } from "@/components/clarity/observability";
 
 export function useFormTelemetry() {
   const onSuccess = useCallback(async (email?: string) => {
