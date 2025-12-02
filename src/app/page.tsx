@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HeroSection } from "@/components/home/hero-section";
@@ -33,3 +31,21 @@ export default function Home() {
     </div>
   );
 }
+
+export const metadata = {
+  title: templateConfig.seo.pages.home.title,
+  description: templateConfig.seo.pages.home.description,
+  openGraph: {
+    title: `${templateConfig.seo.pages.home.title} | ${templateConfig.branding.companyName}`,
+    description: templateConfig.seo.pages.home.description,
+    url: `${templateConfig.site.url}${templateConfig.seo.pages.home.path}`,
+  },
+  twitter: {
+    title: `${templateConfig.seo.pages.home.title} | ${templateConfig.branding.companyName}`,
+    description: templateConfig.seo.pages.home.description,
+  },
+  alternates: {
+    canonical: templateConfig.seo.pages.home.path,
+  },
+  robots: templateConfig.seo.pages.home.robots,
+};
