@@ -1,3 +1,24 @@
+import type { Metadata } from "next";
+import { templateConfig } from "@/config/template-config";
+
+export const metadata: Metadata = {
+  title: templateConfig.seo.pages.form.title,
+  description: templateConfig.seo.pages.form.description,
+  openGraph: {
+    title: `${templateConfig.seo.pages.form.title} | ${templateConfig.branding.companyName}`,
+    description: templateConfig.seo.pages.form.description,
+    url: `${templateConfig.site.url}${templateConfig.seo.pages.form.path}`,
+  },
+  twitter: {
+    title: `${templateConfig.seo.pages.form.title} | ${templateConfig.branding.companyName}`,
+    description: templateConfig.seo.pages.form.description,
+  },
+  alternates: {
+    canonical: templateConfig.seo.pages.form.path,
+  },
+  robots: templateConfig.seo.pages.form.robots,
+};
+
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
@@ -15,7 +36,6 @@ import FormStep1 from "@/components/form/form-step-1";
 import FormStep2 from "@/components/form/form-step-2";
 import FormStep3 from "@/components/form/form-step-3";
 import { formSchema, type FormValues, defaultFormValues } from "@/components/form/form-schema";
-import { templateConfig } from "@/config/template-config";
 import { useFormTelemetry } from "@/components/clarity/FormObserver";
 import { Form } from "@/components/ui/form";
 import { safeEvent, setTag } from "@/components/clarity/observability";

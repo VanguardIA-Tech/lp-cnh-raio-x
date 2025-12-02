@@ -1,11 +1,31 @@
+import type { Metadata } from "next";
+import { templateConfig } from "@/config/template-config";
+import { brandingCopy } from "@/content/branding";
+
+export const metadata: Metadata = {
+  title: templateConfig.seo.pages.thankYou.title,
+  description: templateConfig.seo.pages.thankYou.description,
+  openGraph: {
+    title: `${templateConfig.seo.pages.thankYou.title} | ${templateConfig.branding.companyName}`,
+    description: templateConfig.seo.pages.thankYou.description,
+    url: `${templateConfig.site.url}${templateConfig.seo.pages.thankYou.path}`,
+  },
+  twitter: {
+    title: `${templateConfig.seo.pages.thankYou.title} | ${templateConfig.branding.companyName}`,
+    description: templateConfig.seo.pages.thankYou.description,
+  },
+  alternates: {
+    canonical: templateConfig.seo.pages.thankYou.path,
+  },
+  robots: templateConfig.seo.pages.thankYou.robots,
+};
+
 "use client";
 
 import { Button } from "@/components/ui/button";
 import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
 import { CheckCircle2, ArrowRight, Play } from "lucide-react";
 import testimonials from "@/data/testimonials.json";
-import { brandingCopy } from "@/content/branding";
-import { templateConfig } from "@/config/template-config";
 
 const PROCESS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763478014/vangguardia-cnh_uw3nu5.mp4";
 const whatsappNumber = templateConfig.branding.whatsappNumber.replace(/[^\d]/g, "");

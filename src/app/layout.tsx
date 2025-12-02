@@ -9,6 +9,7 @@ import ClarityRouteTags from "@/components/clarity/ClarityRouteTags";
 import ClickTracker from "@/components/clarity/ClickTracker";
 import { UtmCollector } from "@/components/clarity/UtmCollector";
 import { templateConfig } from "@/config/template-config";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,8 +22,48 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: templateConfig.site.title,
+  title: {
+    default: templateConfig.site.title,
+    template: `%s | ${templateConfig.branding.companyName}`,
+  },
   description: templateConfig.site.description,
+  keywords: templateConfig.seo.keywords,
+  authors: [{ name: templateConfig.branding.companyName }],
+  creator: templateConfig.branding.companyName,
+  publisher: templateConfig.branding.companyName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: templateConfig.site.url,
+    title: templateConfig.site.title,
+    description: templateConfig.site.description,
+    siteName: templateConfig.branding.companyName,
+    images: [
+      {
+        url: templateConfig.seo.ogImage,
+        width: 1200,
+        height: 630,
+        alt: templateConfig.site.title,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: templateConfig.site.title,
+    description: templateConfig.site.description,
+    images: [templateConfig.seo.ogImage],
+  },
   icons: {
     icon: [
       // Ícones para tema claro (logo escuro)
@@ -43,6 +84,10 @@ export const metadata: Metadata = {
       { url: '/apple-touch-icon-light.png', media: '(prefers-color-scheme: dark)' },
     ],
   },
+  metadataBase: new URL(templateConfig.site.url),
+  alternates: {
+    canonical: templateConfig.seo.pages.home.path,
+  },
 };
 
 export default function RootLayout({
@@ -55,6 +100,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        <JsonLd type="organization" />
+        <JsonLd type="website" />
         {clarityId ? (
           <Script
             id="ms-clarity"
