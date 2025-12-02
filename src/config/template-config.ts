@@ -4,7 +4,7 @@ export const templateConfig = {
     description:
       "Habilite líderes, colaboradores e parceiros com a CNH da IA Corporativa: treinamentos práticos e Raio-X de Eficiência com IA para instalar cultura de IA na sua empresa.",
     language: "pt-BR",
-    url: "https://cnhraiox.vanguardiagrupo.com.br/",
+    url: "https://cnhraiox.vanguardiagrupo.com.br",
   },
   branding: {
     companyName: "VanguardIA",
@@ -37,7 +37,7 @@ export const templateConfig = {
       "aceleração empresarial com IA",
     ],
     ogImage: "/og-image.png",
-    logo: "/logo.png",
+    logo: "/android-chrome-512x512-dark.png",
     pages: {
       home: {
         title: "VanguardIA — Eficiência Inteligente para Empresas",
