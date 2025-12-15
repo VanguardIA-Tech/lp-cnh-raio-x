@@ -1,26 +1,27 @@
 [
   {
     "name": "Edivaldo Carvalho Neto",
-    "videoUrl": "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763497588/depoimento-sindarpa_qlqen4.mp4",
+    "videoUrl": "https://directus.vanguardiagrupo.com.br/assets/4c0217f7-dd9b-4462-a362-1f5dfb161ccf",
     "role": "Diretor secretário",
     "company": "SINDARPA"
   },
   {
     "name": "Afonso Lobato",
-    "videoUrl": "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763497587/depoimento-silveira-athias_cpxkth.mp4",
+    "videoUrl": "https://directus.vanguardiagrupo.com.br/assets/4ae86073-ed34-4e0b-a693-bfe6c84d1536",
     "role": "Sócio Fundador",
     "company": "Silveira Athias"
   },
   {
     "name": "Alberto Villar",
-    "videoUrl": "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763571402/depoimento-acp-720p_rg9eh4.webm",
+    "videoUrl": "https://directus.vanguardiagrupo.com.br/assets/302aee6a-2138-4373-a46f-7977e468ab15",
     "role": "Presidente da universidade corporativa",
     "company": "ACP"
   },
   {
     "name": "Armando Lourenço",
-    "videoUrl": "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1763757068/depoimento-nativa-uniformes_exvtnm.webm",
+    "videoUrl": "https://directus.vanguardiagrupo.com.br/assets/23ed5b43-f7c5-4bdb-8153-5157cc465737",
     "role": "Diretor executivo",
     "company": "Nativa Uniformes"
   }
 ]
+

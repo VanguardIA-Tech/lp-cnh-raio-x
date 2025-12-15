@@ -18,7 +18,7 @@ export function SiteFooter() {
           <div className="text-center md:text-left">
             <Link href="/" className="inline-block" aria-label="Página Inicial da VanguardIA">
               <Image
-                src="/vanguardia-logo.png"
+                src="https://directus.vanguardiagrupo.com.br/assets/c6d153f9-dafb-4792-96c4-0dc5a7b3f69e"
                 alt="VanguardIA Logo"
                 width={311}
                 height={66}

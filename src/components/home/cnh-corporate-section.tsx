@@ -91,7 +91,7 @@ export function CnhCorporateSection() {
         {/* Mobile image block below text */}
         <div className="mt-10 w-full h-64 overflow-hidden rounded-xl md:hidden">
           <img
-            src="/jorge-sindarpa1.webp"
+            src="https://directus.vanguardiagrupo.com.br/assets/8e6441a5-6f60-4454-bd63-8b5467cf03cd"
             alt="Treinamento corporativo"
             className="h-full w-full object-cover"
           />
