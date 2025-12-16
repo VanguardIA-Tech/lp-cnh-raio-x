@@ -31,7 +31,7 @@ export function CnhCorporateSection() {
       {/* Desktop (md+) right-side background image limited in width */}
       <div
         aria-hidden="true"
-        className="hidden md:block absolute inset-y-0 right-0 w-1/2 lg:w-[55%] xl:w-2/3 z-0 bg-[url('/jorge-sindarpa1.webp')] bg-cover bg-right"
+        className="hidden md:block absolute inset-y-0 right-0 w-1/2 lg:w-[55%] xl:w-2/3 z-0 bg-[url('https://directus.vanguardiagrupo.com.br/assets/8e6441a5-6f60-4454-bd63-8b5467cf03cd')] bg-cover bg-right"
       />
       {/* Desktop gradient overlay blending left to image with custom stops */}
       <div

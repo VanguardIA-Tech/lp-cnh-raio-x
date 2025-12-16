@@ -20,7 +20,7 @@ const steps = [
   },
 ];
 
-const DIAGNOSIS_VIDEO_URL = "https://directus.vanguardiagrupo.com.br/assets/8e6441a5-6f60-4454-bd63-8b5467cf03cd";
+const DIAGNOSIS_VIDEO_URL = "https://directus.vanguardiagrupo.com.br/assets/14028a85-0ebe-4832-8399-6dfaa3525c43";
 
 export function DiagnosisSection() {
   return (

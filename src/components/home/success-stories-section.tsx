@@ -10,22 +10,22 @@ const stories = [
   {
     title: "Sindarpa",
     subtitle: "80 profissionais habilitados",
-    logo: "/logo-sindarpa.png",
+    logo: "https://directus.vanguardiagrupo.com.br/assets/5ffed61c-7ec9-48a3-b856-9008a37f4620",
   },
   {
     title: "Rede Mais Saúde",
     subtitle: "times médicos e administrativos certificados",
-    logo: "/logo-rede-mais-saude.png",
+    logo: "https://directus.vanguardiagrupo.com.br/assets/6b5f9231-2c2b-4920-a1a2-c1c317d80dec",
   },
   {
     title: "Silveira Athias Advogados",
     subtitle: "IA aplicada à rotina jurídica",
-    logo: "/logo-silveiraathias.png",
+    logo: "https://directus.vanguardiagrupo.com.br/assets/96a23939-eb14-4db5-951b-8b2fdc9702b5",
   },
   {
     title: "DO IT Hub",
     subtitle: "ecossistema empresarial habilitado",
-    logo: "/logo-doithub.png",
+    logo: "https://directus.vanguardiagrupo.com.br/assets/0fe18dbe-afb5-4e52-9dd2-bba90b72cb1f",
   },
 ] as const;
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { MiniLeadForm } from "@/components/form/mini-lead-form";
 
-const HERO_VIDEO_URL = "https://directus.vanguardiagrupo.com.br/assets/8e6441a5-6f60-4454-bd63-8b5467cf03cd";
+const HERO_VIDEO_URL = "https://directus.vanguardiagrupo.com.br/assets/fdf9ea6f-0c34-4b1e-bf30-4f922f97fb88";
 
 export function HeroSection() {
   const [isFormOpen, setIsFormOpen] = useState(false);
