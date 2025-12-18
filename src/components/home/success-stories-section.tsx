@@ -3,7 +3,7 @@
 import { sectionContainerClass } from "./section-container";
 import MetalCard from "@/components/ui/metal-card";
 import * as React from "react";
-import TestimonialsCarousel from "@/components/testimonials/TestimonialsCarousel";
+import TestimonialsGrid from "@/components/testimonials/TestimonialsGrid";
 import testimonials from "@/data/testimonials.json";
 
 const stories = [
@@ -61,8 +61,8 @@ export function SuccessStoriesSection() {
           “Não formamos usuários. Formamos pilotos”
         </p>
 
-        <div className="mt-8 xl:mt-10 2xl:mt-12">
-          <TestimonialsCarousel items={testimonials} />
+        <div className="mt-12 xl:mt-16 2xl:mt-20 w-full">
+          <TestimonialsGrid items={testimonials} />
         </div>
       </div>
     </section>
