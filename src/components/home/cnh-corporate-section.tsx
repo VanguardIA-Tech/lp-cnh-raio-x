@@ -53,7 +53,7 @@ export function CnhCorporateSection() {
             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-black/80 to-black/90">
               <div className="h-full w-full">
                 <img
-                  src="/jorge-sindarpa1.webp"
+                  src="https://directus.vanguardiagrupo.com.br/assets/8e6441a5-6f60-4454-bd63-8b5467cf03cd"
                   alt="CNH Corporativa"
                   className="h-full w-full object-cover rounded-lg"
                 />

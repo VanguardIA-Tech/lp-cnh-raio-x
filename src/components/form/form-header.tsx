@@ -6,7 +6,7 @@ const FormHeader = () => {
       <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left md:justify-between flex-wrap gap-4">
         <div className="flex items-center gap-3">
           <img
-            src="https://res.cloudinary.com/dcg2hwh7x/image/upload/v1754072832/Avatar_e_Logos_Vanguardia_Prancheta_1_co%CC%81pia_19_fs9aqj.png"
+            src="https://directus.vanguardiagrupo.com.br/assets/c6d153f9-dafb-4792-96c4-0dc5a7b3f69e"
             alt="VanguardIA logo"
             loading="lazy"
             className="w-12 h-12 object-contain"

@@ -18,7 +18,7 @@ const steps = [
   },
 ];
 
-const DIAGNOSIS_VIDEO_URL = "https://res.cloudinary.com/dcg2hwh7x/video/upload/v1762886107/copy_33173A90-9720-4B2B-9894-1BBBE2C26924_shdgu8.webm";
+const DIAGNOSIS_VIDEO_URL = "https://directus.vanguardiagrupo.com.br/assets/8e6441a5-6f60-4454-bd63-8b5467cf03cd";
 
 export function DiagnosisSection() {
   return (
