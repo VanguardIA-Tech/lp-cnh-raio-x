@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    images: {
+  // Turbopack config (Next.js 16+ uses Turbopack by default)
+  turbopack: {},
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
