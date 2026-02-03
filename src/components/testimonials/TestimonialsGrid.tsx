@@ -55,7 +55,7 @@ export default function TestimonialsGrid({ items, onSelect, className }: Props) 
             
             <div className="mt-4 text-center flex flex-col items-center gap-1 w-full">
               {testimonial.company && (
-                <p className="text-xs font-bold text-green-400 uppercase tracking-wider">{testimonial.company}</p>
+                <p className="text-xs font-bold text-white uppercase tracking-wider">{testimonial.company}</p>
               )}
               <p className="text-lg font-semibold text-slate-100 group-hover:text-white transition-colors">{testimonial.name}</p>
               {testimonial.role && (
